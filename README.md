@@ -1,1 +1,1 @@
-print("i love JS")
+ladle piyo gawk gawk gawk
