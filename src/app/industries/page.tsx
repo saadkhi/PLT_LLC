@@ -1,6 +1,7 @@
 import React from 'react';
 import prisma from '@/lib/prisma';
 import { getImageUrl } from '@/lib/utils';
+import Image from 'next/image';
 
 export default async function IndustriesPage() {
     const industries = await prisma.industry.findMany({
@@ -17,7 +18,13 @@ export default async function IndustriesPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
                 {industries.map((industry: any) => (
                     <div key={industry.id} className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center transform transition duration-300 hover:scale-[1.02] hover:shadow-xl">
-                        <img src={getImageUrl(industry.image || 'AI.png')} alt={industry.name} className="w-20 h-20 mb-4 object-contain" />
+                        <Image
+                            src={getImageUrl(industry.image || 'AI.png')}
+                            alt={industry.name}
+                            width={80}
+                            height={80}
+                            className="w-20 h-20 mb-4 object-contain"
+                        />
                         <h3 className="text-xl font-bold text-black mb-2">{industry.name}</h3>
                         <p className="text-gray-600 text-sm">{industry.description}</p>
                     </div>

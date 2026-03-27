@@ -1,0 +1,101 @@
+
+> plt-llc-next@0.1.0 build
+> next build
+
+  ▲ Next.js 14.2.14
+  - Environments: .env
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+
+./src/app/insights/[id]/page.tsx
+26:25  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./src/components/admin/ProjectForm.tsx
+148:37  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+   Collecting page data ...
+   Generating static pages (0/46) ...
+   Generating static pages (11/46) 
+   Generating static pages (22/46) 
+   Generating static pages (34/46) 
+ ✓ Generating static pages (46/46)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                              Size     First Load JS
+┌ ƒ /                                    1.39 kB         100 kB
+├ ƒ /_not-found                          873 B            88 kB
+├ ƒ /about                               300 B          92.5 kB
+├ ƒ /admin                               841 B            88 kB
+├ ƒ /admin/applications                  3 kB           96.9 kB
+├ ƒ /admin/applications/[id]             841 B            88 kB
+├ ƒ /admin/categories                    2.92 kB        96.8 kB
+├ ƒ /admin/categories/[id]               135 B          90.2 kB
+├ ƒ /admin/categories/new                135 B          90.2 kB
+├ ƒ /admin/industries                    2.92 kB        96.8 kB
+├ ƒ /admin/industries/[id]               2.56 kB        89.7 kB
+├ ƒ /admin/industries/new                2.56 kB        89.7 kB
+├ ƒ /admin/insights                      2.95 kB        96.9 kB
+├ ƒ /admin/insights/[id]                 1.61 kB        88.7 kB
+├ ƒ /admin/insights/new                  1.61 kB        88.7 kB
+├ ƒ /admin/jobs                          3.06 kB          97 kB
+├ ƒ /admin/jobs/[id]                     1.37 kB        88.5 kB
+├ ƒ /admin/jobs/new                      1.37 kB        88.5 kB
+├ ƒ /admin/login                         1.35 kB        88.5 kB
+├ ƒ /admin/messages                      2.96 kB        90.1 kB
+├ ƒ /admin/offices                       2.17 kB        89.3 kB
+├ ƒ /admin/projects                      3.03 kB        96.9 kB
+├ ƒ /admin/projects/[id]                 135 B          90.6 kB
+├ ƒ /admin/projects/new                  134 B          90.6 kB
+├ ƒ /admin/settings                      1.4 kB         88.5 kB
+├ ƒ /admin/social-links                  2.38 kB        89.5 kB
+├ ƒ /api/admin/applications/[id]         0 B                0 B
+├ ƒ /api/admin/auth/login                0 B                0 B
+├ ƒ /api/admin/auth/logout               0 B                0 B
+├ ○ /api/admin/auth/settings             0 B                0 B
+├ ƒ /api/admin/categories                0 B                0 B
+├ ƒ /api/admin/categories/[id]           0 B                0 B
+├ ƒ /api/admin/industries                0 B                0 B
+├ ƒ /api/admin/industries/[id]           0 B                0 B
+├ ƒ /api/admin/insights                  0 B                0 B
+├ ƒ /api/admin/insights/[id]             0 B                0 B
+├ ƒ /api/admin/jobs                      0 B                0 B
+├ ƒ /api/admin/jobs/[id]                 0 B                0 B
+├ ƒ /api/admin/messages/[id]             0 B                0 B
+├ ƒ /api/admin/offices                   0 B                0 B
+├ ƒ /api/admin/offices/[id]              0 B                0 B
+├ ƒ /api/admin/projects                  0 B                0 B
+├ ƒ /api/admin/projects/[id]             0 B                0 B
+├ ƒ /api/admin/social-links              0 B                0 B
+├ ƒ /api/admin/social-links/[id]         0 B                0 B
+├ ƒ /api/admin/upload                    0 B                0 B
+├ ƒ /api/apply                           0 B                0 B
+├ ƒ /api/contact                         0 B                0 B
+├ ○ /api/industries                      0 B                0 B
+├ ○ /api/insights                        0 B                0 B
+├ ○ /api/jobs                            0 B                0 B
+├ ○ /api/offices                         0 B                0 B
+├ ƒ /api/projects/category/[id]          0 B                0 B
+├ ○ /api/social-links                    0 B                0 B
+├ ƒ /careers                             178 B          94.1 kB
+├ ƒ /careers/[id]                        138 B          87.3 kB
+├ ƒ /contact                             1.36 kB        88.5 kB
+├ ƒ /industries                          300 B          92.5 kB
+├ ƒ /insights                            188 B          99.2 kB
+├ ƒ /insights/[id]                       178 B          94.1 kB
+├ ƒ /projects/category/[id]              300 B          92.5 kB
+└ ƒ /services                            188 B          99.2 kB
++ First Load JS shared by all            87.1 kB
+  ├ chunks/117-610dc2ea2289e9d6.js       31.6 kB
+  ├ chunks/fd9d1056-f1f8da2978402545.js  53.6 kB
+  └ other shared chunks (total)          1.89 kB
+
+
+ƒ Middleware                             26.5 kB
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Image, X } from 'lucide-react';
+import { Image as LucideImage, X } from 'lucide-react';
 
 interface ProjectFormProps {
     initialData?: any;
@@ -145,9 +145,13 @@ const ProjectForm = ({ initialData, categories }: ProjectFormProps) => {
 
                             <div className="w-full md:w-32 h-32 bg-white rounded-2xl border border-gray-100 flex-shrink-0 flex items-center justify-center overflow-hidden relative text-gray-200">
                                 {img.image ? (
-                                    <img src={img.image} alt="Preview" className="w-full h-full object-cover" />
+                                    <img
+                                        src={img.image}
+                                        alt={`Project preview ${index + 1}`}
+                                        className="w-full h-full object-cover"
+                                    />
                                 ) : (
-                                    <Image className="w-10 h-10 opacity-20" />
+                                    <LucideImage className="w-10 h-10 opacity-20" />
                                 )}
                                 <label className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 hover:opacity-100 transition cursor-pointer">
                                     <span className="text-white text-[10px] font-black uppercase tracking-widest bg-black/20 px-3 py-1 rounded-full backdrop-blur-sm">Change</span>

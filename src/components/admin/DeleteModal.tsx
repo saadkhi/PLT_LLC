@@ -22,7 +22,7 @@ const DeleteModal = ({ isOpen, onClose, onConfirm, itemName }: DeleteModalProps)
                     </div>
                     <h2 className="text-2xl font-extrabold text-gray-900">Are you sure?</h2>
                     <p className="text-gray-500 mt-2 font-medium">
-                        You are about to permanently delete <span className="text-gray-900 font-bold">"{itemName}"</span>. This action cannot be undone.
+                        You are about to permanently delete <span className="text-gray-900 font-bold">&quot;{itemName}&quot;</span>. This action cannot be undone.
                     </p>
                 </div>
 

@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import prisma from '@/lib/prisma';
 import { getImageUrl } from '@/lib/utils';
+import Image from 'next/image';
 
 export default async function InsightsPage() {
     const insights = await prisma.insight.findMany({
@@ -18,8 +19,13 @@ export default async function InsightsPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {insights.map((insight: any) => (
                     <div key={insight.id} className="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col transform transition duration-300 hover:scale-[1.02] hover:shadow-xl">
-                        <div className="h-48 bg-gray-200">
-                            <img src={getImageUrl(insight.image || 'AI.png')} alt={insight.title} className="w-full h-full object-contain p-8" />
+                        <div className="h-48 bg-gray-200 relative">
+                            <Image
+                                src={getImageUrl(insight.image || 'AI.png')}
+                                alt={insight.title}
+                                fill
+                                className="object-contain p-8"
+                            />
                         </div>
                         <div className="p-6 flex-1 flex flex-col">
                             <p className="text-orange-500 text-xs font-bold mb-2 uppercase">

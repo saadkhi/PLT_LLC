@@ -83,6 +83,7 @@ const CategoryForm = ({ initialData }: CategoryFormProps) => {
                         <div className="flex items-center gap-6 p-6 bg-gray-50 rounded-3xl border border-dashed border-gray-200">
                             <div className="w-16 h-16 bg-white rounded-xl border border-gray-100 flex items-center justify-center overflow-hidden relative shadow-sm text-gray-200">
                                 {formData.homepage_image ? (
+                                    /* eslint-disable-next-line @next/next/no-img-element */
                                     <img src={getImageUrl(formData.homepage_image)} alt="Home Preview" className="w-full h-full object-contain p-2" />
                                 ) : (
                                     <Home className="w-8 h-8 opacity-20" />
@@ -116,6 +117,7 @@ const CategoryForm = ({ initialData }: CategoryFormProps) => {
                         <div className="flex items-center gap-6 p-6 bg-gray-50 rounded-3xl border border-dashed border-gray-200">
                             <div className="w-24 h-24 bg-white rounded-2xl border border-gray-100 flex items-center justify-center overflow-hidden relative shadow-sm text-gray-200">
                                 {formData.image ? (
+                                    /* eslint-disable-next-line @next/next/no-img-element */
                                     <img src={getImageUrl(formData.image)} alt="Preview" className="w-full h-full object-contain p-2" />
                                 ) : (
                                     <Settings className="w-12 h-12 opacity-20" />

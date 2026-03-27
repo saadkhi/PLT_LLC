@@ -1,5 +1,6 @@
 import React from 'react';
 import { getImageUrl } from '@/lib/utils';
+import Image from 'next/image';
 
 export default function AboutPage() {
     return (
@@ -10,7 +11,13 @@ export default function AboutPage() {
                 <div className="max-w-screen-xl mx-auto grid grid-cols-1 gap-4 sm:gap-6 md:gap-8 items-start mb-6 sm:mb-8 md:mb-10">
                     {/* CEO Box */}
                     <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 flex flex-col items-center text-center min-h-[300px] sm:min-h-[400px]">
-                        <img src={getImageUrl('ceo.jpeg')} alt="CEO" className="w-40 h-40 object-cover rounded-2xl shadow-md" />
+                        <Image
+                            src={getImageUrl('ceo.jpeg')}
+                            alt="Saad Ather Ali - CEO"
+                            width={160}
+                            height={160}
+                            className="w-40 h-40 object-cover rounded-2xl shadow-md"
+                        />
                         <h3 className="text-xl sm:text-3xl font-semibold text-black mt-4">Saad Ather Ali</h3>
                         <p className="text-sm sm:text-lg text-black mb-4">Chief Executive Officer</p>
                         <p className="text-xs sm:text-base text-black mb-6 max-w-3xl">

@@ -6,10 +6,9 @@ const QuoteDrawer = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
-        const quoteBtn = document.getElementById('quote-btn');
-        if (quoteBtn) {
-            quoteBtn.onclick = () => setIsOpen(true);
-        }
+        const handleOpen = () => setIsOpen(true);
+        window.addEventListener('open-quote-drawer', handleOpen);
+        return () => window.removeEventListener('open-quote-drawer', handleOpen);
     }, []);
 
     const closeDrawer = () => setIsOpen(false);

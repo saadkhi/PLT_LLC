@@ -1,7 +1,8 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import Link from 'next/link';
+import Image from 'next/image';
 import { getImageUrl } from '@/lib/utils';
 
 const Navbar = () => {
@@ -28,7 +29,15 @@ const Navbar = () => {
             <nav className="px-8 flex justify-between items-center min-w-[200px]">
                 <div className="flex items-center space-x-6 flex-shrink-0">
                     <Link href="/" className="flex items-center space-x-2">
-                        <img src={getImageUrl('navbar_logo.png')} alt="Logo" className="h-10 w-auto object-contain" />
+                        <Image
+                            src={getImageUrl('navbar_logo.png')}
+                            alt="Logo"
+                            width={150}
+                            height={40}
+                            style={{ height: '40px', width: 'auto' }}
+                            className="object-contain"
+                            priority
+                        />
                     </Link>
                 </div>
 

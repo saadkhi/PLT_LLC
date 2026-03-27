@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import prisma from '@/lib/prisma';
 import { getImageUrl } from '@/lib/utils';
+import Image from 'next/image';
 
 export default async function ServicesPage() {
     const categories = await prisma.category.findMany({
@@ -23,9 +24,11 @@ export default async function ServicesPage() {
                         >
                             {/* Square Box */}
                             <div className="flex flex-col items-center justify-center text-center w-full md:w-[30%] max-w-[400px] aspect-square p-4">
-                                <img
+                                <Image
                                     src={getImageUrl(service.image || 'web_dev.png')}
                                     alt={service.name}
+                                    width={400}
+                                    height={400}
                                     className="w-full h-full object-contain shadow-xl rounded-[2rem] bg-white border border-gray-100"
                                 />
                             </div>

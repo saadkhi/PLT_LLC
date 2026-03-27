@@ -79,6 +79,7 @@ const InsightForm = ({ initialData }: InsightFormProps) => {
                 <div className="flex items-center space-x-6 bg-gray-50 p-6 rounded-2xl border border-dashed border-gray-200">
                     <div className="w-40 h-24 bg-white rounded-xl border border-gray-100 flex items-center justify-center overflow-hidden shrink-0 shadow-sm">
                         {formData.image ? (
+                            /* eslint-disable-next-line @next/next/no-img-element */
                             <img src={formData.image} alt="Preview" className="w-full h-full object-cover" />
                         ) : (
                             <span className="text-2xl grayscale opacity-20">📰</span>

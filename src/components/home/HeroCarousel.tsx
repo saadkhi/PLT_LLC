@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { getImageUrl } from '@/lib/utils';
 
 const HeroCarousel = () => {
     const [current, setCurrent] = useState(0);
@@ -17,9 +18,11 @@ const HeroCarousel = () => {
     };
 
     useEffect(() => {
-        const interval = setInterval(nextSlide, 10000);
+        const interval = setInterval(() => {
+            setCurrent((prev) => (prev + 1) % videoSources.length);
+        }, 10000);
         return () => clearInterval(interval);
-    }, []);
+    }, [videoSources.length]);
 
     return (
         <section className="relative h-screen w-screen -mx-4 sm:-mx-8 md:-mx-16 lg:-mx-40 overflow-hidden">
@@ -33,6 +36,8 @@ const HeroCarousel = () => {
                     muted
                     loop
                     playsInline
+                    poster={getImageUrl('code.png')}
+                    preload="metadata"
                 >
                     <source src={src} type="video/mp4" />
                 </video>

@@ -2,6 +2,7 @@ import React from 'react';
 import { notFound } from 'next/navigation';
 import prisma from '@/lib/prisma';
 import { getImageUrl } from '@/lib/utils';
+import Image from 'next/image';
 
 export default async function ProjectCategoryPage({ params }: { params: { id: string } }) {
     const categoryId = parseInt(params.id);
@@ -29,7 +30,12 @@ export default async function ProjectCategoryPage({ params }: { params: { id: st
                         {/* Simple Project Carousel (Static for now) */}
                         <div className="h-64 bg-gray-100 relative group">
                             {project.images.length > 0 ? (
-                                <img src={getImageUrl(project.images[0].image)} alt={project.title} className="w-full h-full object-contain p-4" />
+                                <Image
+                                    src={getImageUrl(project.images[0].image)}
+                                    alt={project.title}
+                                    fill
+                                    className="object-contain p-4"
+                                />
                             ) : (
                                 <div className="w-full h-full flex items-center justify-center text-gray-400 italic">No Image Available</div>
                             )}
