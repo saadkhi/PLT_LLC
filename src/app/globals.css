@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f3f4f6;
+  --foreground: #111827;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #f3f4f6;
+    --foreground: #111827;
+  }
+}
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  font-family: var(--font-plus-jakarta-sans), 'Avenir Next Arabic', 'Avenir Next', 'Segoe UI',
+    Tahoma, Geneva, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 80s linear infinite;
+}
+
+/* Custom styles for components if needed */
+.scale-102:hover {
+  transform: scale(1.02);
+}

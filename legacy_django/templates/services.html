@@ -1,0 +1,508 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Services{% endblock %}
+{% block content %}
+
+<!-- Main Content Container with Reduced Padding and Wider Container -->
+<div class="px-2 sm:px-4 md:px-8 lg:px-8">
+  <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl mt-4 sm:mt-6 md:mt-8 text-center font-bold">Our Services</h1>
+  <!-- Quadrants Section -->
+  <section class="py-12 bg-gray-100 px-0">
+    <style>
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 4rem;
+        }
+
+        h3 {
+          font-size: 2rem;
+        }
+
+        p,
+        ul {
+          font-size: 1rem;
+        }
+
+        .max-w-screen-xl {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+
+        .flex-col {
+          gap: 1rem;
+        }
+      }
+
+      @media (max-width: 640px) {
+        h1 {
+          font-size: 3rem;
+        }
+
+        h3 {
+          font-size: 1.5rem;
+        }
+
+        p,
+        ul {
+          font-size: 0.9rem;
+        }
+
+        .max-w-screen-xl {
+          padding-left: 0.5rem;
+          padding-right: 0.5rem;
+        }
+      }
+    </style>
+    <div class="max-w-screen-xl mx-auto px-0">
+      <!-- Service Row -->
+      <div id="web-app-dev" class="flex flex-col md:flex-row justify-center items-center">
+        <!-- Square Box -->
+        <div
+          class="flex flex-col items-center justify-center text-center w-full md:w-[30%] max-w-[400px] aspect-square">
+          <img src="{% static 'images/web_dev.png' %}" alt="Web Development Icon"
+            class="w-full h-full object-contain shadow-lg rounded-2xl">
+        </div>
+        <!-- Rectangle Box -->
+        <div class="flex flex-col items-start justify-start text-left p-8 w-full md:w-[70%] max-w-[1000px]">
+          <h3 class="mt-4 text-4xl font-semibold mb-4">Web & App Development</h3>
+          <p class="text-justify text-black mb-6">
+            We create fast, scalable, and future-ready websites and mobile apps tailored to your business needs.
+            From custom-coded platforms to no-code tools, we ensure speed, security, and seamless user experiences.
+            Our solutions adapt to your growth, keeping you competitive in 2025 and beyond. Whether it’s a startup
+            MVP or enterprise-grade app, we deliver with precision. With AI integrations and modern frameworks, your
+            app stays ahead of trends.
+          </p>
+          <ul class="list-disc list-inside space-y-2 text-black">
+            <li>Custom-coded & no-code solutions</li>
+            <li>High-performance & responsive apps</li>
+            <li>AI-powered features & integrations</li>
+            <li>Scalable architecture for growth</li>
+          </ul>
+          <a href="{% url 'project_category' category_id=1 %}"
+            class="sm:mt-2 inline-block px-4 sm:px-4 md:px-6 py-1 sm:py-2 md:py-3 bg-orange-500 text-white text-sm sm:text-base md:text-md font-semibold rounded-lg shadow-md transform transition duration-300 hover:scale-102 hover:bg-orange-600">
+            Explore Past Works
+          </a>
+        </div>
+      </div>
+
+      <!-- Service Row -->
+      <div id="digital-marketing" class="flex flex-col md:flex-row-reverse justify-center items-center">
+        <div
+          class="flex flex-col items-center justify-center text-center w-full md:w-[30%] max-w-[400px] aspect-square">
+          <img src="{% static 'images/dig_market.png' %}" alt="Digital Marketing Icon"
+            class="w-full h-full object-contain shadow-lg rounded-2xl">
+        </div>
+        <div class="flex flex-col items-start justify-start text-left p-8 w-full md:w-[70%] max-w-[1000px]">
+          <h3 class="mt-4 text-4xl font-semibold mb-4">Digital Marketing</h3>
+          <p class="text-justify text-black mb-6">
+            We help brands grow online with data-driven digital marketing strategies. From social media campaigns to
+            paid
+            ads, our focus is on increasing visibility, engagement, and sales. We blend creativity with analytics to
+            deliver
+            campaigns that truly convert. Whether you’re targeting local customers or global markets, our strategies
+            adapt to your
+            business goals. In 2025, digital presence isn’t optional—it’s essential.
+          </p>
+          <ul class="list-disc list-inside space-y-2 text-black">
+            <li>Social media growth & engagement</li>
+            <li>Paid ads (Google, Facebook, Instagram)</li>
+            <li>Content & influencer marketing</li>
+            <li>Analytics-driven campaign optimization</li>
+          </ul>
+          <a href="{% url 'project_category' category_id=2 %}"
+            class="sm:mt-2 inline-block px-4 sm:px-4 md:px-6 py-1 sm:py-2 md:py-3 bg-orange-500 text-white text-sm sm:text-base md:text-md font-semibold rounded-lg shadow-md transform transition duration-300 hover:scale-102 hover:bg-orange-600">
+            Explore Past Works
+          </a>
+        </div>
+      </div>
+
+      <!-- Service Row -->
+      <div id="data-analytics" class="flex flex-col md:flex-row justify-center items-center">
+        <div
+          class="flex flex-col items-center justify-center text-center w-full md:w-[30%] max-w-[400px] aspect-square">
+          <img src="{% static 'images/data_anal.png' %}" alt="Data Analytics Icon"
+            class="w-full h-full object-contain shadow-lg rounded-2xl">
+        </div>
+        <div class="flex flex-col items-start justify-start text-left p-8 w-full md:w-[70%] max-w-[1000px]">
+          <h3 class="mt-4 text-4xl font-semibold mb-4">Data Analytics & Business Intelligence</h3>
+          <p class="text-justify text-black mb-6">
+            We turn raw data into actionable insights that power growth. Our BI dashboards give clarity on trends,
+            customer behavior, and performance metrics. With predictive analytics, you can make smarter business
+            decisions. We simplify complex data into easy-to-read reports. Unlock the hidden value of your data today.
+          </p>
+          <ul class="list-disc list-inside space-y-2 text-black">
+            <li>Business Intelligence dashboards</li>
+            <li>Customer behavior prediction</li>
+            <li>Data-driven decision-making</li>
+            <li>Simplified visual reporting</li>
+          </ul>
+          <a href="{% url 'project_category' category_id=3 %}"
+            class="sm:mt-2 inline-block px-4 sm:px-4 md:px-6 py-1 sm:py-2 md:py-3 bg-orange-500 text-white text-sm sm:text-base md:text-md font-semibold rounded-lg shadow-md transform transition duration-300 hover:scale-102 hover:bg-orange-600">
+            Explore Past Works
+          </a>
+        </div>
+      </div>
+
+      <!-- Service Row -->
+      <div id="ai-automation" class="flex flex-col md:flex-row-reverse justify-center items-center">
+        <div
+          class="flex flex-col items-center justify-center text-center w-full md:w-[30%] max-w-[400px] aspect-square">
+          <img src="{% static 'images/AI.png' %}" alt="AI Icon"
+            class="w-full h-full object-contain shadow-lg rounded-2xl">
+        </div>
+        <div class="flex flex-col items-start justify-start text-left p-8 w-full md:w-[70%] max-w-[1000px]">
+          <h3 class="mt-4 text-4xl font-semibold mb-4">AI Automation Systems</h3>
+          <p class="text-justify text-black mb-6">
+            AI transforms workflows by automating repetitive tasks and improving decision-making. We design smart
+            systems that cut costs, save time, and increase efficiency. From chatbots to predictive analytics,
+            our AI tools streamline operations for all industries. Businesses can make data-driven decisions with
+            precision. With automation, you focus on growth while AI handles the rest.
+          </p>
+          <ul class="list-disc list-inside space-y-2 text-black">
+            <li>Intelligent chatbots & assistants</li>
+            <li>Workflow automation across industries</li>
+            <li>Predictive insights & analytics</li>
+            <li>Cost-saving AI integrations</li>
+          </ul>
+          <a href="{% url 'project_category' category_id=4 %}"
+            class="sm:mt-2 inline-block px-4 sm:px-4 md:px-6 py-1 sm:py-2 md:py-3 bg-orange-500 text-white text-sm sm:text-base md:text-md font-semibold rounded-lg shadow-md transform transition duration-300 hover:scale-102 hover:bg-orange-600">
+            Explore Past Works
+          </a>
+        </div>
+      </div>
+
+      <!-- Service Row -->
+      <div id="cybersecurity" class="flex flex-col md:flex-row justify-center items-center">
+        <div
+          class="flex flex-col items-center justify-center text-center w-full md:w-[30%] max-w-[400px] aspect-square">
+          <img src="{% static 'images/cyber_sec.png' %}" alt="Cybersecurity Icon"
+            class="w-full h-full object-contain shadow-lg rounded-2xl">
+        </div>
+        <div class="flex flex-col items-start justify-start text-left p-8 w-full md:w-[70%] max-w-[1000px]">
+          <h3 class="mt-4 text-4xl font-semibold mb-4">Cybersecurity Services</h3>
+          <p class="text-justify text-black mb-6">
+            In a world of rising cyber threats, we safeguard your digital assets with advanced protection.
+            Our security experts implement strategies to keep your systems secure and compliant. We offer
+            penetration testing, real-time monitoring, and zero-trust frameworks. Businesses can operate
+            fearlessly knowing their data is safe. Security is not an option, it’s a necessity in 2025.
+          </p>
+          <ul class="list-disc list-inside space-y-2 text-black">
+            <li>Advanced threat detection systems</li>
+            <li>Zero-trust & compliance frameworks</li>
+            <li>24/7 monitoring & response</li>
+            <li>Ethical hacking & penetration testing</li>
+          </ul>
+          <a href="{% url 'project_category' category_id=5 %}"
+            class="sm:mt-2 inline-block px-4 sm:px-4 md:px-6 py-1 sm:py-2 md:py-3 bg-orange-500 text-white text-sm sm:text-base md:text-md font-semibold rounded-lg shadow-md transform transition duration-300 hover:scale-102 hover:bg-orange-600">
+            Explore Past Works
+          </a>
+        </div>
+      </div>
+
+      <!-- Service Row -->
+      <div id="blockchain" class="flex flex-col md:flex-row-reverse justify-center items-center">
+        <div
+          class="flex flex-col items-center justify-center text-center w-full md:w-[30%] max-w-[400px] aspect-square">
+          <img src="{% static 'images/bl_ch.png' %}" alt="Blockchain Icon"
+            class="w-full h-full object-contain shadow-lg rounded-2xl">
+        </div>
+        <div class="flex flex-col items-start justify-start text-left p-8 w-full md:w-[70%] max-w-[1000px]">
+          <h3 class="mt-4 text-4xl font-semibold mb-4">Web3 & Blockchain Development</h3>
+          <p class="text-justify text-black mb-6">
+            We build secure and transparent digital solutions with blockchain and Web3 technology. From decentralized
+            apps
+            to smart contracts, we unlock future-ready opportunities. Our blockchain platforms empower businesses with
+            trust, traceability, and automation. Whether it’s DeFi, NFTs, or crypto payments, we help you innovate with
+            confidence.
+            The decentralized future is here, be part of it.
+          </p>
+          <ul class="list-disc list-inside space-y-2 text-black">
+            <li>dApps & smart contract development</li>
+            <li>NFT & token-based platforms</li>
+            <li>Secure crypto wallets & payments</li>
+            <li>Blockchain-based trust solutions</li>
+          </ul>
+          <a href="{% url 'project_category' category_id=6 %}"
+            class="sm:mt-2 inline-block px-4 sm:px-4 md:px-6 py-1 sm:py-2 md:py-3 bg-orange-500 text-white text-sm sm:text-base md:text-md font-semibold rounded-lg shadow-md transform transition duration-300 hover:scale-102 hover:bg-orange-600">
+            Explore Past Works
+          </a>
+        </div>
+      </div>
+
+      <!-- Service Row -->
+      <div id="seo-optimization" class="flex flex-col md:flex-row justify-center items-center">
+        <div
+          class="flex flex-col items-center justify-center text-center w-full md:w-[30%] max-w-[400px] aspect-square">
+          <img src="{% static 'images/SEO.png' %}" alt="SEO Icon"
+            class="w-full h-full object-contain shadow-lg rounded-2xl">
+        </div>
+        <div class="flex flex-col items-start justify-start text-left p-8 w-full md:w-[70%] max-w-[1000px]">
+          <h3 class="mt-4 text-4xl font-semibold mb-4">SEO Optimization</h3>
+          <p class="text-justify text-black mb-6">
+            We boost your online visibility with data-driven SEO strategies. From keyword research to content
+            optimization,
+            we make sure your brand ranks where it matters. Our technical SEO ensures fast, mobile-friendly, and
+            crawlable sites.
+            With constant monitoring, we keep you ahead in search rankings. More visibility means more leads and sales.
+          </p>
+          <ul class="list-disc list-inside space-y-2 text-black">
+            <li>On-page & technical SEO</li>
+            <li>Keyword & competitor analysis</li>
+            <li>Link-building & outreach campaigns</li>
+            <li>Continuous monitoring & updates</li>
+          </ul>
+          <a href="{% url 'project_category' category_id=7 %}"
+            class="sm:mt-2 inline-block px-4 sm:px-4 md:px-6 py-1 sm:py-2 md:py-3 bg-orange-500 text-white text-sm sm:text-base md:text-md font-semibold rounded-lg shadow-md transform transition duration-300 hover:scale-102 hover:bg-orange-600">
+            Explore Past Works
+          </a>
+        </div>
+      </div>
+
+      <!-- Service Row -->
+      <div id="ecommerce-solutions" class="flex flex-col md:flex-row-reverse justify-center items-center">
+        <div
+          class="flex flex-col items-center justify-center text-center w-full md:w-[30%] max-w-[400px] aspect-square">
+          <img src="{% static 'images/e_com.png' %}" alt="E-commerce Icon"
+            class="w-full h-full object-contain shadow-lg rounded-2xl">
+        </div>
+        <div class="flex flex-col items-start justify-start text-left p-8 w-full md:w-[70%] max-w-[1000px]">
+          <h3 class="mt-4 text-4xl font-semibold mb-4">Shopify & E-commerce Solutions</h3>
+          <p class="text-justify text-black mb-6">
+            We design and optimize e-commerce platforms that sell more and scale better. From Shopify stores to custom
+            solutions,
+            we make your online shop irresistible. We integrate payments, automation, and marketing tools for a seamless
+            customer
+            experience. Our focus is to increase conversions and maximize ROI. The future of retail is digital, let’s
+            build it for you.
+          </p>
+          <ul class="list-disc list-inside space-y-2 text-black">
+            <li>Custom Shopify store development</li>
+            <li>Conversion-focused designs</li>
+            <li>Automated checkout & payments</li>
+            <li>Scalable e-commerce growth strategies</li>
+          </ul>
+          <a href="{% url 'project_category' category_id=8 %}"
+            class="sm:mt-2 inline-block px-4 sm:px-4 md:px-6 py-1 sm:py-2 md:py-3 bg-orange-500 text-white text-sm sm:text-base md:text-md font-semibold rounded-lg shadow-md transform transition duration-300 hover:scale-102 hover:bg-orange-600">
+            Explore Past Works
+          </a>
+        </div>
+      </div>
+
+      <!-- Service Row -->
+      <div id="cloud-solutions" class="flex flex-col md:flex-row justify-center items-center">
+        <div
+          class="flex flex-col items-center justify-center text-center w-full md:w-[30%] max-w-[400px] aspect-square">
+          <img src="{% static 'images/cloud.png' %}" alt="Cloud Icon"
+            class="w-full h-full object-contain shadow-lg rounded-2xl">
+        </div>
+        <div class="flex flex-col items-start justify-start text-left p-8 w-full md:w-[70%] max-w-[1000px]">
+          <h3 class="mt-4 text-4xl font-semibold mb-4">Cloud Solutions</h3>
+          <p class="text-justify text-black mb-6">
+            We help businesses move to the cloud for faster, more flexible, and cost-effective operations. From
+            migration to
+            optimization, we ensure seamless adoption of AWS, Azure, or GCP. Our DevOps and serverless solutions improve
+            reliability
+            and scalability. With AI-powered monitoring, your systems stay efficient. Cloud is not the future, it’s the
+            present.
+          </p>
+          <ul class="list-disc list-inside space-y-2 text-black">
+            <li>Cloud migration & optimization</li>
+            <li>Serverless applications</li>
+            <li>DevOps automation pipelines</li>
+            <li>AI-driven cloud monitoring</li>
+          </ul>
+          <a href="{% url 'project_category' category_id=9 %}"
+            class="sm:mt-2 inline-block px-4 sm:px-4 md:px-6 py-1 sm:py-2 md:py-3 bg-orange-500 text-white text-sm sm:text-base md:text-md font-semibold rounded-lg shadow-md transform transition duration-300 hover:scale-102 hover:bg-orange-600">
+            Explore Past Works
+          </a>
+        </div>
+      </div>
+
+      <!-- Service Row -->
+      <div id="ed-health-tech" class="flex flex-col md:flex-row-reverse justify-center items-center">
+        <div
+          class="flex flex-col items-center justify-center text-center w-full md:w-[30%] max-w-[400px] aspect-square">
+          <img src="{% static 'images/h_tech.png' %}" alt="Health Tech Icon"
+            class="w-full h-full object-contain shadow-lg rounded-2xl">
+        </div>
+        <div class="flex flex-col items-start justify-start text-left p-8 w-full md:w-[70%] max-w-[1000px]">
+          <h3 class="mt-4 text-4xl font-semibold mb-4">Education & Health Tech</h3>
+          <p class="text-justify text-black mb-6">
+            We develop smart solutions for education and healthcare, making services more accessible and effective. From
+            e-learning
+            platforms to telemedicine apps, we design user-friendly tools that transform lives. AI enhances personalized
+            learning and
+            patient care. Secure and scalable, our solutions empower institutions and individuals alike. The future of
+            health and
+            learning starts here.
+          </p>
+          <ul class="list-disc list-inside space-y-2 text-black">
+            <li>E-learning platforms with AI tutors</li>
+            <li>Telemedicine & health apps</li>
+            <li>Personalized education tools</li>
+            <li>Secure, scalable platform</li>
+          </ul>
+          <a href="{% url 'project_category' category_id=10 %}"
+            class="sm:mt-2 inline-block px-4 sm:px-4 md:px-6 py-1 sm:py-2 md:py-3 bg-orange-500 text-white text-sm sm:text-base md:text-md font-semibold rounded-lg shadow-md transform transition duration-300 hover:scale-102 hover:bg-orange-600">
+            Explore Past Works
+          </a>
+        </div>
+      </div>
+
+      <!-- Service Row -->
+      <div id="graphic-design" class="flex flex-col md:flex-row justify-center items-center">
+        <div
+          class="flex flex-col items-center justify-center text-center w-full md:w-[30%] max-w-[400px] aspect-square">
+          <img src="{% static 'images/graphic.png' %}" alt="Graphic Design Icon"
+            class="w-full h-full object-contain shadow-lg rounded-2xl">
+        </div>
+        <div class="flex flex-col items-start justify-start text-left p-8 w-full md:w-[70%] max-w-[1000px]">
+          <h3 class="mt-4 text-4xl font-semibold mb-4">Graphic Designing</h3>
+          <p class="text-justify text-black mb-6">
+            We craft designs that inspire, engage, and convert. Our creative team turns ideas into visually stunning
+            graphics that
+            represent your brand. From logos to social media visuals, we design with purpose and style. Good design
+            builds trust and
+            strengthens brand identity. With us, your brand stands out.
+          </p>
+          <ul class="list-disc list-inside space-y-2 text-black">
+            <li>Creative logo, brand identity and flyer design</li>
+            <li>Social media & ad creatives</li>
+            <li>Infographics & visual storytelling</li>
+            <li>Print & digital design assets</li>
+          </ul>
+          <a href="{% url 'project_category' category_id=11 %}"
+            class="sm:mt-2 inline-block px-4 sm:px-4 md:px-6 py-1 sm:py-2 md:py-3 bg-orange-500 text-white text-sm sm:text-base md:text-md font-semibold rounded-lg shadow-md transform transition duration-300 hover:scale-102 hover:bg-orange-600">
+            Explore Past Works
+          </a>
+        </div>
+      </div>
+
+      <!-- Service Row -->
+      <div id="video-editing" class="flex flex-col md:flex-row-reverse justify-center items-center">
+        <div
+          class="flex flex-col items-center justify-center text-center w-full md:w-[30%] max-w-[400px] aspect-square">
+          <img src="{% static 'images/vid_edit.png' %}" alt="Video Editing Icon"
+            class="w-full h-full object-contain shadow-lg rounded-2xl">
+        </div>
+        <div class="flex flex-col items-start justify-start text-left p-8 w-full md:w-[70%] max-w-[1000px]">
+          <h3 class="mt-4 text-4xl font-semibold mb-4">Video Editing</h3>
+          <p class="text-justify text-black mb-6">
+            We create professional videos that tell your story and captivate audiences. From promotional ads to social
+            media reels,
+            our editing services add impact. We use modern tools, effects, and storytelling techniques to engage
+            viewers. Video is
+            the most powerful marketing medium in 2025, don’t miss out.
+          </p>
+          <ul class="list-disc list-inside space-y-2 text-black">
+            <li>Engaging ad & promo videos</li>
+            <li>Social media reels & shorts</li>
+            <li>Corporate & explainer videos</li>
+            <li>Advanced editing with effects</li>
+          </ul>
+          <a href="{% url 'project_category' category_id=12 %}"
+            class="sm:mt-2 inline-block px-4 sm:px-4 md:px-6 py-1 sm:py-2 md:py-3 bg-orange-500 text-white text-sm sm:text-base md:text-md font-semibold rounded-lg shadow-md transform transition duration-300 hover:scale-102 hover:bg-orange-600">
+            Explore Past Works
+          </a>
+        </div>
+      </div>
+
+      <!-- Service Row -->
+      <div id="ui-ux-design" class="flex flex-col md:flex-row justify-center items-center">
+        <div
+          class="flex flex-col items-center justify-center text-center w-full md:w-[30%] max-w-[400px] aspect-square">
+          <img src="{% static 'images/uiux.png' %}" alt="UI/UX Icon"
+            class="w-full h-full object-contain shadow-lg rounded-2xl">
+        </div>
+        <div class="flex flex-col items-start justify-start text-left p-8 w-full md:w-[70%] max-w-[1000px]">
+          <h3 class="mt-4 text-4xl font-semibold mb-4">UI/UX Development</h3>
+          <p class="text-justify text-black mb-6">
+            We design interfaces that users love and remember. Our UI/UX solutions focus on simplicity, functionality,
+            and
+            engagement. From mobile apps to enterprise software, we create intuitive digital experiences. Good design
+            reduces
+            bounce rates and increases conversions. A beautiful design is useless without usability, so we deliver both.
+          </p>
+          <ul class="list-disc list-inside space-y-2 text-black">
+            <li>User-centered design approach</li>
+            <li>Wireframing & prototyping</li>
+            <li>Mobile-first & responsive design</li>
+            <li>Conversion-optimized experiences</li>
+          </ul>
+          <a href="{% url 'project_category' category_id=13 %}"
+            class="sm:mt-2 inline-block px-4 sm:px-4 md:px-6 py-1 sm:py-2 md:py-3 bg-orange-500 text-white text-sm sm:text-base md:text-md font-semibold rounded-lg shadow-md transform transition duration-300 hover:scale-102 hover:bg-orange-600">
+            Explore Past Works
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative bg-white py-16 px-0 border-t border-gray-300">
+    <div class="relative container mx-auto text-center text-black">
+      <h2 class="text-3xl md:text-4xl font-bold mb-10">Why Choose Us</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-10">
+        <div class="text-left">
+          <div class="flex items-center space-x-3 mb-3">
+            <h3 class="text-xl font-bold">Idea Generation</h3>
+          </div>
+          <p class="text-justify text-black">
+            We are the source of generating the most iconic and unique ideas to make sure that creativity and innovation
+            never fade away from the industry. Our work is based on imagination and decision-making of industry
+            specialists.
+          </p>
+        </div>
+        <div class="text-left">
+          <div class="flex items-center space-x-3 mb-3">
+            <h3 class="text-xl font-bold">Countless Experiments</h3>
+          </div>
+          <p class="text-justify text-black">
+            Before coming up with something new, our service is experimented with unlimited times to make sure it is
+            safe,
+            unique, and user-friendly. We assure you that our customers will always be satisfied.
+          </p>
+        </div>
+        <div class="text-left">
+          <div class="flex items-center space-x-3 mb-3">
+            <h3 class="text-xl font-bold">Unlimited Revisions</h3>
+          </div>
+          <p class="text-justify text-black">
+            Prototyping is the key to our success. Our service is never launched until tested countless times. We assure
+            flexibility and scalability in our work with unlimited revisions.
+          </p>
+        </div>
+        <div class="text-left">
+          <div class="flex items-center space-x-3 mb-3">
+            <h3 class="text-xl font-bold">Streamline Process</h3>
+          </div>
+          <p class="text-justify text-black">
+            We always follow a streamlined process of designing, development, order payment, and delivery. Our customers
+            will always be satisfied.
+          </p>
+        </div>
+        <div class="text-left">
+          <div class="flex items-center space-x-3 mb-3">
+            <h3 class="text-xl font-bold">Pre-Launch Marketing</h3>
+          </div>
+          <p class="text-justify text-black">
+            Our Pre-Launch service will deliver the right message for your targeted audience. We ensure you already have
+            a
+            strong market presence before your product even exists in the market.
+          </p>
+        </div>
+        <div class="text-left">
+          <div class="flex items-center space-x-3 mb-3">
+            <h3 class="text-xl font-bold">Post-Launch Marketing</h3>
+          </div>
+          <p class="text-justify text-black">
+            Our post-launch marketing services help you connect with your targeted audience and mark your success
+            effectively.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+{% endblock %}

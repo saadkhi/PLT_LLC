@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ insight.title }}{% endblock %}
+{% block content %}
+
+<div class="px-4 sm:px-8 lg:px-16 py-8">
+  <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-xl p-6 sm:p-10">
+    {% if insight.image %}
+    <img src="{{ insight.image.url }}" alt="{{ insight.title }}" class="w-full h-64 object-cover rounded-lg mb-6">
+    {% endif %}
+
+    <h1 class="text-3xl sm:text-4xl font-bold mb-4">{{ insight.title }}</h1>
+    <p class="text-gray-600 text-sm mb-6">Published on {{ insight.created_at|date:"F j, Y" }}</p>
+
+    <div class="text-lg leading-relaxed text-gray-800">
+      {{ insight.description|linebreaks }}
+    </div>
+
+    <div class="mt-8">
+      <a href="{% url 'insights' %}" class="px-4 py-2 font-semibold bg-black text-white rounded-lg hover:bg-orange-500">
+        Back to Insights
+      </a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

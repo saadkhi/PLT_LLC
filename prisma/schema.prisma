@@ -1,0 +1,121 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Job {
+  id               Int           @id @default(autoincrement())
+  title            String
+  location         String
+  job_mode         String        // remote, hybrid, onsite
+  about_role       String
+  responsibilities String
+  requirements     String
+  nice_to_have     String?
+  posted_at        DateTime      @default(now())
+  applications     Application[]
+}
+
+model Application {
+  id               Int      @id @default(autoincrement())
+  job              Job      @relation(fields: [jobId], references: [id])
+  jobId            Int
+  name             String
+  age              Int
+  email            String
+  education_level  String
+  last_institute   String
+  github_link      String?
+  linkedin_link    String?
+  resume           String   // URL to stored file
+  referral_source  String
+  applied_at       DateTime @default(now())
+}
+
+model ContactMessage {
+  id         Int      @id @default(autoincrement())
+  name       String
+  email      String
+  subject    String?
+  message    String
+  created_at DateTime @default(now())
+}
+
+model Insight {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  image       String?  // URL to stored image
+  created_at  DateTime @default(now())
+}
+
+model Industry {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String
+  image       String?  // URL to stored image
+  created_at  DateTime @default(now())
+}
+
+model Category {
+  id          Int       @id @default(autoincrement())
+  name        String
+  description    String?   // Added for Services parity
+  image          String?   // Added for Services parity (URL to stored image)
+  homepage_image String?   // Visual for homepage (text-only or icon)
+  projects       Project[]
+
+  @@map("categories") // verbose_name_plural was "Categories"
+}
+
+model Project {
+  id          Int            @id @default(autoincrement())
+  category    Category       @relation(fields: [categoryId], references: [id])
+  categoryId  Int
+  title       String
+  description String
+  link        String?
+  images      ProjectImage[]
+}
+
+model ProjectImage {
+  id        Int     @id @default(autoincrement())
+  project   Project @relation(fields: [projectId], references: [id])
+  projectId Int
+  image     String  // URL to stored image
+  alt_text  String?
+  order     Int     @default(0)
+
+  @@index([order])
+}
+model Office {
+  id           Int      @id @default(autoincrement())
+  name         String   // e.g. USA Office, Pakistan Office
+  address      String
+  phone        String
+  email        String
+  office_hours String
+  is_main      Boolean  @default(false)
+  created_at   DateTime @default(now())
+}
+
+model SocialLink {
+  id            Int      @id @default(autoincrement())
+  platform_name String   // e.g. Facebook, X, etc.
+  url           String
+  icon          String?  // Optional icon identifier
+  created_at    DateTime @default(now())
+}
+
+model AdminUser {
+  id       Int    @id @default(autoincrement())
+  username String @unique
+  password String // In production, this should be hashed
+}

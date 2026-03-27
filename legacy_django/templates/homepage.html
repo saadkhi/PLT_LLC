@@ -1,0 +1,572 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+{% block content %}
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+</style>
+
+<!--Main Content Container with Responsive Padding-->
+<div class="px-4 sm:px-8 md:px-16 lg:px-40">
+
+  <!-- Hero Section with Full-Screen Video Background -->
+  <section class="relative h-screen w-screen -mx-4 sm:-mx-8 md:-mx-16 lg:-mx-40 overflow-hidden">
+    <!-- Video 1 -->
+    <video id="video1" class="video-slide absolute top-0 left-0 w-full h-full object-cover opacity-100" autoplay muted
+      loop playsinline>
+      <source src="{% static 'videos/homepage_vid1.mp4' %}" type="video/mp4">
+    </video>
+
+    <!-- Video 2 -->
+    <video id="video2" class="video-slide absolute top-0 left-0 w-full h-full object-cover opacity-0" autoplay muted
+      loop playsinline>
+      <source src="{% static 'videos/Code_vid4.mp4' %}" type="video/mp4">
+    </video>
+
+    <!-- Dark overlay -->
+    <div class="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
+
+    <!-- Hero Texts -->
+    <div id="text1"
+      class="absolute top-1/2 left-2 sm:left-4 md:left-8 lg:left-16 transform -translate-y-1/2 text-white z-20 opacity-100 transition-opacity duration-1000 px-2 sm:px-4 md:px-8 lg:px-16 max-w-[90%] sm:max-w-[80%] md:max-w-[70%] lg:max-w-[60%]">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl mb-2 sm:mb-4 text-left leading-tight px-6">
+        Designing<br>tomorrow,<br>differently.</h1>
+      <p class="text-sm sm:text-base md:text-lg lg:text-xl text-left px-6">Advancing growth while crafting the future
+        through
+        meaningful transformation.</p>
+      <a href="http://127.0.0.1:8000/insights"
+        class="mt-4 mb-4 sm:mt-6 inline-block px-4 sm:px-4 md:px-6 py-1 sm:py-2 md:py-3 bg-orange-500 text-white text-sm sm:text-base md:text-lg font-semibold rounded-lg shadow-md transform transition duration-300 hover:scale-102 hover:hover:shadow-lg hover:bg-orange-600 ml-6">
+        Explore Insights
+      </a>
+    </div>
+
+    <div id="text2"
+      class="absolute top-1/2 left-2 sm:left-4 md:left-8 lg:left-16 transform -translate-y-1/2 text-white z-20 opacity-0 transition-opacity duration-1000 px-2 sm:px-4 md:px-8 lg:px-16 max-w-[90%] sm:max-w-[80%] md:max-w-[70%] lg:max-w-[60%]">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl mb-2 sm:mb-4 text-left leading-tight px-6">Smart
+        innovation
+        that<br>transforms the future.</h1>
+      <p class="text-sm sm:text-base md:text-lg lg:text-xl text-left px-6">Your ideas, instantly transformed into
+        personalized solutions.</p>
+      <a href="http://127.0.0.1:8000/insights"
+        class="mt-4 mb-4 sm:mt-6 inline-block px-4 sm:px-4 md:px-6 py-1 sm:py-2 md:py-3 bg-orange-500 text-white text-sm sm:text-base md:text-lg font-semibold rounded-lg shadow-md transform transition duration-300 hover:scale-102 hover:hover:shadow-lg hover:bg-orange-600 ml-6">
+        Explore Insights
+      </a>
+    </div>
+
+    <!-- Navigation Arrows -->
+    <div class="absolute inset-y-0 left-1 sm:left-2 flex items-center z-30">
+      <button id="prevBtn" class="text-white text-lg sm:text-xl md:text-2xl p-1 sm:p-2 md:p-3 px-3">&lt;</button>
+    </div>
+    <div class="absolute inset-y-0 right-1 sm:right-2 flex items-center z-30">
+      <button id="nextBtn" class="text-white text-lg sm:text-xl md:text-2xl p-1 sm:p-2 md:p-3 px-3">&gt;</button>
+    </div>
+  </section>
+
+  <!-- Our Services Section -->
+  <section class="py-6 sm:py-8 md:py-10">
+    <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-2 sm:mb-3 md:mb-4 text-center font-bold">Our Services
+    </h1>
+    <p
+      class="text-xs sm:text-sm md:text-base lg:text-lg mb-3 sm:mb-4 md:mb-6 text-center max-w-2xl sm:max-w-3xl mx-auto">
+      We are passionate about what we do, and our work speaks for itself by ensuring customer satisfaction. Whether it’s
+      building an internal tool, enhancing customer engagement, or bringing a new business idea to life, we help
+      companies transform their vision into powerful, scalable products. Below are some of our most in-demand services.
+    </p>
+
+    <!-- 8 Quadrants -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-4 auto-rows-min">
+      <!-- Service Card -->
+      <div
+        class="flex items-center text-xs sm:text-sm md:text-base lg:text-lg text-black p-2 sm:p-3 md:p-4 min-h-[80px] sm:min-h-[100px] md:min-h-[120px] rounded-lg bg-white shadow-sm transform transition duration-300 hover:scale-102 hover:shadow-lg min-w-0">
+        <img src="{% static 'images/brain.png' %}" alt="AI Icon"
+          class="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 flex-shrink-0">
+        <div class="w-px h-5 sm:h-6 md:h-8 bg-gray-300 mx-1 sm:mx-2 md:mx-3"></div>
+        <span class="truncate flex-1 text-ellipsis overflow-hidden">Artificial Intelligence & Automation</span>
+      </div>
+
+      <!-- Service Card -->
+      <div
+        class="flex items-center text-xs sm:text-sm md:text-base lg:text-lg text-black p-2 sm:p-3 md:p-4 min-h-[80px] sm:min-h-[100px] md:min-h-[120px] rounded-lg bg-white shadow-sm transform transition duration-300 hover:scale-102 hover:shadow-lg min-w-0">
+        <img src="{% static 'images/internet.png' %}" alt="Web Icon"
+          class="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 flex-shrink-0">
+        <div class="w-px h-5 sm:h-6 md:h-8 bg-gray-300 mx-1 sm:mx-2 md:mx-3"></div>
+        <span class="truncate flex-1 text-ellipsis overflow-hidden">Web & Mobile App Development</span>
+      </div>
+
+      <!-- Service Card -->
+      <div
+        class="flex items-center text-xs sm:text-sm md:text-base lg:text-lg text-black p-2 sm:p-3 md:p-4 min-h-[80px] sm:min-h-[100px] md:min-h-[120px] rounded-lg bg-white shadow-sm transform transition duration-300 hover:scale-102 hover:shadow-lg min-w-0">
+        <img src="{% static 'images/cyber-crime.png' %}" alt="Cybersecurity Icon"
+          class="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 flex-shrink-0">
+        <div class="w-px h-5 sm:h-6 md:h-8 bg-gray-300 mx-1 sm:mx-2 md:mx-3"></div>
+        <span class="truncate flex-1 text-ellipsis overflow-hidden">Cybersecurity & Data Privacy</span>
+      </div>
+
+      <!-- Service Card -->
+      <div
+        class="flex items-center text-xs sm:text-sm md:text-base lg:text-lg text-black p-2 sm:p-3 md:p-4 min-h-[80px] sm:min-h-[100px] md:min-h-[120px] rounded-lg bg-white shadow-sm transform transition duration-300 hover:scale-102 hover:shadow-lg min-w-0">
+        <img src="{% static 'images/blockchain.png' %}" alt="Blockchain Icon"
+          class="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 flex-shrink-0">
+        <div class="w-px h-5 sm:h-6 md:h-8 bg-gray-300 mx-1 sm:mx-2 md:mx-3"></div>
+        <span class="truncate flex-1 text-ellipsis overflow-hidden">Blockchain & FinTech Solutions</span>
+      </div>
+
+      <!-- Service Card -->
+      <div
+        class="flex items-center text-xs sm:text-sm md:text-base lg:text-lg text-black p-2 sm:p-3 md:p-4 min-h-[80px] sm:min-h-[100px] md:min-h-[120px] rounded-lg bg-white shadow-sm transform transition duration-300 hover:scale-102 hover:shadow-lg min-w-0">
+        <img src="{% static 'images/monitor.png' %}" alt="Analytics Icon"
+          class="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 flex-shrink-0">
+        <div class="w-px h-5 sm:h-6 md:h-8 bg-gray-300 mx-1 sm:mx-2 md:mx-3"></div>
+        <span class="truncate flex-1 text-ellipsis overflow-hidden">Data Analytics & Business Intelligence</span>
+      </div>
+
+      <!-- Service Card -->
+      <div
+        class="flex items-center text-xs sm:text-sm md:text-base lg:text-lg text-black p-2 sm:p-3 md:p-4 min-h-[80px] sm:min-h-[100px] md:min-h-[120px] rounded-lg bg-white shadow-sm transform transition duration-300 hover:scale-102 hover:shadow-lg min-w-0">
+        <img src="{% static 'images/mobile-shopping.png' %}" alt="Ecommerce Icon"
+          class="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 flex-shrink-0">
+        <div class="w-px h-5 sm:h-6 md:h-8 bg-gray-300 mx-1 sm:mx-2 md:mx-3"></div>
+        <span class="truncate flex-1 text-ellipsis overflow-hidden">E-commerce & Digital Transform</span>
+      </div>
+
+      <!-- Service Card -->
+      <div
+        class="flex items-center text-xs sm:text-sm md:text-base lg:text-lg text-black p-2 sm:p-3 md:p-4 min-h-[80px] sm:min-h-[100px] md:min-h-[120px] rounded-lg bg-white shadow-sm transform transition duration-300 hover:scale-102 hover:shadow-lg min-w-0">
+        <img src="{% static 'images/web-hosting.png' %}" alt="Cloud Icon"
+          class="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 flex-shrink-0">
+        <div class="w-px h-5 sm:h-6 md:h-8 bg-gray-300 mx-1 sm:mx-2 md:mx-3"></div>
+        <span class="truncate flex-1 text-ellipsis overflow-hidden">Cloud & DevOps Services</span>
+      </div>
+
+      <!-- Service Card -->
+      <div
+        class="flex items-center text-xs sm:text-sm md:text-base lg:text-lg text-black p-2 sm:p-3 md:p-4 min-h-[80px] sm:min-h-[100px] md:min-h-[120px] rounded-lg bg-white shadow-sm transform transition duration-300 hover:scale-102 hover:shadow-lg min-w-0">
+        <img src="{% static 'images/e-learning.png' %}" alt="E-learning Icon"
+          class="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 flex-shrink-0">
+        <div class="w-px h-5 sm:h-6 md:h-8 bg-gray-300 mx-1 sm:mx-2 md:mx-3"></div>
+        <span class="truncate flex-1 text-ellipsis overflow-hidden">Healthcare & EdTech Solutions</span>
+      </div>
+    </div>
+
+    <!-- Button Below Boxes -->
+    <div class="mt-4 sm:mt-6 md:mt-8 text-center">
+      <a href="http://127.0.0.1:8000/services"
+        class="px-3 sm:px-4 md:px-6 py-1 sm:py-2 md:py-3 bg-orange-500 text-white text-sm sm:text-base md:text-lg font-semibold rounded-lg shadow-md transform transition duration-300 hover:scale-102 hover:shadow-lg hover:bg-orange-600">
+        Explore All Our Services
+      </a>
+    </div>
+  </section>
+
+  <!-- Banner Section with 3 Columns and Full-Screen Image -->
+  <section
+    class="relative min-h-[30vh] sm:min-h-[10vh] md:min-h-[20vh] lg:min-h-[30vh] w-screen -mx-4 sm:-mx-8 md:-mx-16 lg:-mx-40 overflow-hidden">
+    <img src="{% static 'images/code.png' %}" alt="Banner"
+      class="w-full h-full object-cover absolute inset-0 object-center sm:object-center md:object-center lg:object-center [object-position:center_30%] max-sm:[object-position:center_20%] max-sm:scale-125">
+
+    <!-- Overlay for content -->
+    <div
+      class="absolute inset-0 bg-black bg-opacity-50 flex flex-col sm:flex-row space-y-0 sm:space-y-0 items-center justify-center">
+      <!-- Column 1 -->
+      <div class="flex-1 flex items-center justify-center p-2 sm:p-3 md:p-4">
+        <div class="text-center text-white">
+          <p class="text-2xl sm:text-base md:text-lg lg:text-xl xl:text-2xl font-semibold mb-4">
+            World’s Proficient Software Solutions Agency
+          </p>
+          <p class="px-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl">Primeline IT Services LLC, a USA-based
+            and fully registered software company,
+            is recognized as one of the leading agencies in Asia. Our mission is to build tailored solutions that
+            empower businesses and generate measurable impact.
+            We shape the future of our clients by providing end-to-end software development and advanced technology
+            services.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 1: Text + Stats -->
+  <section class="py-6 sm:py-8 md:py-10">
+    <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 items-center">
+      <!-- Left Text -->
+      <div>
+        <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-2 sm:mb-4 md:mb-6">
+          Translating technology into a positive impact
+        </h2>
+        <p class="text-xs sm:text-sm md:text-base lg:text-lg text-black mb-2 sm:mb-4 md:mb-6">
+          Our approach allows us to deliver exceptional experiences that drive growth and success for all stakeholders.
+          Let’s rise to new heights with the power of digital transformation.
+        </p>
+        <a href="/about"
+          class="px-3 sm:px-4 md:px-6 py-1 sm:py-2 md:py-3 bg-white text-orange-500 text-sm sm:text-base md:text-lg font-semibold rounded-lg shadow-md transform transition duration-300 hover:scale-102 hover:shadow-lg">LEARN
+          MORE</a>
+      </div>
+
+      <!-- Right Stats -->
+      <div class="grid grid-cols-2 gap-2 sm:gap-4 md:gap-6 text-center">
+        <div>
+          <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-orange-500">48+</h3>
+          <p class="text-xs sm:text-sm md:text-base text-black">Years of continual excellence</p>
+        </div>
+        <div>
+          <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-orange-500">7700+</h3>
+          <p class="text-xs sm:text-sm md:text-base text-black">Change makers driving revolution</p>
+        </div>
+        <div>
+          <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-orange-500">16+</h3>
+          <p class="text-xs sm:text-sm md:text-base text-black">Countries with our presence and clientele</p>
+        </div>
+        <div>
+          <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-orange-500">300+</h3>
+          <p class="text-xs sm:text-sm md:text-base text-black">Active clients across the globe</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Partner Logos Carousel -->
+  <section class="py-4 sm:py-6">
+    <div class="text-center w-full">
+      <h2 class="text-lg sm:text-xl md:text-2xl font-semibold text-black mb-2 sm:mb-4 md:mb-6 max-w-3xl mx-auto">
+        We rethink business growth for you through our collective experience with strategic partner ecosystem.
+      </h2>
+
+      <!-- Carousel Wrapper -->
+      <div class="overflow-hidden relative w-full">
+        <div class="flex w-max animate-scroll gap-4 sm:gap-6 md:gap-8">
+          <img src="{% static 'images/acc.png' %}" alt="acc" class="h-4 sm:h-6 md:h-8 mt-2 sm:mt-4">
+          <img src="{% static 'images/AWS.png' %}" alt="AWS" class="h-6 sm:h-8 md:h-10 mt-2 sm:mt-4">
+          <img src="{% static 'images/cloudera.png' %}" alt="cloudera" class="h-4 sm:h-6 md:h-8 mt-2 sm:mt-4">
+          <img src="{% static 'images/GCP.png' %}" alt="GCP" class="h-8 sm:h-10 md:h-12">
+          <img src="{% static 'images/IBM.png' %}" alt="IBM" class="h-6 sm:h-8 md:h-10 mt-1 sm:mt-2">
+          <img src="{% static 'images/infosys.png' %}" alt="infosys" class="h-6 sm:h-8 md:h-10 mt-2 sm:mt-4">
+          <img src="{% static 'images/MS.png' %}" alt="MS" class="h-8 sm:h-10 md:h-12">
+          <img src="{% static 'images/SAP.png' %}" alt="SAP" class="h-8 sm:h-10 md:h-12">
+          <img src="{% static 'images/SF.png' %}" alt="SF" class="h-8 sm:h-10 md:h-12">
+          <img src="{% static 'images/temenso.png' %}" alt="temenso" class="h-6 sm:h-8 md:h-10 mt-1 sm:mt-2">
+          <img src="{% static 'images/wipro.png' %}" alt="wipro" class="h-8 sm:h-10 md:h-12">
+          <img src="{% static 'images/zendesk.png' %}" alt="zendesk" class="h-8 sm:h-10 md:h-12">
+
+          <!-- Repeat logos for smooth looping -->
+          <img src="{% static 'images/acc.png' %}" alt="acc" class="h-4 sm:h-6 md:h-8 mt-2 sm:mt-4">
+          <img src="{% static 'images/AWS.png' %}" alt="AWS" class="h-6 sm:h-8 md:h-10 mt-2 sm:mt-4">
+          <img src="{% static 'images/cloudera.png' %}" alt="cloudera" class="h-4 sm:h-6 md:h-8 mt-2 sm:mt-4">
+          <img src="{% static 'images/GCP.png' %}" alt="GCP" class="h-8 sm:h-10 md:h-12">
+          <img src="{% static 'images/IBM.png' %}" alt="IBM" class="h-6 sm:h-8 md:h-10 mt-1 sm:mt-2">
+          <img src="{% static 'images/infosys.png' %}" alt="infosys" class="h-6 sm:h-8 md:h-10 mt-2 sm:mt-4">
+          <img src="{% static 'images/MS.png' %}" alt="MS" class="h-8 sm:h-10 md:h-12">
+          <img src="{% static 'images/SAP.png' %}" alt="SAP" class="h-8 sm:h-10 md:h-12">
+          <img src="{% static 'images/SF.png' %}" alt="SF" class="h-8 sm:h-10 md:h-12">
+          <img src="{% static 'images/temenso.png' %}" alt="temenso" class="h-6 sm:h-8 md:h-10 mt-1 sm:mt-2">
+          <img src="{% static 'images/wipro.png' %}" alt="wipro" class="h-8 sm:h-10 md:h-12">
+          <img src="{% static 'images/zendesk.png' %}" alt="zendesk" class="h-8 sm:h-10 md:h-12">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Banner Section with 3 Columns and Full-Screen Image -->
+  <section
+    class="relative min-h-[50vh] sm:min-h-[40vh] md:min-h-[30vh] lg:min-h-[30vh] w-screen -mx-4 sm:-mx-8 md:-mx-16 lg:-mx-40 overflow-hidden">
+    <img src="{% static 'images/quote.png' %}" alt="Banner"
+      class="w-full h-full object-cover absolute inset-0 object-center sm:object-center md:object-center lg:object-center [object-position:center_30%] max-sm:[object-position:center_20%] max-sm:scale-125">
+
+    <!-- Overlay for content -->
+    <div
+      class="absolute inset-0 bg-black bg-opacity-60 flex flex-col sm:flex-row space-y-4 sm:space-y-0 items-center justify-center">
+      <!-- Column 1 -->
+      <div class="flex-1 flex items-center justify-center p-2 sm:p-3 md:p-4">
+        <div class="text-center text-white">
+          <p class="text-2xl sm:text-base md:text-lg lg:text-xl xl:text-4xl font-semibold">We’re Here Whenever You Need
+          </p>
+          <p class="text-2xl sm:text-base md:text-lg lg:text-xl xl:text-4xl">Contact Our Team</p>
+        </div>
+      </div>
+
+      <!-- Column 2 -->
+      <div class="flex-1 flex items-center justify-center p-2 sm:p-3 md:p-4">
+        <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 md:gap-4">
+          <!-- Item 1 -->
+          <div class="flex flex-col items-center">
+            <img src="{% static 'images/email.svg' %}" alt="Email Icon"
+              class="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-12 xl:h-12 mb-1 sm:mb-2">
+            <span class="text-lg sm:text-sm md:text-base lg:text-3xl text-center text-white font-semibold">Mail Now</span>
+            <span class="text-lg sm:text-xs md:text-sm lg:text-2xl text-center text-white font-semibold">primelinetech@gmail.com</span>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="flex flex-col items-center">
+            <img src="{% static 'images/call.svg' %}" alt="Call Icon"
+              class="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-12 xl:h-12 mb-1 sm:mb-2">
+            <span class="text-lg sm:text-sm md:text-base lg:text-3xl text-center text-white font-semibold">Call Now</span>
+            <span class="text-lg sm:text-xs md:text-sm lg:text-2xl text-center text-white font-semibold">+92 335
+              3948753</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 3 -->
+      <div class="flex-1 flex items-center justify-center p-2 sm:p-3 md:p-4">
+        <div class="text-center text-white">
+          <p class="mt-1 sm:mt-2 mb-2 sm:mb-5 text-lg sm:text-sm md:text-base lg:text-4xl font-semibold">Fill
+            form to get quote.</p>
+          <a href="http://127.0.0.1:8000/contact"
+            class="px-2 sm:px-4 md:px-5 py-1 sm:py-2 md:py-2 bg-white text-black text-lg sm:text-sm md:text-2xl font-semibold rounded-lg shadow-md transform transition duration-300 hover:scale-102 hover:shadow-lg">
+            Get a Quote
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial Section -->
+  <section class="py-6 sm:py-8 md:py-10">
+    <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-2 sm:mb-3 md:mb-4 text-center font-bold">What People Say
+      About Us</h1>
+    <p
+      class="text-xs sm:text-sm md:text-base lg:text-lg mb-3 sm:mb-4 md:mb-6 text-center max-w-2xl sm:max-w-3xl mx-auto">
+      Our clients’ words reflect the value we deliver. From startups to established enterprises, we’ve helped businesses
+      transform ideas into impactful solutions. Here’s what they have to say about working with Primeline IT Services.
+    </p>
+
+    <!-- Carousel Wrapper -->
+    <div class="overflow-hidden relative">
+      <div id="testimonial-slider" class="flex w-max animate-scroll gap-2 sm:gap-3 md:gap-4">
+        <!-- Testimonial Card 1 -->
+        <div
+          class="min-w-[200px] sm:min-w-[240px] md:min-w-[280px] max-w-[200px] sm:max-w-[240px] md:max-w-[280px] bg-white p-3 sm:p-4 md:p-5 m-1 sm:m-2 md:m-3 rounded-lg shadow-sm">
+          <p class="italic text-xs sm:text-sm md:text-base">"This team transformed our business idea into reality. Truly
+            professional!"</p>
+          <h3 class="mt-2 sm:mt-3 md:mt-4 font-semibold text-xs sm:text-sm md:text-base">- Ali Khan</h3>
+        </div>
+
+        <!-- Testimonial Card 2 -->
+        <div
+          class="min-w-[200px] sm:min-w-[240px] md:min-w-[280px] max-w-[200px] sm:max-w-[240px] md:max-w-[280px] bg-white p-3 sm:p-4 md:p-5 m-1 sm:m-2 md:m-3 rounded-lg shadow-sm">
+          <p class="italic text-xs sm:text-sm md:text-base">"Excellent communication and top-notch delivery."</p>
+          <h3 class="mt-2 sm:mt-3 md:mt-4 font-semibold text-xs sm:text-sm md:text-base">- Sara Ahmed</h3>
+        </div>
+
+        <!-- Testimonial Card 3 -->
+        <div
+          class="min-w-[200px] sm:min-w-[240px] md:min-w-[280px] max-w-[200px] sm:max-w-[240px] md:max-w-[280px] bg-white p-3 sm:p-4 md:p-5 m-1 sm:m-2 md:m-3 rounded-lg shadow-sm">
+          <p class="italic text-xs sm:text-sm md:text-base">"Our website is now faster and more scalable thanks to
+            them."</p>
+          <h3 class="mt-2 sm:mt-3 md:mt-4 font-semibold text-xs sm:text-sm md:text-base">- David Smith</h3>
+        </div>
+
+        <!-- Testimonial Card 4 -->
+        <div
+          class="min-w-[200px] sm:min-w-[240px] md:min-w-[280px] max-w-[200px] sm:max-w-[240px] md:max-w-[280px] bg-white p-3 sm:p-4 md:p-5 m-1 sm:m-2 md:m-3 rounded-lg shadow-sm">
+          <p class="italic text-xs sm:text-sm md:text-base">"Amazing design sense and problem-solving skills."</p>
+          <h3 class="mt-2 sm:mt-3 md:mt-4 font-semibold text-xs sm:text-sm md:text-base">- Fatima Noor</h3>
+        </div>
+
+        <!-- Testimonial Card 5 -->
+        <div
+          class="min-w-[200px] sm:min-w-[240px] md:min-w-[280px] max-w-[200px] sm:max-w-[240px] md:max-w-[280px] bg-white p-3 sm:p-4 md:p-5 m-1 sm:m-2 md:m-3 rounded-lg shadow-sm">
+          <p class="italic text-xs sm:text-sm md:text-base">"Delivered the project before deadline with great quality."
+          </p>
+          <h3 class="mt-2 sm:mt-3 md:mt-4 font-semibold text-xs sm:text-sm md:text-base">- John Wilson</h3>
+        </div>
+
+        <!-- Testimonial Card 6 -->
+        <div
+          class="min-w-[200px] sm:min-w-[240px] md:min-w-[280px] max-w-[200px] sm:max-w-[240px] md:max-w-[280px] bg-white p-3 sm:p-4 md:p-5 m-1 sm:m-2 md:m-3 rounded-lg shadow-sm">
+          <p class="italic text-xs sm:text-sm md:text-base">"Reliable team — they understood our vision perfectly."</p>
+          <h3 class="mt-2 sm:mt-3 md:mt-4 font-semibold text-xs sm:text-sm md:text-base">- Ayesha Malik</h3>
+        </div>
+
+        <!-- Testimonial Card 7 -->
+        <div
+          class="min-w-[200px] sm:min-w-[240px] md:min-w-[280px] max-w-[200px] sm:max-w-[240px] md:max-w-[280px] bg-white p-3 sm:p-4 md:p-5 m-1 sm:m-2 md:m-3 rounded-lg shadow-sm">
+          <p class="italic text-xs sm:text-sm md:text-base">"I highly recommend their services to any business."</p>
+          <h3 class="mt-2 sm:mt-3 md:mt-4 font-semibold text-xs sm:text-sm md:text-base">- Michael Brown</h3>
+        </div>
+
+        <!-- Testimonial Card 8 -->
+        <div
+          class="min-w-[200px] sm:min-w-[240px] md:min-w-[280px] max-w-[200px] sm:max-w-[240px] md:max-w-[280px] bg-white p-3 sm:p-4 md:p-5 m-1 sm:m-2 md:m-3 rounded-lg shadow-sm">
+          <p class="italic text-xs sm:text-sm md:text-base">"Our app launch was smooth and successful!"</p>
+          <h3 class="mt-2 sm:mt-3 md:mt-4 font-semibold text-xs sm:text-sm md:text-base">- Rabia Sheikh</h3>
+        </div>
+
+        <!-- Testimonial Card 9 -->
+        <div
+          class="min-w-[200px] sm:min-w-[240px] md:min-w-[280px] max-w-[200px] sm:max-w-[240px] md:max-w-[280px] bg-white p-3 sm:p-4 md:p-5 m-1 sm:m-2 md:m-3 rounded-lg shadow-sm">
+          <p class="italic text-xs sm:text-sm md:text-base">"Great technical expertise and constant support."</p>
+          <h3 class="mt-2 sm:mt-3 md:mt-4 font-semibold text-xs sm:text-sm md:text-base">- Chris Evans</h3>
+        </div>
+
+        <!-- Testimonial Card 10 -->
+        <div
+          class="min-w-[200px] sm:min-w-[240px] md:min-w-[280px] max-w-[200px] sm:max-w-[240px] md:max-w-[280px] bg-white p-3 sm:p-4 md:p-5 m-1 sm:m-2 md:m-3 rounded-lg shadow-sm">
+          <p class="italic text-xs sm:text-sm md:text-base">"They exceeded our expectations with their work."</p>
+          <h3 class="mt-2 sm:mt-3 md:mt-4 font-semibold text-xs sm:text-sm md:text-base">- Hina Qureshi</h3>
+        </div>
+
+        <!-- Testimonial Card 11 -->
+        <div
+          class="min-w-[200px] sm:min-w-[240px] md:min-w-[280px] max-w-[200px] sm:max-w-[240px] md:max-w-[280px] bg-white p-3 sm:p-4 md:p-5 m-1 sm:m-2 md:m-3 rounded-lg shadow-sm">
+          <p class="italic text-xs sm:text-sm md:text-base">"Very creative and innovative problem solvers."</p>
+          <h3 class="mt-2 sm:mt-3 md:mt-4 font-semibold text-xs sm:text-sm md:text-base">- Omar Ali</h3>
+        </div>
+
+        <!-- Testimonial Card 12 -->
+        <div
+          class="min-w-[200px] sm:min-w-[240px] md:min-w-[280px] max-w-[200px] sm:max-w-[240px] md:max-w-[280px] bg-white p-3 sm:p-4 md:p-5 m-1 sm:m-2 md:m-3 rounded-lg shadow-sm">
+          <p class="italic text-xs sm:text-sm md:text-base">"The best development team we’ve worked with!"</p>
+          <h3 class="mt-2 sm:mt-3 md:mt-4 font-semibold text-xs sm:text-sm md:text-base">- Jessica Lee</h3>
+        </div>
+
+        <!-- Testimonial Card 13 -->
+        <div
+          class="min-w-[200px] sm:min-w-[240px] md:min-w-[280px] max-w-[200px] sm:max-w-[240px] md:max-w-[280px] bg-white p-3 sm:p-4 md:p-5 m-1 sm:m-2 md:m-3 rounded-lg shadow-sm">
+          <p class="italic text-xs sm:text-sm md:text-base">"They were quick to respond to all queries."</p>
+          <h3 class="mt-2 sm:mt-3 md:mt-4 font-semibold text-xs sm:text-sm md:text-base">- Ahmed Raza</h3>
+        </div>
+
+        <!-- Testimonial Card 14 -->
+        <div
+          class="min-w-[200px] sm:min-w-[240px] md:min-w-[280px] max-w-[200px] sm:max-w-[240px] md:max-w-[280px] bg-white p-3 sm:p-4 md:p-5 m-1 sm:m-2 md:m-3 rounded-lg shadow-sm">
+          <p class="italic text-xs sm:text-sm md:text-base">"Delivered exactly what we needed."</p>
+          <h3 class="mt-2 sm:mt-3 md:mt-4 font-semibold text-xs sm:text-sm md:text-base">- Emily Johnson</h3>
+        </div>
+
+        <!-- Testimonial Card 15 -->
+        <div
+          class="min-w-[200px] sm:min-w-[240px] md:min-w-[280px] max-w-[200px] sm:max-w-[240px] md:max-w-[280px] bg-white p-3 sm:p-4 md:p-5 m-1 sm:m-2 md:m-3 rounded-lg shadow-sm">
+          <p class="italic text-xs sm:text-sm md:text-base">"Fantastic work ethic and great results."</p>
+          <h3 class="mt-2 sm:mt-3 md:mt-4 font-semibold text-xs sm:text-sm md:text-base">- Bilal Hassan</h3>
+        </div>
+
+        <!-- Testimonial Card 16 -->
+        <div
+          class="min-w-[200px] sm:min-w-[240px] md:min-w-[280px] max-w-[200px] sm:max-w-[240px] md:max-w-[280px] bg-white p-3 sm:p-4 md:p-5 m-1 sm:m-2 md:m-3 rounded-lg shadow-sm">
+          <p class="italic text-xs sm:text-sm md:text-base">"Loved the UI/UX design they provided us."</p>
+          <h3 class="mt-2 sm:mt-3 md:mt-4 font-semibold text-xs sm:text-sm md:text-base">- Katherine Adams</h3>
+        </div>
+
+        <!-- Testimonial Card 17 -->
+        <div
+          class="min-w-[200px] sm:min-w-[240px] md:min-w-[280px] max-w-[200px] sm:max-w-[240px] md:max-w-[280px] bg-white p-3 sm:p-4 md:p-5 m-1 sm:m-2 md:m-3 rounded-lg shadow-sm">
+          <p class="italic text-xs sm:text-sm md:text-base">"Trustworthy team with strong skills."</p>
+          <h3 class="mt-2 sm:mt-3 md:mt-4 font-semibold text-xs sm:text-sm md:text-base">- Salman Iqbal</h3>
+        </div>
+
+        <!-- Testimonial Card 18 -->
+        <div
+          class="min-w-[200px] sm:min-w-[240px] md:min-w-[280px] max-w-[200px] sm:max-w-[240px] md:max-w-[280px] bg-white p-3 sm:p-4 md:p-5 m-1 sm:m-2 md:m-3 rounded-lg shadow-sm">
+          <p class="italic text-xs sm:text-sm md:text-base">"Our platform is now running flawlessly!"</p>
+          <h3 class="mt-2 sm:mt-3 md:mt-4 font-semibold text-xs sm:text-sm md:text-base">- Jennifer Clark</h3>
+        </div>
+
+        <!-- Testimonial Card 19 -->
+        <div
+          class="min-w-[200px] sm:min-w-[240px] md:min-w-[280px] max-w-[200px] sm:max-w-[240px] md:max-w-[280px] bg-white p-3 sm:p-4 md:p-5 m-1 sm:m-2 md:m-3 rounded-lg shadow-sm">
+          <p class="italic text-xs sm:text-sm md:text-base">"I appreciate their dedication to the project."</p>
+          <h3 class="mt-2 sm:mt-3 md:mt-4 font-semibold text-xs sm:text-sm md:text-base">- Usman Ali</h3>
+        </div>
+
+        <!-- Testimonial Card 20 -->
+        <div
+          class="min-w-[200px] sm:min-w-[240px] md:min-w-[280px] max-w-[200px] sm:max-w-[240px] md:max-w-[280px] bg-white p-3 sm:p-4 md:p-5 m-1 sm:m-2 md:m-3 rounded-lg shadow-sm">
+          <p class="italic text-xs sm:text-sm md:text-base">"Best decision we made was hiring this team!"</p>
+          <h3 class="mt-2 sm:mt-3 md:mt-4 font-semibold text-xs sm:text-sm md:text-base">- Olivia Green</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Careers Section with Full-Screen Video Background -->
+  <section class="relative h-screen w-screen -mx-4 sm:-mx-8 md:-mx-16 lg:-mx-40 overflow-hidden">
+    <!-- Video Background -->
+    <video id="video-careers" class="absolute top-0 left-0 w-full h-full object-cover" autoplay muted loop playsinline>
+      <source src="{% static 'videos/poeple_office.mp4' %}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <!-- Dark overlay -->
+    <div class="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
+
+    <!-- Hero Text -->
+    <div
+      class="absolute top-1/2 left-2 sm:left-4 md:left-8 lg:left-16 transform -translate-y-1/2 text-white z-20 px-2 sm:px-4 md:px-8 lg:px-16 max-w-[90%] sm:max-w-[80%] md:max-w-[70%] lg:max-w-[60%]">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl mb-2 sm:mb-4 text-left leading-tight px-6">Careers at
+        Primeline
+        Technologies</h1>
+      <p class="text-sm sm:text-base md:text-lg lg:text-xl text-left px-6">Join Primeline IT Services to innovate,
+        grow, and
+        make an impact in a dynamic tech-driven environment.</p>
+      <a href="http://127.0.0.1:8000/careers"
+        class="mt-4 mb-4 sm:mt-6 inline-block px-4 sm:px-4 md:px-6 py-1 sm:py-2 md:py-3 bg-orange-500 text-white text-sm sm:text-base md:text-lg font-semibold rounded-lg shadow-md transform transition duration-300 hover:scale-102 hover:hover:shadow-lg hover:bg-orange-600 ml-6">
+        Explore Careers
+      </a>
+    </div>
+  </section>
+
+</div>
+
+<!-- CSS Animation -->
+<style>
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-scroll {
+    animation: scroll 80s linear infinite;
+  }
+</style>
+
+<script>
+  const videos = [document.getElementById("video1"), document.getElementById("video2")];
+  const texts = [document.getElementById("text1"), document.getElementById("text2")];
+  let current = 0;
+  let interval;
+
+  function showSlide(index) {
+    videos.forEach((v, i) => v.style.opacity = (i === index ? "1" : "0"));
+    texts.forEach((t, i) => t.style.opacity = (i === index ? "1" : "0"));
+    current = index;
+  }
+
+  function nextSlide() {
+    showSlide((current + 1) % videos.length);
+  }
+
+  function prevSlide() {
+    showSlide((current - 1 + videos.length) % videos.length);
+  }
+
+  document.getElementById("nextBtn").addEventListener("click", () => {
+    nextSlide();
+    resetInterval();
+  });
+
+  document.getElementById("prevBtn").addEventListener("click", () => {
+    prevSlide();
+    resetInterval();
+  });
+
+  function resetInterval() {
+    clearInterval(interval);
+    interval = setInterval(nextSlide, 10000);
+  }
+
+  resetInterval();
+</script>
+
+{% endblock %}

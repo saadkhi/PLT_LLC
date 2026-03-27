@@ -1,0 +1,368 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Your Software Agency{% endblock %}</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="{% static 'images/title_logo.png' %}">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Add Google Fonts link for Plus Jakarta Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;300;400;500;700&display=swap"
+    rel="stylesheet">
+  <style>
+    html {
+      overflow-y: scroll;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', 'Avenir Next Arabic', 'Avenir Next', 'Segoe UI',
+        Tahoma, Geneva, sans-serif;
+      font-weight: 100;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      overflow-x: hidden;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    main {
+      padding-top: 80px;
+    }
+
+    #navbar {
+      transition: top 0.3s;
+    }
+
+    /* Mobile menu hidden by default */
+    #mobile-menu {
+      display: none;
+    }
+
+    /* Show mobile menu when active */
+    #mobile-menu.active {
+      display: flex;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100 font-thin">
+  <!-- Navbar -->
+  <header id="navbar" class="fixed top-0 left-0 w-full bg-white text-black p-5 z-50 font-thin border-b border-gray-300">
+    <nav class="px-8 flex justify-between items-center min-w-[200px]">
+      <div class="flex items-center space-x-6 flex-shrink-0">
+        <a href="/" class="flex items-center space-x-2">
+          <img src="{% static 'images/navbar_logo.png' %}" alt="Logo" class="h-10 w-auto object-contain">
+        </a>
+      </div>
+      <!-- Desktop Menu -->
+      <div class="hidden lg:flex items-center space-x-4">
+        <ul class="flex space-x-4 font-thin">
+          <li><a href="/" class="px-3 py-2 rounded-md hover:text-orange-500 transition font-semibold">Home</a></li>
+          <li><a href="/services"
+              class="px-3 py-2 rounded-md hover:text-orange-500 transition font-semibold">Services</a></li>
+          <li><a href="/industries"
+              class="px-3 py-2 rounded-md hover:text-orange-500 transition font-semibold">Industries</a></li>
+          <li><a href="/insights"
+              class="px-3 py-2 rounded-md hover:text-orange-500 transition font-semibold">Insights</a></li>
+          <li><a href="/about" class="px-3 py-2 rounded-md hover:text-orange-500 transition font-semibold">About</a>
+          </li>
+        </ul>
+        <div class="flex items-center space-x-4 font-thin">
+          <a href="/careers" class="px-3 py-2 rounded-md hover:text-orange-500 transition font-semibold">Careers</a>
+          <a href="/contact" class="px-3 py-2 rounded-md hover:text-orange-500 transition font-semibold">Contact Us</a>
+        </div>
+      </div>
+      <!-- Hamburger Button -->
+      <button id="hamburger-btn" class="lg:hidden p-2 rounded-md hover:text-orange-500 transition">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </nav>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="lg:hidden flex-col bg-white">
+      <ul class="flex flex-col space-y-2 p-4 font-thin">
+        <li><a href="/" class="block px-3 py-2 rounded-md hover:text-orange-500 transition">Home</a></li>
+        <li><a href="/services" class="block px-3 py-2 rounded-md hover:text-orange-500 transition">Services</a></li>
+        <li><a href="/industries" class="block px-3 py-2 rounded-md hover:text-orange-500 transition">Industries</a>
+        </li>
+        <li><a href="/insights" class="block px-3 py-2 rounded-md hover:text-orange-500 transition">Insights</a></li>
+        <li><a href="/about" class="block px-3 py-2 rounded-md hover:text-orange-500 transition">About</a></li>
+        <li><a href="/careers" class="block px-3 py-2 rounded-md hover:text-orange-500 transition">Careers</a></li>
+        <li><a href="/contact" class="block px-3 py-2 rounded-md hover:text-orange-500 transition">Contact Us</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Page Content -->
+  <main class="font-thin">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white text-black pt-10 pb-6 font-thin border-t border-gray-300">
+    <div class="px-6 sm:px-10 md:px-20">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
+        <!-- Logo & Tagline -->
+        <div>
+          <h1 class="text-2xl font-bold text-black mb-3">Primeline IT Services</h1>
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-600">Make Something You Love</p>
+        </div>
+        <!-- Services -->
+        <div>
+          <h2 class="text-lg font-semibold text-black mb-4">SERVICES</h2>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/services#ai-automation" class="hover:text-orange-500 transition-colors">Artificial
+                Intelligence & Automation</a></li>
+            <li><a href="/services#web-app-dev" class="hover:text-orange-500 transition-colors">Web & Mobile App
+                Development</a></li>
+            <li><a href="/services#cybersecurity" class="hover:text-orange-500 transition-colors">Cybersecurity & Data
+                Privacy</a></li>
+            <li><a href="/services#blockchain" class="hover:text-orange-500 transition-colors">Blockchain & FinTech
+                Solutions</a></li>
+            <li><a href="/services#data-analytics" class="hover:text-orange-500 transition-colors">Data Analytics &
+                Business Intelligence</a></li>
+            <li><a href="/services#ecommerce-solutions" class="hover:text-orange-500 transition-colors">E-commerce &
+                Digital Transformation</a></li>
+            <li><a href="/services#cloud-solutions" class="hover:text-orange-500 transition-colors">Cloud & DevOps
+                Services</a></li>
+            <li><a href="/services#ed-health-tech" class="hover:text-orange-500 transition-colors">Healthcare & EdTech
+                Solutions</a></li>
+          </ul>
+        </div>
+        <!-- Quick Links -->
+        <div>
+          <h2 class="text-lg font-semibold text-black mb-4">QUICK LINKS</h2>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/services" class="hover:text-orange-500 transition-colors">Services</a></li>
+            <li><a href="/industries" class="hover:text-orange-500 transition-colors">Industries</a></li>
+            <li><a href="/insights" class="hover:text-orange-500 transition-colors">Insights</a></li>
+            <li><a href="/about" class="hover:text-orange-500 transition-colors">About</a></li>
+            <li><a href="/contact" class="hover:text-orange-500 transition-colors">Contact Us</a></li>
+            <li><a href="/careers" class="hover:text-orange-500 transition-colors">Careers</a></li>
+          </ul>
+        </div>
+        <!-- Social Links -->
+        <div>
+          <h2 class="text-lg font-semibold text-black mb-4">SOCIAL LINKS</h2>
+          <ul class="space-y-3">
+            <li><a href="#" class="flex items-center text-sm hover:text-orange-500 transition-colors">
+                <img src="{% static 'images/facebook.png' %}" alt="Facebook" class="w-5 h-5 mr-3"> Facebook
+              </a></li>
+            <li><a href="#" class="flex items-center text-sm hover:text-orange-500 transition-colors">
+                <img src="{% static 'images/instagram.png' %}" alt="Instagram" class="w-5 h-5 mr-3"> Instagram
+              </a></li>
+            <li><a href="#" class="flex items-center text-sm hover:text-orange-500 transition-colors">
+                <img src="{% static 'images/linkedin.png' %}" alt="LinkedIn" class="w-5 h-5 mr-3"> LinkedIn
+              </a></li>
+            <li><a href="#" class="flex items-center text-sm hover:text-orange-500 transition-colors">
+                <img src="{% static 'images/twitter.png' %}" alt="X" class="w-5 h-5 mr-3"> X (Twitter)
+              </a></li>
+            <li><a href="#" class="flex items-center text-sm hover:text-orange-500 transition-colors">
+                <img src="{% static 'images/youtube.png' %}" alt="YouTube" class="w-5 h-5 mr-3"> YouTube
+              </a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- Contact Information -->
+      <div class="mt-12 border-t border-gray-300 pt-8">
+        <h2 class="text-center text-lg font-semibold text-black mb-8">CONTACT INFORMATION</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-sm">
+          <!-- USA Office -->
+          <div class="flex flex-col items-center sm:items-start text-center sm:text-left">
+            <h3 class="font-bold text-black flex items-center mb-3">
+              <span class="mr-2 text-xl">🇺🇸</span> USA OFFICE
+            </h3>
+            <p class="text-gray-600 leading-relaxed">
+              5410 BROOKWAY WILLOW DR,<br>
+              SPRING TX 77379-2840, USA
+            </p>
+          </div>
+          <!-- Contact Channels -->
+          <div class="flex flex-col items-center text-center">
+            <h3 class="font-bold text-black mb-3">GET IN TOUCH</h3>
+            <div class="space-y-2">
+              <a href="mailto:info@primeline.com"
+                class="flex items-center justify-center hover:text-orange-500 transition-colors">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                  </path>
+                </svg>
+                info@primeline.com
+              </a>
+              <a href="tel:+13023679366"
+                class="flex items-center justify-center hover:text-orange-500 transition-colors">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                  </path>
+                </svg>
+                +1 (302) 367-9366
+              </a>
+            </div>
+          </div>
+          <!-- Support Area -->
+          <div class="flex flex-col items-center sm:items-end text-center sm:text-right">
+            <h3 class="font-bold text-black mb-3">BUSINESS HOURS</h3>
+            <p class="text-gray-600">Monday - Friday</p>
+            <p class="text-gray-600">9:00 AM - 6:00 PM (CST)</p>
+          </div>
+        </div>
+      </div>
+      <!-- Bottom Section -->
+      <div
+        class="mt-12 pt-6 border-t border-gray-200 flex flex-col sm:flex-row justify-between items-center text-xs text-gray-500">
+        <p>&copy; 2026 Primeline IT Services LLC. All Rights Reserved.</p>
+        <div class="flex space-x-6 mt-4 sm:mt-0">
+          <a href="#" class="hover:text-black">Privacy Policy</a>
+          <a href="#" class="hover:text-black">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating "Get a Quote" Button -->
+  <button id="quote-btn"
+    class="fixed bottom-6 right-6 bg-orange-500 text-white px-4 py-3 rounded-lg shadow-lg font-semibold hover:bg-orange-600 transition z-50">
+    Get a Quote
+  </button>
+
+  <!-- Drawer Form -->
+  <div id="quote-drawer"
+    class="fixed top-0 right-0 h-full w-96 max-w-full bg-white shadow-xl transform translate-x-full transition-transform duration-300 z-50">
+    <div class="p-6 h-full flex flex-col">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-2xl font-bold text-black">Get a Quote</h2>
+        <button id="close-drawer" class="text-gray-500 hover:text-black text-2xl">&times;</button>
+      </div>
+
+      <form method="POST" action="{% url 'contact' %}" class="flex-1 flex flex-col space-y-4">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Full Name"
+          class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
+        <input type="email" name="email" placeholder="Email Address"
+          class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
+        <input type="text" name="subject" placeholder="Subject"
+          class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500">
+        <textarea name="message" rows="4" placeholder="Message"
+          class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
+          required></textarea>
+
+        <button type="submit"
+          class="bg-orange-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-orange-600 transition">
+          Send Message
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Navbar Hide on Scroll
+    let prevScrollPos = window.pageYOffset;
+    const navbar = document.getElementById("navbar");
+
+    window.onscroll = function () {
+      const currentScrollPos = window.pageYOffset;
+      if (prevScrollPos > currentScrollPos) {
+        navbar.style.top = "0";
+      } else {
+        navbar.style.top = "-100px";
+      }
+      prevScrollPos = currentScrollPos;
+    }
+
+    // Hamburger Menu Toggle
+    const hamburgerBtn = document.getElementById("hamburger-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    hamburgerBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("active");
+    });
+
+    const quoteBtn = document.getElementById("quote-btn");
+    const drawer = document.getElementById("quote-drawer");
+    const closeDrawer = document.getElementById("close-drawer");
+
+    quoteBtn.addEventListener("click", () => {
+      drawer.classList.remove("translate-x-full");
+    });
+
+    closeDrawer.addEventListener("click", () => {
+      drawer.classList.add("translate-x-full");
+    });
+
+    // Carousel functionality
+    function initCarousels() {
+      const carousels = document.querySelectorAll('.carousel');
+
+      carousels.forEach(carousel => {
+        const container = carousel.querySelector('.carousel-container');
+        const prevBtn = carousel.querySelector('.carousel-prev');
+        const nextBtn = carousel.querySelector('.carousel-next');
+        const dots = carousel.querySelectorAll('.carousel-dot');
+        const carouselId = carousel.id;
+
+        if (!container || !prevBtn || !nextBtn) return;
+
+        const images = container.children;
+        const totalImages = images.length;
+        let currentIndex = 0;
+
+        function updateCarousel() {
+          const translateX = -currentIndex * 100;
+          container.style.transform = `translateX(${translateX}%)`;
+
+          // Update dots
+          dots.forEach((dot, index) => {
+            if (index === currentIndex) {
+              dot.classList.add('bg-opacity-75');
+              dot.classList.remove('bg-opacity-50');
+            } else {
+              dot.classList.add('bg-opacity-50');
+              dot.classList.remove('bg-opacity-75');
+            }
+          });
+        }
+
+        function nextSlide() {
+          currentIndex = (currentIndex + 1) % totalImages;
+          updateCarousel();
+        }
+
+        function prevSlide() {
+          currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+          updateCarousel();
+        }
+
+        function goToSlide(index) {
+          currentIndex = index;
+          updateCarousel();
+        }
+
+        // Event listeners
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+
+        dots.forEach((dot, index) => {
+          dot.addEventListener('click', () => goToSlide(index));
+        });
+
+        // Auto-play (optional)
+        setInterval(nextSlide, 5000); // Change slide every 5 seconds
+      });
+    }
+
+    // Initialize carousels when DOM is loaded
+    document.addEventListener('DOMContentLoaded', initCarousels);
+  </script>
+</body>
+
+</html>
