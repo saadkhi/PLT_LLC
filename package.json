@@ -6,7 +6,7 @@
     "dev": "next dev",
     "server": "next dev",
     "build": "next build",
-    "vercel-build": "sed -i 's/provider = \"sqlite\"/provider = \"postgresql\"/g' prisma/schema.prisma && prisma generate && next build",
+    "vercel-build": "sed -i 's/provider = \"sqlite\"/provider = \"postgresql\"/g' prisma/schema.prisma && sed -i '/url      = env(\"DATABASE_URL\")/a \\  directUrl = env(\"DIRECT_URL\")' prisma/schema.prisma && prisma generate && next build",
     "start": "next start",
     "lint": "next lint",
     "postinstall": "prisma generate"
