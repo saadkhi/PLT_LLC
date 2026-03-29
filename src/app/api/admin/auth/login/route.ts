@@ -1,8 +1,6 @@
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import prisma from '@/lib/prisma';
-import fs from 'fs';
-import path from 'path';
 
 export async function POST(request: Request) {
     try {
@@ -10,20 +8,20 @@ export async function POST(request: Request) {
         const cleanUsername = username.trim();
         const cleanPassword = password.trim();
 
-        const logEntry = `[${new Date().toISOString()}] Login attempt: user="${cleanUsername}", pass="${cleanPassword}"\n`;
-        fs.appendFileSync(path.join(process.cwd(), 'login_audit.log'), logEntry);
+        const logEntry = `[${new Date().toISOString()}] Login attempt: user="${cleanUsername}"\n`;
+        console.log(logEntry);
 
         const user = await prisma.adminUser.findUnique({
             where: { username: cleanUsername },
         });
 
         if (!user) {
-            fs.appendFileSync(path.join(process.cwd(), 'login_audit.log'), `Result: User not found\n`);
+            console.log(`Result: User not found`);
             return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
         }
 
         if (user.password === cleanPassword) {
-            fs.appendFileSync(path.join(process.cwd(), 'login_audit.log'), `Result: Success\n`);
+            console.log(`Result: Success`);
             const response = NextResponse.json({ success: true });
 
             cookies().set('admin_session', 'true', {
@@ -37,11 +35,11 @@ export async function POST(request: Request) {
             return response;
         }
 
-        fs.appendFileSync(path.join(process.cwd(), 'login_audit.log'), `Result: Invalid password (found: "${user.password}")\n`);
+        console.log(`Result: Invalid password`);
         return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
     } catch (error) {
         const errLog = `[${new Date().toISOString()}] Login error: ${error}\n`;
-        fs.appendFileSync(path.join(process.cwd(), 'login_audit.log'), errLog);
+        console.error(errLog);
         return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
     }
 }
