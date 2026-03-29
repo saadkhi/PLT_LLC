@@ -226,7 +226,7 @@ export default async function Home() {
           muted
           loop
           playsInline
-          poster={getImageUrl('code.png')}
+          preload="auto"
         >
           <source src="/videos/poeple_office.mp4" type="video/mp4" />
         </video>

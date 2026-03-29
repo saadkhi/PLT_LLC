@@ -36,8 +36,7 @@ const HeroCarousel = () => {
                     muted
                     loop
                     playsInline
-                    poster={getImageUrl('code.png')}
-                    preload="metadata"
+                    preload="auto"
                 >
                     <source src={src} type="video/mp4" />
                 </video>
