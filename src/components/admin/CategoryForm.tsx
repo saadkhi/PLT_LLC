@@ -99,15 +99,14 @@ const CategoryForm = ({ initialData }: CategoryFormProps) => {
                                         onChange={async (e) => {
                                             const file = e.target.files?.[0];
                                             if (!file) return;
-                                            const uploadData = new FormData();
-                                            uploadData.append('file', file);
-                                            const res = await fetch('/api/admin/upload', { method: 'POST', body: uploadData });
-                                            const data = await res.json();
-                                            if (!res.ok) {
-                                                alert(`Upload failed: ${data.error || 'Unknown error'}`);
-                                                return;
-                                            }
-                                            if (data.url) setFormData({ ...formData, homepage_image: data.url });
+
+                                            // Convert to Base64 (Data URL) to avoid Vercel EROFS/Blob issues
+                                            const reader = new FileReader();
+                                            reader.onload = (event) => {
+                                                const base64 = event.target?.result as string;
+                                                setFormData({ ...formData, homepage_image: base64 });
+                                            };
+                                            reader.readAsDataURL(file);
                                         }}
                                     />
                                 </label>
@@ -137,15 +136,14 @@ const CategoryForm = ({ initialData }: CategoryFormProps) => {
                                         onChange={async (e) => {
                                             const file = e.target.files?.[0];
                                             if (!file) return;
-                                            const uploadData = new FormData();
-                                            uploadData.append('file', file);
-                                            const res = await fetch('/api/admin/upload', { method: 'POST', body: uploadData });
-                                            const data = await res.json();
-                                            if (!res.ok) {
-                                                alert(`Upload failed: ${data.error || 'Unknown error'}`);
-                                                return;
-                                            }
-                                            if (data.url) setFormData({ ...formData, image: data.url });
+
+                                            // Convert to Base64 (Data URL) to avoid Vercel EROFS/Blob issues
+                                            const reader = new FileReader();
+                                            reader.onload = (event) => {
+                                                const base64 = event.target?.result as string;
+                                                setFormData({ ...formData, image: base64 });
+                                            };
+                                            reader.readAsDataURL(file);
                                         }}
                                     />
                                 </label>

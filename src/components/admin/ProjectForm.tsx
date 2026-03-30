@@ -159,14 +159,16 @@ const ProjectForm = ({ initialData, categories }: ProjectFormProps) => {
                                         type="file"
                                         className="hidden"
                                         accept="image/png, image/jpeg, image/jpg, image/webp, image/svg+xml, image/gif, image/avif"
-                                        onChange={async (e) => {
+                                        onChange={(e) => {
                                             const file = e.target.files?.[0];
                                             if (!file) return;
-                                            const formData = new FormData();
-                                            formData.append('file', file);
-                                            const res = await fetch('/api/admin/upload', { method: 'POST', body: formData });
-                                            const data = await res.json();
-                                            if (data.url) handleImageChange(index, 'image', data.url);
+
+                                            const reader = new FileReader();
+                                            reader.onload = (event) => {
+                                                const base64 = event.target?.result as string;
+                                                handleImageChange(index, 'image', base64);
+                                            };
+                                            reader.readAsDataURL(file);
                                         }}
                                     />
                                 </label>

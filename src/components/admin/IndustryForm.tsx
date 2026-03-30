@@ -93,14 +93,16 @@ const IndustryForm = ({ initialData }: IndustryFormProps) => {
                 type="file"
                 className="hidden"
                 accept="image/png, image/jpeg, image/jpg, image/webp, image/svg+xml, image/gif, image/avif"
-                onChange={async (e) => {
+                onChange={(e) => {
                   const file = e.target.files?.[0];
                   if (!file) return;
-                  const uploadData = new FormData();
-                  uploadData.append('file', file);
-                  const res = await fetch('/api/admin/upload', { method: 'POST', body: uploadData });
-                  const data = await res.json();
-                  if (data.url) setFormData({ ...formData, image: data.url });
+
+                  const reader = new FileReader();
+                  reader.onload = (event) => {
+                    const base64 = event.target?.result as string;
+                    setFormData({ ...formData, image: base64 });
+                  };
+                  reader.readAsDataURL(file);
                 }}
               />
             </label>

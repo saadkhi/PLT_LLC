@@ -21,16 +21,6 @@ export async function POST(request: Request) {
         if (!process.env.BLOB_READ_WRITE_TOKEN) {
             console.log('[UPLOAD] BLOB_READ_WRITE_TOKEN missing');
 
-            // On Vercel, we CANNOT use local storage (EROFS)
-            if (process.env.VERCEL) {
-                console.error('[UPLOAD ERROR] Running on Vercel but BLOB_READ_WRITE_TOKEN is missing');
-                return NextResponse.json({
-                    error: 'Vercel Blob Storage is not configured. Please add BLOB_READ_WRITE_TOKEN in your Vercel Project Settings.'
-                }, { status: 500 });
-            }
-
-            console.log('[UPLOAD] Using local storage fallback');
-
             try {
                 // Read file as Buffer
                 const bytes = await fileObject.arrayBuffer();
@@ -61,8 +51,16 @@ export async function POST(request: Request) {
                 });
             } catch (err: any) {
                 console.error('[UPLOAD ERROR] Local storage failed:', err);
+
+                if (err.code === 'EROFS' || process.env.VERCEL) {
+                    return NextResponse.json({
+                        error: 'Vercel local storage is read-only. Please connect "Vercel Blob" in your Vercel Dashboard -> Storage tab to enable uploads.'
+                    }, { status: 500 });
+                }
+
                 return NextResponse.json({ error: `Upload failed: ${err.message}` }, { status: 500 });
             }
+
         }
 
         // Upload directly to Vercel Blob if token exists
