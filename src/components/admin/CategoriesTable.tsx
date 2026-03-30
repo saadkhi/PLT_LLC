@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import DeleteModal from './DeleteModal';
 import { useRouter } from 'next/navigation';
+import { getImageUrl } from '@/lib/utils';
 
 interface CategoriesTableProps {
     initialCategories: any[];
@@ -39,6 +40,7 @@ const CategoriesTable = ({ initialCategories }: CategoriesTableProps) => {
                 <table className="w-full text-left">
                     <thead className="bg-gray-50 text-gray-400 text-[10px] font-bold uppercase tracking-[0.1em]">
                         <tr>
+                            <th className="px-8 py-5">Preview</th>
                             <th className="px-8 py-5">Service Name</th>
                             <th className="px-8 py-5">Active Projects</th>
                             <th className="px-8 py-5 text-right">Actions</th>
@@ -47,6 +49,16 @@ const CategoriesTable = ({ initialCategories }: CategoriesTableProps) => {
                     <tbody className="divide-y divide-gray-100">
                         {initialCategories.map((cat) => (
                             <tr key={cat.id} className="hover:bg-gray-50 transition group">
+                                <td className="px-8 py-5">
+                                    <div className="w-12 h-12 bg-gray-50 rounded-xl border border-gray-100 flex items-center justify-center overflow-hidden shadow-sm">
+                                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                                        <img
+                                            src={getImageUrl(cat.image || cat.homepage_image || 'web_dev.png')}
+                                            alt={cat.name}
+                                            className="w-full h-full object-contain p-1"
+                                        />
+                                    </div>
+                                </td>
                                 <td className="px-8 py-5">
                                     <p className="font-bold text-gray-900 group-hover:text-black transition">{cat.name}</p>
                                 </td>
@@ -78,7 +90,7 @@ const CategoriesTable = ({ initialCategories }: CategoriesTableProps) => {
                         ))}
                         {initialCategories.length === 0 && (
                             <tr>
-                                <td colSpan={3} className="px-8 py-16 text-center">
+                                <td colSpan={4} className="px-8 py-16 text-center">
                                     <p className="text-gray-400 italic font-medium">No categories found matching your search.</p>
                                 </td>
                             </tr>

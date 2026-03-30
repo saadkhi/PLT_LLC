@@ -25,7 +25,7 @@ export default async function ServicesPage() {
                             {/* Square Box */}
                             <div className="flex flex-col items-center justify-center text-center w-full md:w-[30%] max-w-[400px] aspect-square p-4">
                                 <Image
-                                    src={getImageUrl(service.image || 'web_dev.png')}
+                                    src={getImageUrl(service.image || service.homepage_image || 'web_dev.png')}
                                     alt={service.name}
                                     width={400}
                                     height={400}
