@@ -102,12 +102,11 @@ const CategoryForm = ({ initialData }: CategoryFormProps) => {
                                             const uploadData = new FormData();
                                             uploadData.append('file', file);
                                             const res = await fetch('/api/admin/upload', { method: 'POST', body: uploadData });
+                                            const data = await res.json();
                                             if (!res.ok) {
-                                                const err = await res.json();
-                                                alert(`Upload failed: ${err.error || 'Unknown error'}`);
+                                                alert(`Upload failed: ${data.error || 'Unknown error'}`);
                                                 return;
                                             }
-                                            const data = await res.json();
                                             if (data.url) setFormData({ ...formData, homepage_image: data.url });
                                         }}
                                     />
@@ -141,12 +140,11 @@ const CategoryForm = ({ initialData }: CategoryFormProps) => {
                                             const uploadData = new FormData();
                                             uploadData.append('file', file);
                                             const res = await fetch('/api/admin/upload', { method: 'POST', body: uploadData });
+                                            const data = await res.json();
                                             if (!res.ok) {
-                                                const err = await res.json();
-                                                alert(`Upload failed: ${err.error || 'Unknown error'}`);
+                                                alert(`Upload failed: ${data.error || 'Unknown error'}`);
                                                 return;
                                             }
-                                            const data = await res.json();
                                             if (data.url) setFormData({ ...formData, image: data.url });
                                         }}
                                     />
