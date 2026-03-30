@@ -19,7 +19,17 @@ export async function POST(request: Request) {
 
         // If Vercel Blob token is missing, use local storage as fallback
         if (!process.env.BLOB_READ_WRITE_TOKEN) {
-            console.log('[UPLOAD] BLOB_READ_WRITE_TOKEN missing, using local storage fallback');
+            console.log('[UPLOAD] BLOB_READ_WRITE_TOKEN missing');
+
+            // On Vercel, we CANNOT use local storage (EROFS)
+            if (process.env.VERCEL) {
+                console.error('[UPLOAD ERROR] Running on Vercel but BLOB_READ_WRITE_TOKEN is missing');
+                return NextResponse.json({
+                    error: 'Vercel Blob Storage is not configured. Please add BLOB_READ_WRITE_TOKEN in your Vercel Project Settings.'
+                }, { status: 500 });
+            }
+
+            console.log('[UPLOAD] Using local storage fallback');
 
             try {
                 // Read file as Buffer
