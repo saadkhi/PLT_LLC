@@ -6,8 +6,8 @@ import { getImageUrl } from '@/lib/utils';
 
 const HeroCarousel = () => {
     const [current, setCurrent] = useState(0);
-    const videoRefs = [useRef<HTMLVideoElement>(null), useRef<HTMLVideoElement>(null)];
     const videoSources = ["/videos/homepage_vid1.mp4", "/videos/Code_vid4.mp4"];
+    const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
     const nextSlide = () => {
         setCurrent((prev) => (prev + 1) % videoSources.length);
@@ -24,13 +24,28 @@ const HeroCarousel = () => {
         return () => clearInterval(interval);
     }, [videoSources.length]);
 
+    // Ensure all videos are muted and playing
+    useEffect(() => {
+        videoRefs.current.forEach(video => {
+            if (video) {
+                video.muted = true;
+                const playPromise = video.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(() => {
+                        // Auto-play was prevented, handles gracefully
+                    });
+                }
+            }
+        });
+    }, []);
+
     return (
         <section className="relative h-screen w-screen -mx-4 sm:-mx-8 md:-mx-16 lg:-mx-40 overflow-hidden">
             {/* Video Slides */}
             {videoSources.map((src, index) => (
                 <video
                     key={src}
-                    ref={videoRefs[index]}
+                    ref={el => { videoRefs.current[index] = el; }}
                     className={`video-slide absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 ${index === current ? 'opacity-100' : 'opacity-0'}`}
                     autoPlay
                     muted

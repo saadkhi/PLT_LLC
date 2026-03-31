@@ -3,10 +3,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import prisma from '@/lib/prisma';
 import HeroCarousel from '@/components/home/HeroCarousel';
+import CareersSection from '@/components/home/CareersSection';
 import { getImageUrl } from '@/lib/utils';
 
 export default async function Home() {
-  // ... same data fetching
   const categories = await prisma.category.findMany({
     orderBy: { id: 'asc' },
   });
@@ -219,24 +219,7 @@ export default async function Home() {
       </section>
 
       {/* Careers Section */}
-      <section className="relative h-[60vh] w-screen -mx-4 sm:-mx-8 md:-mx-16 lg:-mx-40 overflow-hidden">
-        <video
-          className="absolute top-0 left-0 w-full h-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-        >
-          <source src="/videos/poeple_office.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-black bg-opacity-70 z-10"></div>
-        <div className="absolute top-1/2 left-2 sm:left-16 transform -translate-y-1/2 text-white z-20 px-4 max-w-[90%] sm:max-w-[60%]">
-          <h1 className="text-3xl sm:text-6xl font-black uppercase mb-4 leading-tight tracking-tighter">Careers at<br />Primeline Tech</h1>
-          <p className="text-sm sm:text-xl font-medium text-white/70">Join us to innovate, grow, and make an impact in a dynamic tech-driven environment.</p>
-          <Link href="/careers" className="mt-8 inline-block px-10 py-4 bg-orange-500 text-white font-black uppercase tracking-widest rounded-xl shadow-lg hover:bg-orange-600 transition-all duration-300">Join the Team</Link>
-        </div>
-      </section>
+      <CareersSection />
 
     </div>
   );
