@@ -2,6 +2,7 @@ import React from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import prisma from '@/lib/prisma';
+import Image from 'next/image';
 import { getImageUrl } from '@/lib/utils';
 
 export default async function InsightDetailPage({ params }: { params: { id: string } }) {
@@ -22,8 +23,13 @@ export default async function InsightDetailPage({ params }: { params: { id: stri
                 <p className="text-orange-500 font-bold mb-8">{new Date(insight.created_at).toLocaleDateString()}</p>
 
                 <div className="bg-white rounded-3xl shadow-xl overflow-hidden mb-12">
-                    <div className="h-[400px] bg-gray-100 flex items-center justify-center p-8">
-                        <img src={getImageUrl(insight.image || 'AI.png')} alt={insight.title} className="max-h-full object-contain" />
+                    <div className="h-[400px] bg-gray-100 flex items-center justify-center p-8 relative">
+                        <Image
+                            src={getImageUrl(insight.image || 'AI.png')}
+                            alt={insight.title}
+                            fill
+                            className="object-contain p-8"
+                        />
                     </div>
                     <div className="p-8 sm:p-12 text-gray-800 leading-relaxed text-lg">
                         <p className="mb-6 font-semibold">{insight.description}</p>

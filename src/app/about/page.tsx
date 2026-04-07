@@ -68,7 +68,7 @@ export default function AboutPage() {
                                     We pride ourselves on being a people-first company — combining creativity, data-driven strategies, and cutting-edge tools to solve real-world problems. Whether it’s through automation, ERP systems, or custom digital platforms, we ensure our clients achieve measurable results and lasting success.
                                 </p>
                                 <p className="font-medium italic text-black/80">
-                                    "Our journey is defined by passion, innovation, and resilience. The success of our clients is the true measure of our accomplishments."
+                                    &quot;Our journey is defined by passion, innovation, and resilience. The success of our clients is the true measure of our accomplishments.&quot;
                                 </p>
                             </div>
                         </div>

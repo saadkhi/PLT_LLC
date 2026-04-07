@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Image as LucideImage, X } from 'lucide-react';
 
+import Image from 'next/image';
+
 interface ProjectFormProps {
     initialData?: any;
     categories: any[];
@@ -145,10 +147,12 @@ const ProjectForm = ({ initialData, categories }: ProjectFormProps) => {
 
                             <div className="w-full md:w-32 h-32 bg-white rounded-2xl border border-gray-100 flex-shrink-0 flex items-center justify-center overflow-hidden relative text-gray-200">
                                 {img.image ? (
-                                    <img
+                                    <Image
                                         src={img.image}
                                         alt={`Project preview ${index + 1}`}
-                                        className="w-full h-full object-cover"
+                                        fill
+                                        className="object-cover"
+                                        unoptimized
                                     />
                                 ) : (
                                     <LucideImage className="w-10 h-10 opacity-20" />

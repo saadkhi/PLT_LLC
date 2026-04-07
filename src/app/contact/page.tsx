@@ -17,7 +17,7 @@ export default async function ContactPage() {
                     Contact <span className="text-orange-500">Us</span>
                 </h1>
                 <p className="mt-4 text-[10px] sm:text-xs uppercase font-bold tracking-[0.3em] text-gray-400">
-                    Let's discuss your next big project
+                    Let&apos;s discuss your next big project
                 </p>
             </div>
 
@@ -28,7 +28,7 @@ export default async function ContactPage() {
                     <div className="bg-white p-10 sm:p-14 rounded-[3rem] shadow-2xl shadow-gray-200/50 border border-gray-100 flex flex-col h-full">
                         <div className="mb-12">
                             <h3 className="text-4xl font-black uppercase tracking-tight text-black mb-4">Get in <span className="text-orange-500">Touch</span></h3>
-                            <p className="text-gray-500 font-medium">Have an idea? Let's talk about how we can help you grow.</p>
+                            <p className="text-gray-500 font-medium">Have an idea? Let&apos;s talk about how we can help you grow.</p>
                         </div>
 
                         {mainOffice ? (
