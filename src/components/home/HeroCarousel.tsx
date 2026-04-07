@@ -40,7 +40,7 @@ const HeroCarousel = () => {
     }, []);
 
     return (
-        <section className="relative h-screen w-screen -mx-4 sm:-mx-8 md:-mx-16 lg:-mx-40 overflow-hidden">
+        <section className="relative h-screen w-full overflow-hidden">
             {/* Video Slides */}
             {videoSources.map((src, index) => (
                 <video
@@ -58,49 +58,69 @@ const HeroCarousel = () => {
             ))}
 
             {/* Dark overlay */}
-            <div className="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
+            <div className="absolute inset-0 bg-black/60 z-10"></div>
 
             {/* Hero Texts */}
             <div
-                className={`absolute top-1/2 left-2 sm:left-4 md:left-8 lg:left-16 transform -translate-y-1/2 text-white z-20 transition-opacity duration-1000 px-2 sm:px-4 md:px-8 lg:px-16 max-w-[90%] sm:max-w-[80%] md:max-w-[70%] lg:max-w-[60%] ${current === 0 ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+                className={`absolute top-1/2 left-0 w-full transform -translate-y-1/2 text-white z-20 transition-opacity duration-1000 px-6 sm:px-12 md:px-20 lg:px-32 xl:px-48 ${current === 0 ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
             >
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl mb-2 sm:mb-4 text-left leading-tight px-6">
-                    Designing<br />tomorrow,<br />differently.
-                </h1>
-                <p className="text-sm sm:text-base md:text-lg lg:text-xl text-left px-6">
-                    Advancing growth while crafting the future through meaningful transformation.
-                </p>
-                <Link
-                    href="/insights"
-                    className="mt-4 mb-4 sm:mt-6 inline-block px-4 sm:px-4 md:px-6 py-1 sm:py-2 md:py-3 bg-orange-500 text-white text-sm sm:text-base md:text-lg font-semibold rounded-lg shadow-md transform transition duration-300 hover:scale-[1.02] hover:shadow-lg hover:bg-orange-600 ml-6"
-                >
-                    Explore Insights
-                </Link>
+                <div className="max-w-4xl">
+                    <h1 className="text-[clamp(2.5rem,8vw,5.5rem)] font-black leading-[0.95] tracking-tighter mb-6 uppercase">
+                        Designing<br /><span className="text-orange-500">tomorrow</span>,<br />differently.
+                    </h1>
+                    <p className="text-sm sm:text-lg md:text-xl font-medium text-white/80 max-w-xl mb-10 leading-relaxed">
+                        Advancing growth while crafting the future through meaningful transformation.
+                    </p>
+                    <Link
+                        href="/insights"
+                        className="inline-flex items-center px-8 py-4 bg-orange-500 text-white text-sm sm:text-base font-black uppercase tracking-widest rounded-2xl shadow-xl shadow-orange-500/20 transform transition-all duration-300 hover:scale-105 hover:bg-orange-600 active:scale-95"
+                    >
+                        Explore Insights
+                        <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </Link>
+                </div>
             </div>
 
             <div
-                className={`absolute top-1/2 left-2 sm:left-4 md:left-8 lg:left-16 transform -translate-y-1/2 text-white z-20 transition-opacity duration-1000 px-2 sm:px-4 md:px-8 lg:px-16 max-w-[90%] sm:max-w-[80%] md:max-w-[70%] lg:max-w-[60%] ${current === 1 ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+                className={`absolute top-1/2 left-0 w-full transform -translate-y-1/2 text-white z-20 transition-opacity duration-1000 px-6 sm:px-12 md:px-20 lg:px-32 xl:px-48 ${current === 1 ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
             >
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl mb-2 sm:mb-4 text-left leading-tight px-6">
-                    Smart innovation<br />that transforms the future.
-                </h1>
-                <p className="text-sm sm:text-base md:text-lg lg:text-xl text-left px-6">
-                    Your ideas, instantly transformed into personalized solutions.
-                </p>
-                <Link
-                    href="/insights"
-                    className="mt-4 mb-4 sm:mt-6 inline-block px-4 sm:px-4 md:px-6 py-1 sm:py-2 md:py-3 bg-orange-500 text-white text-sm sm:text-base md:text-lg font-semibold rounded-lg shadow-md transform transition duration-300 hover:scale-[1.02] hover:shadow-lg hover:bg-orange-600 ml-6"
-                >
-                    Explore Insights
-                </Link>
+                <div className="max-w-4xl">
+                    <h1 className="text-[clamp(2.5rem,8vw,5.5rem)] font-black leading-[0.95] tracking-tighter mb-6 uppercase">
+                        Smart <span className="text-orange-500">innovation</span><br />that transforms.
+                    </h1>
+                    <p className="text-sm sm:text-lg md:text-xl font-medium text-white/80 max-w-xl mb-10 leading-relaxed">
+                        Your ideas, instantly transformed into personalized solutions.
+                    </p>
+                    <Link
+                        href="/insights"
+                        className="inline-flex items-center px-8 py-4 bg-orange-500 text-white text-sm sm:text-base font-black uppercase tracking-widest rounded-2xl shadow-xl shadow-orange-500/20 transform transition-all duration-300 hover:scale-105 hover:bg-orange-600 active:scale-95"
+                    >
+                        Explore Insights
+                        <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </Link>
+                </div>
             </div>
 
-            {/* Navigation Arrows */}
-            <div className="absolute inset-y-0 left-1 sm:left-2 flex items-center z-30">
-                <button onClick={prevSlide} className="text-white text-lg sm:text-xl md:text-2xl p-1 sm:p-2 md:p-3 px-3">{"<"}</button>
-            </div>
-            <div className="absolute inset-y-0 right-1 sm:right-2 flex items-center z-30">
-                <button onClick={nextSlide} className="text-white text-lg sm:text-xl md:text-2xl p-1 sm:p-2 md:p-3 px-3">{">"}</button>
+            {/* Navigation Arrows - Simplified for Mobile */}
+            <div className="absolute bottom-10 right-10 flex space-x-4 z-30 lg:bottom-1/2 lg:right-10 lg:flex-col lg:space-x-0 lg:space-y-4 lg:transform lg:translate-y-1/2">
+                <button
+                    onClick={prevSlide}
+                    className="w-12 h-12 flex items-center justify-center rounded-full border border-white/20 bg-white/10 backdrop-blur-md text-white hover:bg-orange-500 hover:border-orange-500 transition-all active:scale-90"
+                    aria-label="Previous Slide"
+                >
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" /></svg>
+                </button>
+                <button
+                    onClick={nextSlide}
+                    className="w-12 h-12 flex items-center justify-center rounded-full border border-white/20 bg-white/10 backdrop-blur-md text-white hover:bg-orange-500 hover:border-orange-500 transition-all active:scale-90"
+                    aria-label="Next Slide"
+                >
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" /></svg>
+                </button>
             </div>
         </section>
     );

@@ -12,34 +12,36 @@ export default async function Home() {
   });
 
   return (
-    <div className="px-4 sm:px-8 md:px-16 lg:px-40 overflow-x-hidden">
+    <div className="overflow-x-hidden"> {/* Add padding for fixed navbar on mobile if needed */}
 
       {/* Hero Section */}
-      <HeroCarousel />
+      <div className="w-full">
+        <HeroCarousel />
+      </div>
 
       {/* Our Services Section */}
-      <section className="py-20 sm:py-24 md:py-32">
+      <section className="py-20 px-6 sm:px-12 md:px-20 lg:px-32 max-w-7xl mx-auto">
         <div className="text-center mb-16 md:mb-24">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter text-gray-900 mb-6 uppercase">
+          <h1 className="text-[clamp(2.5rem,6vw,4.5rem)] font-black tracking-tighter text-gray-900 mb-6 uppercase leading-[0.95]">
             Our <span className="text-orange-500">Services</span>
           </h1>
-          <p className="text-base sm:text-lg md:text-xl max-w-3xl mx-auto text-gray-500 font-medium leading-relaxed">
+          <p className="text-sm sm:text-lg md:text-xl max-w-3xl mx-auto text-gray-500 font-medium leading-relaxed">
             We are passionate about what we do, delivering scalable, high-impact software solutions.
-            Below are our core competencies, managed through our centralized global infrastructure.
+            Below are our core competencies.
           </p>
         </div>
 
-        {/* Dynamic Categories Grid - Ultra-Minimalist Rectangular Style */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4 max-w-7xl mx-auto">
+        {/* Dynamic Categories Grid - Optimized for Mobile Stacking */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
           {categories.map((service, index) => (
             <div
               key={service.id}
-              className="flex items-center p-5 min-h-[80px] rounded-xl bg-white border border-gray-100 shadow-sm transition-all duration-300 hover:scale-[1.01] hover:shadow-lg hover:border-orange-200 group relative overflow-hidden"
+              className="flex items-center p-6 min-h-[90px] rounded-2xl bg-white border border-gray-100 shadow-sm transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-orange-200 group relative overflow-hidden"
             >
-              <span className="text-[9px] font-black text-gray-200 uppercase tracking-widest mr-4 group-hover:text-orange-500 transition-colors">
+              <span className="text-[10px] font-black text-gray-300 uppercase tracking-widest mr-4 group-hover:text-orange-500 transition-colors">
                 {String(index + 1).padStart(2, '0')}
               </span>
-              <span className="text-xs sm:text-sm font-bold text-gray-900 tracking-tight transition-all duration-300 group-hover:text-orange-500 text-left line-clamp-2">
+              <span className="text-sm sm:text-base font-bold text-gray-900 tracking-tight transition-all duration-300 group-hover:text-orange-500 text-left line-clamp-2 pr-4">
                 {service.name}
               </span>
               <div className="absolute right-0 top-0 bottom-0 w-1 bg-gray-50 group-hover:bg-orange-500 transition-all duration-500" />
@@ -47,179 +49,155 @@ export default async function Home() {
           ))}
         </div>
 
-        <div className="mt-20 text-center">
+        <div className="mt-16 text-center">
           <Link
             href="/services"
-            className="inline-flex items-center px-12 py-5 bg-black text-white text-lg font-black uppercase tracking-widest rounded-2xl shadow-2xl shadow-gray-200 transition-all duration-500 hover:scale-[1.05] hover:bg-orange-500 hover:shadow-orange-500/30"
+            className="inline-flex items-center px-10 py-5 bg-black text-white text-sm font-black uppercase tracking-widest rounded-2xl shadow-xl shadow-gray-200 transition-all duration-300 hover:scale-[1.05] hover:bg-orange-500 hover:shadow-orange-500/20"
           >
             Explore Portfolio
-            <svg className="w-5 h-5 ml-3 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </Link>
         </div>
       </section>
 
-      {/* Banner Section */}
-      <section className="relative min-h-[30vh] sm:min-h-[10vh] md:min-h-[20vh] lg:min-h-[30vh] w-screen -mx-4 sm:-mx-8 md:-mx-16 lg:-mx-40 overflow-hidden">
+      {/* Banner Section - Optimized for Mobile Aspect Ratio */}
+      <section className="relative min-h-[400px] md:min-h-[500px] w-full overflow-hidden">
         <Image
           src={getImageUrl('code.png')}
           alt="Banner"
           fill
-          className="object-cover object-center [object-position:center_30%] max-sm:[object-position:center_20%] max-sm:scale-125"
+          className="object-cover object-center"
           sizes="100vw"
+          priority
         />
-        <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col sm:flex-row items-center justify-center">
-          <div className="flex-1 flex items-center justify-center p-2 sm:p-3 md:p-4">
-            <div className="text-center text-white">
-              <p className="text-2xl sm:text-base md:text-lg lg:text-xl xl:text-2xl font-semibold mb-4">World’s Proficient Software Solutions Agency</p>
-              <p className="px-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl relative z-10">
-                Primeline IT Services LLC, a USA-based and fully registered software company, is recognized as one of the leading agencies in Asia. Our mission is to build tailored solutions that empower businesses and generate measurable impact. We shape the future of our clients by providing end-to-end software development and advanced technology services.
-              </p>
-            </div>
+        <div className="absolute inset-0 bg-black/70 flex items-center justify-center px-6 py-12">
+          <div className="max-w-5xl text-center text-white">
+            <h2 className="text-[clamp(1.5rem,4vw,2.5rem)] font-black mb-6 uppercase tracking-tight">World’s Proficient Software Agency</h2>
+            <p className="text-sm sm:text-lg md:text-xl font-medium text-white/80 leading-relaxed max-w-4xl mx-auto">
+              Primeline IT Services LLC, a USA-based and fully registered software company, is recognized as one of the leading agencies in Asia. Our mission is to build tailored solutions that empower businesses and generate measurable impact.
+            </p>
           </div>
         </div>
       </section>
 
       {/* Text + Stats Section */}
-      <section className="py-6 sm:py-8 md:py-10">
-        <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 items-center">
+      <section className="py-24 px-6 sm:px-12 md:px-20 lg:px-32 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-2 sm:mb-4 md:mb-6 uppercase">Translating technology into a positive impact</h2>
-            <p className="text-xs sm:text-sm md:text-base lg:text-lg text-black mb-2 sm:mb-4 md:mb-6">
+            <h2 className="text-[clamp(2rem,5vw,3rem)] font-black text-black mb-8 uppercase leading-[0.95] tracking-tighter">Translating technology <br /><span className="text-orange-500">into impact</span></h2>
+            <p className="text-sm sm:text-lg text-gray-600 mb-8 leading-relaxed font-medium">
               Our approach allows us to deliver exceptional experiences that drive growth and success for all stakeholders. Let’s rise to new heights with the power of digital transformation.
             </p>
-            <Link href="/about" className="px-3 sm:px-4 md:px-6 py-1 sm:py-2 md:py-3 bg-white text-orange-500 text-sm sm:text-base md:text-lg font-bold rounded-lg shadow-md transform transition duration-300 hover:scale-[1.02] hover:shadow-lg">LEARN MORE</Link>
+            <Link href="/about" className="inline-block px-8 py-4 bg-white border-2 border-black text-black text-sm font-black uppercase tracking-widest rounded-xl transition-all hover:bg-black hover:text-white transform hover:scale-105 active:scale-95">LEARN MORE</Link>
           </div>
-          <div className="grid grid-cols-2 gap-2 sm:gap-4 md:gap-6 text-center">
+          <div className="grid grid-cols-2 gap-8 text-left">
             {[
-              { val: "48+", text: "Years of continual excellence" },
-              { val: "7700+", text: "Change makers driving revolution" },
-              { val: "16+", text: "Countries with our presence and clientele" },
-              { val: "300+", text: "Active clients across the globe" },
+              { val: "48+", text: "Years of excellence" },
+              { val: "7700+", text: "Change makers" },
+              { val: "16+", text: "Countries" },
+              { val: "300+", text: "Active clients" },
             ].map((stat, i) => (
-              <div key={i}>
-                <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-orange-500">{stat.val}</h3>
-                <p className="text-xs sm:text-sm md:text-base text-black font-bold uppercase tracking-tight">{stat.text}</p>
+              <div key={i} className="border-l-4 border-orange-500 pl-6">
+                <h3 className="text-2xl sm:text-4xl font-black text-black mb-1">{stat.val}</h3>
+                <p className="text-[10px] sm:text-xs text-gray-400 font-bold uppercase tracking-widest">{stat.text}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Partner Logos Carousel */}
-      <section className="py-4 sm:py-6">
-        <div className="text-center w-full">
-          <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-black mb-2 sm:mb-4 md:mb-6 max-w-3xl mx-auto">
-            We rethink business growth for you through our collective experience with strategic partner ecosystem.
+      {/* Partner Logos - Swipeable on Mobile */}
+      <section className="py-20 bg-gray-50 overflow-hidden">
+        <div className="px-6 text-center mb-12">
+          <h2 className="text-[clamp(1.25rem,4vw,2rem)] font-black uppercase tracking-tighter max-w-3xl mx-auto leading-tight">
+            Our Strategic Partner Ecosystem
           </h2>
-          <div className="overflow-hidden relative w-full">
-            <div className="flex w-max animate-scroll gap-4 sm:gap-6 md:gap-8 items-center">
-              {["acc.png", "AWS.png", "cloudera.png", "GCP.png", "IBM.png", "infosys.png", "MS.png", "SAP.png", "SF.png", "temenso.png", "wipro.png", "zendesk.png"].map((logo, i) => (
-                <div key={i} className="relative h-4 sm:h-6 md:h-12 w-16 sm:w-24 md:w-32">
-                  <Image src={getImageUrl(logo)} alt={logo} fill className="object-contain" sizes="(max-width: 640px) 64px, (max-width: 768px) 96px, 128px" />
-                </div>
-              ))}
-              {/* Duplicated for smooth scroll */}
-              {["acc.png", "AWS.png", "cloudera.png", "GCP.png", "IBM.png", "infosys.png", "MS.png", "SAP.png", "SF.png", "temenso.png", "wipro.png", "zendesk.png"].map((logo, i) => (
-                <div key={`dup-${i}`} className="relative h-4 sm:h-6 md:h-12 w-16 sm:w-24 md:w-32">
-                  <Image src={getImageUrl(logo)} alt={logo} fill className="object-contain" sizes="(max-width: 640px) 64px, (max-width: 768px) 96px, 128px" />
-                </div>
-              ))}
+        </div>
+        <div className="flex overflow-x-auto no-scrollbar snap-x snap-mandatory gap-8 px-6 md:justify-center items-center py-4">
+          {["acc.png", "AWS.png", "cloudera.png", "GCP.png", "IBM.png", "infosys.png", "MS.png", "SAP.png", "SF.png", "temenso.png", "wipro.png", "zendesk.png"].map((logo, i) => (
+            <div key={i} className="flex-shrink-0 snap-center relative h-12 w-32 grayscale hover:grayscale-0 transition-all duration-300">
+              <Image src={getImageUrl(logo)} alt={logo} fill className="object-contain" sizes="128px" />
             </div>
-          </div>
+          ))}
         </div>
       </section>
 
-      {/* Contact Banner */}
-      <section className="relative min-h-[50vh] sm:min-h-[40vh] md:min-h-[30vh] lg:min-h-[30vh] w-screen -mx-4 sm:-mx-8 md:-mx-16 lg:-mx-40 overflow-hidden">
+      {/* Contact Banner - Improved Mobile Layout */}
+      <section className="relative min-h-[500px] flex items-center justify-center w-full overflow-hidden">
         <Image
           src={getImageUrl('quote.png')}
           alt="Banner"
           fill
-          className="object-cover object-center [object-position:center_30%] max-sm:[object-position:center_20%] max-sm:scale-125"
+          className="object-cover object-center"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-black bg-opacity-60 flex flex-col sm:flex-row space-y-4 sm:space-y-0 items-center justify-center">
-          <div className="flex-1 flex items-center justify-center p-2 sm:p-3 md:p-4">
-            <div className="text-center text-white relative z-10">
-              <p className="text-2xl sm:text-base md:text-lg lg:text-xl xl:text-4xl font-black uppercase tracking-tighter">We’re Here Whenever You Need</p>
-              <p className="text-2xl sm:text-base md:text-lg lg:text-xl xl:text-4xl font-black uppercase tracking-tighter text-orange-500">Contact Our Team</p>
+        <div className="absolute inset-0 bg-black/80 flex flex-col items-center justify-center p-6 text-center">
+          <div className="max-w-4xl space-y-12">
+            <div className="space-y-4">
+              <p className="text-[clamp(1.5rem,5vw,3rem)] text-white font-black uppercase tracking-tighter leading-none">We’re Here Whenever You Need</p>
+              <p className="text-[clamp(1.5rem,5vw,3rem)] text-orange-500 font-black uppercase tracking-tighter leading-none">Contact Our Team</p>
             </div>
-          </div>
-          <div className="flex-1 flex items-center justify-center p-2 sm:p-3 md:p-4 z-10">
-            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 md:gap-4">
-              <div className="flex flex-col items-center">
-                <Image src={getImageUrl('email.svg')} alt="Email Icon" width={48} height={48} className="mb-1" />
-                <span className="text-white font-black uppercase text-[10px] tracking-widest">Mail Now</span>
-                <span className="text-white font-bold text-sm">primelinetech@gmail.com</span>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-8">
+              <div className="flex flex-col items-center space-y-4">
+                <div className="w-16 h-16 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 shadow-lg">
+                  <Image src={getImageUrl('email.svg')} alt="Email" width={24} height={24} />
+                </div>
+                <div className="space-y-1">
+                  <span className="block text-orange-400 font-black uppercase text-[10px] tracking-widest">Mail Now</span>
+                  <span className="text-white font-bold text-lg break-all">primelinetech@gmail.com</span>
+                </div>
               </div>
-              <div className="flex flex-col items-center">
-                <Image src={getImageUrl('call.svg')} alt="Call Icon" width={48} height={48} className="mb-1" />
-                <span className="text-white font-black uppercase text-[10px] tracking-widest">Call Now</span>
-                <span className="text-white font-bold text-sm">+92 335 3948753</span>
+              <div className="flex flex-col items-center space-y-4">
+                <div className="w-16 h-16 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 shadow-lg">
+                  <Image src={getImageUrl('call.svg')} alt="Call" width={24} height={24} />
+                </div>
+                <div className="space-y-1">
+                  <span className="block text-orange-400 font-black uppercase text-[10px] tracking-widest">Call Now</span>
+                  <span className="text-white font-bold text-lg">+92 335 3948753</span>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="flex-1 flex items-center justify-center p-2 sm:p-3 md:p-4 z-10">
-            <div className="text-center text-white">
-              <p className="mt-1 sm:mt-2 mb-2 sm:mb-5 text-lg sm:text-sm md:text-base lg:text-3xl font-black uppercase tracking-tight leading-none">Fill form to<br />get quote.</p>
-              <Link href="/contact" className="px-6 py-3 bg-white text-black text-sm font-black uppercase tracking-widest rounded-lg shadow-md transform transition duration-300 hover:scale-[1.05] hover:bg-orange-500 hover:text-white">Get a Quote</Link>
+
+            <div className="pt-12">
+              <Link href="/contact" className="inline-flex items-center px-12 py-5 bg-orange-500 text-white text-base font-black uppercase tracking-widest rounded-2xl shadow-xl shadow-orange-500/20 transform transition-all hover:scale-105 active:scale-95">Get a Quote</Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Testimonial Section */}
-      <section className="py-6 sm:py-8 md:py-10">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-2 sm:mb-3 md:mb-4 text-center font-black tracking-tighter uppercase">What People <span className="text-orange-500">Say</span></h1>
-        <p className="text-xs sm:text-sm md:text-base lg:text-lg mb-3 sm:mb-4 md:mb-6 text-center max-w-2xl sm:max-w-3xl mx-auto text-gray-500 font-medium">
-          Our clients’ words reflect the value we deliver. From startups to established enterprises, we’ve helped businesses
-          transform ideas into impactful solutions.
-        </p>
-        <div className="overflow-hidden relative">
-          <div className="flex w-max animate-scroll gap-2 sm:gap-3 md:gap-4">
-            {[
-              { author: "Ali Khan", text: "This team transformed our business idea into reality. Truly professional!" },
-              { author: "Sara Ahmed", text: "Excellent communication and top-notch delivery." },
-              { author: "David Smith", text: "Our website is now faster and more scalable thanks to them." },
-              { author: "Fatima Noor", text: "Amazing design sense and problem-solving skills." },
-              { author: "John Wilson", text: "Delivered the project before deadline with great quality." },
-              { author: "Ayesha Malik", text: "Reliable team — they understood our vision perfectly." },
-              { author: "Michael Brown", text: "I highly recommend their services to any business." },
-              { author: "Rabia Sheikh", text: "Our app launch was smooth and successful!" },
-              { author: "Chris Evans", text: "Great technical expertise and constant support." },
-              { author: "Hina Qureshi", text: "They exceeded our expectations with their work." },
-            ].map((t, i) => (
-              <div key={i} className="min-w-[200px] sm:min-w-[280px] bg-white p-6 m-1 rounded-2xl shadow-sm border border-gray-50">
-                <p className="italic text-xs sm:text-base font-medium text-gray-700">&quot;{t.text}&quot;</p>
-                <h3 className="mt-4 font-black text-[10px] uppercase tracking-widest text-orange-500">{t.author}</h3>
-              </div>
-            ))}
-            {/* Duplicated for scroll */}
-            {[
-              { author: "Ali Khan", text: "This team transformed our business idea into reality. Truly professional!" },
-              { author: "Sara Ahmed", text: "Excellent communication and top-notch delivery." },
-              { author: "David Smith", text: "Our website is now faster and more scalable thanks to them." },
-              { author: "Fatima Noor", text: "Amazing design sense and problem-solving skills." },
-              { author: "John Wilson", text: "Delivered the project before deadline with great quality." },
-              { author: "Ayesha Malik", text: "Reliable team — they understood our vision perfectly." },
-              { author: "Michael Brown", text: "I highly recommend their services to any business." },
-              { author: "Rabia Sheikh", text: "Our app launch was smooth and successful!" },
-              { author: "Chris Evans", text: "Great technical expertise and constant support." },
-              { author: "Hina Qureshi", text: "They exceeded our expectations with their work." },
-            ].map((t, i) => (
-              <div key={`dup-${i}`} className="min-w-[200px] sm:min-w-[280px] bg-white p-6 m-1 rounded-2xl shadow-sm border border-gray-50">
-                <p className="italic text-xs sm:text-base font-medium text-gray-700">&quot;{t.text}&quot;</p>
-                <h3 className="mt-4 font-black text-[10px] uppercase tracking-widest text-orange-500">{t.author}</h3>
-              </div>
-            ))}
-          </div>
+      {/* Testimonial Section - Swipeable on Mobile */}
+      <section className="py-24 bg-white overflow-hidden">
+        <div className="px-6 text-center mb-16">
+          <h1 className="text-[clamp(2.5rem,6vw,4rem)] font-black tracking-tighter uppercase mb-4 leading-none">What People <span className="text-orange-500">Say</span></h1>
+          <p className="text-sm sm:text-lg text-gray-500 font-medium max-w-2xl mx-auto">
+            Our clients’ words reflect the value we deliver. Helping businesses
+            transform ideas into impactful solutions.
+          </p>
+        </div>
+
+        <div className="flex overflow-x-auto no-scrollbar snap-x snap-mandatory gap-6 px-6 pb-8 md:justify-center">
+          {[
+            { author: "Ali Khan", text: "This team transformed our business idea into reality. Truly professional!" },
+            { author: "Sara Ahmed", text: "Excellent communication and top-notch delivery." },
+            { author: "David Smith", text: "Our website is now faster and more scalable thanks to them." },
+            { author: "Fatima Noor", text: "Amazing design sense and problem-solving skills." },
+            { author: "John Wilson", text: "Delivered the project before deadline with great quality." },
+          ].map((t, i) => (
+            <div key={i} className="flex-shrink-0 w-[280px] sm:w-[350px] snap-center bg-gray-50 p-8 rounded-3xl border border-gray-100 flex flex-col justify-between">
+              <p className="italic text-base sm:text-lg font-medium text-gray-800 leading-relaxed">&quot;{t.text}&quot;</p>
+              <h3 className="mt-8 font-black text-[10px] uppercase tracking-[0.2em] text-orange-500">{t.author}</h3>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* Careers Section */}
-      <CareersSection />
+      <div className="w-full">
+        <CareersSection />
+      </div>
 
     </div>
   );
