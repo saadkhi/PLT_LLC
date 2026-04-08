@@ -12,7 +12,7 @@ export default async function Home() {
   });
 
   return (
-    <div className="overflow-x-hidden"> {/* Add padding for fixed navbar on mobile if needed */}
+    <div className="overflow-x-hidden pt-20 lg:pt-0"> {/* Add padding for fixed navbar on mobile if needed */}
 
       {/* Hero Section */}
       <div className="w-full">
