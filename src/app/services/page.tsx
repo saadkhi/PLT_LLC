@@ -23,7 +23,7 @@ export default async function ServicesPage() {
             </div>
 
             {/* Quadrants Section */}
-            <section className="py-20 bg-gray-50/50 decorative-grid">
+            <section className="py-20 decorative-grid">
                 <div className="max-w-screen-xl mx-auto px-6 sm:px-12 md:px-20 lg:px-32 space-y-32">
                     {categories.map((service, index) => (
                         <div

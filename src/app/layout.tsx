@@ -44,7 +44,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${plusJakartaSans.variable} font-sans bg-gray-100 font-thin antialiased`} suppressHydrationWarning>
+      <body className={`${plusJakartaSans.variable} font-sans bg-white font-thin antialiased overflow-x-hidden`} suppressHydrationWarning>
         {!isAdmin ? (
           <>
             <LayoutWrapper>

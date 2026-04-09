@@ -20,7 +20,7 @@ export default async function CareersPage() {
                 </p>
             </div>
 
-            <section className="py-12 bg-gray-50/50 min-h-[50vh]">
+            <section className="py-12 min-h-[50vh]">
                 <div className="max-w-4xl mx-auto px-6 sm:px-12 md:px-20 lg:px-32 space-y-6">
                     {jobs.map((job) => (
                         <div key={job.id} className="group bg-white rounded-[2rem] shadow-xl shadow-gray-200/50 p-8 flex flex-col sm:flex-row justify-between items-center border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:border-orange-100">
@@ -48,7 +48,7 @@ export default async function CareersPage() {
                     ))}
 
                     {jobs.length === 0 && (
-                        <div className="text-center py-24 bg-white rounded-[3rem] border border-dashed border-gray-200">
+                        <div className="text-center py-24 rounded-[3rem] border border-dashed border-gray-200">
                             <p className="text-gray-400 font-bold uppercase tracking-widest text-xs">No job openings at the moment</p>
                             <p className="text-sm text-gray-400 mt-2 font-medium">Please check back later!</p>
                         </div>

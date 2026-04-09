@@ -22,7 +22,7 @@ export default async function InsightsPage() {
                 </p>
             </div>
 
-            <section className="py-12 bg-gray-50/50 min-h-[50vh]">
+            <section className="py-12 min-h-[50vh]">
                 <div className="max-w-screen-xl mx-auto px-6 sm:px-12 md:px-20 lg:px-32">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {insights.map((insight: any) => (
@@ -62,7 +62,7 @@ export default async function InsightsPage() {
                     </div>
 
                     {insights.length === 0 && (
-                        <div className="text-center py-24 bg-white rounded-[3rem] border border-dashed border-gray-200">
+                        <div className="text-center py-24 rounded-[3rem] border border-dashed border-gray-200">
                             <p className="text-gray-400 font-bold uppercase tracking-widest text-xs">No insights published yet</p>
                             <p className="text-sm text-gray-400 mt-2 font-medium">Coming soon!</p>
                         </div>

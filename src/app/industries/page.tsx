@@ -20,7 +20,7 @@ export default async function IndustriesPage() {
                 </p>
             </div>
 
-            <section className="py-12 bg-gray-50/50 min-h-[50vh]">
+            <section className="py-12 min-h-[50vh]">
                 <div className="max-w-screen-xl mx-auto px-6 sm:px-12 md:px-20 lg:px-32">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                         {industries.map((industry: any) => (
@@ -44,7 +44,7 @@ export default async function IndustriesPage() {
                     </div>
 
                     {industries.length === 0 && (
-                        <div className="text-center py-24 bg-white rounded-[3rem] border border-dashed border-gray-200">
+                        <div className="text-center py-24 rounded-[3rem] border border-dashed border-gray-200">
                             <p className="text-gray-400 font-bold uppercase tracking-widest text-xs">No industries identified yet</p>
                         </div>
                     )}

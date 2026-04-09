@@ -21,7 +21,7 @@ export default async function ContactPage() {
                 </p>
             </div>
 
-            <section className="py-12 bg-gray-50/50 min-h-[60vh]">
+            <section className="py-12 min-h-[60vh]">
                 <div className="max-w-screen-xl mx-auto px-6 sm:px-12 md:px-20 lg:px-32 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
 
                     {/* Contact Details (Left) */}

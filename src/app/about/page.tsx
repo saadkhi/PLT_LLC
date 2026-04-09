@@ -16,11 +16,11 @@ export default function AboutPage() {
                 </p>
             </div>
 
-            <section className="py-12 bg-gray-50/50">
+            <section className="py-12">
                 <div className="max-w-screen-xl mx-auto px-6 sm:px-12 md:px-20 lg:px-32 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 
                     {/* CEO Box - 5 columns on large screen */}
-                    <div className="lg:col-span-5 bg-white rounded-[2.5rem] shadow-2xl shadow-gray-200/50 p-8 sm:p-12 flex flex-col items-center text-center border border-gray-100 transition-transform duration-500 hover:scale-[1.01]">
+                    <div className="lg:col-span-5 bg-white rounded-[2.5rem] shadow-2xl shadow-gray-100/50 p-8 sm:p-12 flex flex-col items-center text-center border border-gray-100 transition-transform duration-500 hover:scale-[1.01]">
                         <div className="relative w-48 h-48 sm:w-56 sm:h-56 mb-8 group">
                             <div className="absolute inset-0 bg-orange-500 rounded-[2rem] rotate-6 group-hover:rotate-12 transition-transform duration-500 opacity-20"></div>
                             <Image

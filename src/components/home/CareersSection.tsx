@@ -19,7 +19,7 @@ const CareersSection = () => {
     }, []);
 
     return (
-        <section className="relative h-[60vh] w-screen -mx-0 sm:-mx-0 md:-mx-0 lg:-mx-0 overflow-hidden">
+        <section className="relative h-[60vh] w-full overflow-hidden">
             <video
                 ref={videoRef}
                 className="absolute top-0 left-0 w-full h-full object-cover"

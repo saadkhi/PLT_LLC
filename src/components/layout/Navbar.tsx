@@ -45,7 +45,7 @@ const Navbar = () => {
         <>
             <header
                 id="navbar"
-                className={`fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md text-black px-6 py-4 z-50 border-b border-gray-100 transition-all duration-500 ease-in-out ${visible ? 'translate-y-0' : '-translate-y-full'}`}
+                className={`fixed top-0 left-0 w-full bg-white backdrop-blur-md text-black px-6 py-4 z-50 border-b border-gray-100 transition-all duration-500 ease-in-out ${visible ? 'translate-y-0' : '-translate-y-full'}`}
             >
                 <nav className="max-w-7xl mx-auto flex justify-between items-center">
                     <div className="flex items-center flex-shrink-0">
