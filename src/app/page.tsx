@@ -19,7 +19,7 @@ export default async function Home() {
   ];
 
   return (
-    <div className="pt-20 lg:pt-0">
+    <div>
       {/* Hero Section */}
       <div className="w-full">
         <HeroCarousel />

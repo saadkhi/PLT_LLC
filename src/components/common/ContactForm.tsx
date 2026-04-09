@@ -40,7 +40,7 @@ const ContactForm = () => {
     };
 
     return (
-        <div className="bg-white p-4 sm:p-8 rounded-2xl shadow-md min-h-[300px]">
+        <div className="bg-white p-10 sm:p-14 rounded-[3rem] shadow-2xl shadow-gray-200/50 border border-gray-100 flex flex-col h-full">
             <h3 className="text-xl sm:text-3xl font-semibold text-black mb-6">
                 Send Us a Message
             </h3>
