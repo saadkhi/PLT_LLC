@@ -12,7 +12,7 @@ export default async function Home() {
   });
 
   return (
-    <div className="overflow-x-hidden pt-20 lg:pt-0"> {/* Add padding for fixed navbar on mobile if needed */}
+    <div> {/* Add padding for fixed navbar on mobile if needed */}
 
       {/* Hero Section */}
       <div className="w-full">
@@ -109,60 +109,65 @@ export default async function Home() {
       </section>
 
       {/* Partner Logos - Swipeable on Mobile */}
-      <section className="py-20 bg-gray-50 overflow-hidden">
-        <div className="px-6 text-center mb-12">
-          <h2 className="text-[clamp(1.25rem,4vw,2rem)] font-black uppercase tracking-tighter max-w-3xl mx-auto leading-tight">
+      {/* Partner Logos - Continuous Ticker */}
+      <section className="py-20 bg-gray-50/50 overflow-hidden border-y border-gray-100">
+        <div className="px-6 text-center mb-16">
+          <h2 className="text-[clamp(1.5rem,4vw,2.5rem)] font-black uppercase tracking-tighter max-w-3xl mx-auto leading-tight">
             Our Strategic Partner Ecosystem
           </h2>
         </div>
-        <div className="flex overflow-x-auto no-scrollbar snap-x snap-mandatory gap-8 px-6 md:justify-center items-center py-4">
-          {["acc.png", "AWS.png", "cloudera.png", "GCP.png", "IBM.png", "infosys.png", "MS.png", "SAP.png", "SF.png", "temenso.png", "wipro.png", "zendesk.png"].map((logo, i) => (
-            <div key={i} className="flex-shrink-0 snap-center relative h-12 w-32 grayscale hover:grayscale-0 transition-all duration-300">
-              <Image src={getImageUrl(logo)} alt={logo} fill className="object-contain" sizes="128px" />
-            </div>
-          ))}
+
+        <div className="relative flex overflow-hidden group">
+          <div className="flex animate-scroll hover:[animation-play-state:paused] py-4 gap-12 whitespace-nowrap">
+            {[...["acc.png", "AWS.png", "cloudera.png", "GCP.png", "IBM.png", "infosys.png", "MS.png", "SAP.png", "SF.png", "temenso.png", "wipro.png", "zendesk.png"], ...["acc.png", "AWS.png", "cloudera.png", "GCP.png", "IBM.png", "infosys.png", "MS.png", "SAP.png", "SF.png", "temenso.png", "wipro.png", "zendesk.png"]].map((logo, i) => (
+              <div key={i} className="inline-block relative h-10 w-32 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500 transform hover:scale-110 px-4">
+                <Image src={getImageUrl(logo)} alt={logo} fill className="object-contain" sizes="128px" />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Contact Banner - Improved Mobile Layout */}
-      <section className="relative min-h-[500px] flex items-center justify-center w-full overflow-hidden">
+      {/* Contact Banner - Responsive Optimization */}
+      <section className="relative min-h-[400px] md:min-h-[450px] flex items-center justify-center w-full overflow-hidden">
         <Image
           src={getImageUrl('quote.png')}
           alt="Banner"
           fill
-          className="object-cover object-center"
+          className="object-cover object-center grayscale-[50%] scale-105"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-black/80 flex flex-col items-center justify-center p-6 text-center">
-          <div className="max-w-4xl space-y-12">
-            <div className="space-y-4">
-              <p className="text-[clamp(1.5rem,5vw,3rem)] text-white font-black uppercase tracking-tighter leading-none">We’re Here Whenever You Need</p>
-              <p className="text-[clamp(1.5rem,5vw,3rem)] text-orange-500 font-black uppercase tracking-tighter leading-none">Contact Our Team</p>
+        <div className="absolute inset-0 bg-black/85 flex flex-col items-center justify-center p-6 text-center backdrop-blur-sm">
+          <div className="max-w-4xl w-full">
+            <div className="space-y-4 mb-12">
+              <p className="text-[clamp(1.2rem,5vw,2.5rem)] text-white font-black uppercase tracking-tighter leading-none">We’re Here Whenever You Need</p>
+              <p className="text-[clamp(1.2rem,5vw,2.5rem)] text-orange-500 font-black uppercase tracking-tighter leading-none">Contact Our Team</p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-8">
-              <div className="flex flex-col items-center space-y-4">
-                <div className="w-16 h-16 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 shadow-lg">
-                  <Image src={getImageUrl('email.svg')} alt="Email" width={24} height={24} />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
+              <div className="flex items-center gap-4 bg-white/5 backdrop-blur-xl p-4 md:p-6 rounded-[2rem] border border-white/10 group transition-all hover:bg-white/10 hover:border-orange-500/50">
+                <div className="w-12 h-12 md:w-16 md:h-16 bg-white/10 rounded-2xl flex items-center justify-center shrink-0 shadow-lg group-hover:scale-110 transition-transform">
+                  <Image src={getImageUrl('email.svg')} alt="Email" width={24} height={24} className="md:w-8 md:h-8" />
                 </div>
-                <div className="space-y-1">
-                  <span className="block text-orange-400 font-black uppercase text-[10px] tracking-widest">Mail Now</span>
-                  <span className="text-white font-bold text-lg break-all">primelinetech@gmail.com</span>
+                <div className="text-left">
+                  <span className="block text-orange-400 font-black uppercase text-[10px] tracking-[0.2em] mb-1">Mail Now</span>
+                  <span className="text-white font-bold text-sm md:text-lg break-all selection:bg-orange-500">primelinetech@gmail.com</span>
                 </div>
               </div>
-              <div className="flex flex-col items-center space-y-4">
-                <div className="w-16 h-16 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 shadow-lg">
-                  <Image src={getImageUrl('call.svg')} alt="Call" width={24} height={24} />
+
+              <div className="flex items-center gap-4 bg-white/5 backdrop-blur-xl p-4 md:p-6 rounded-[2rem] border border-white/10 group transition-all hover:bg-white/10 hover:border-orange-500/50">
+                <div className="w-12 h-12 md:w-16 md:h-16 bg-white/10 rounded-2xl flex items-center justify-center shrink-0 shadow-lg group-hover:scale-110 transition-transform">
+                  <Image src={getImageUrl('call.svg')} alt="Call" width={24} height={24} className="md:w-8 md:h-8" />
                 </div>
-                <div className="space-y-1">
-                  <span className="block text-orange-400 font-black uppercase text-[10px] tracking-widest">Call Now</span>
-                  <span className="text-white font-bold text-lg">+92 335 3948753</span>
+                <div className="text-left">
+                  <span className="block text-orange-400 font-black uppercase text-[10px] tracking-[0.2em] mb-1">Call Now</span>
+                  <span className="text-white font-bold text-sm md:text-lg selection:bg-orange-500">+92 335 3948753</span>
                 </div>
               </div>
             </div>
 
-            <div className="pt-12">
-              <Link href="/contact" className="inline-flex items-center px-12 py-5 bg-orange-500 text-white text-base font-black uppercase tracking-widest rounded-2xl shadow-xl shadow-orange-500/20 transform transition-all hover:scale-105 active:scale-95">Get a Quote</Link>
+            <div className="mt-12">
+              <Link href="/contact" className="inline-flex items-center px-10 py-4 bg-orange-500 text-white text-xs md:text-sm font-black uppercase tracking-[0.2em] rounded-2xl shadow-2xl shadow-orange-500/40 transform transition-all hover:scale-105 active:scale-95 hover:bg-orange-600">Get a Quote</Link>
             </div>
           </div>
         </div>

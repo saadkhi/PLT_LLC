@@ -2,88 +2,57 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+    .animate-scroll {
+        animation: scroll 40s linear infinite;
+    }
+
+    @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+
+        100% {
+            transform: translateX(calc(-100% / 2));
+        }
+    }
+}
+
 :root {
-  --background: #f3f4f6;
-  --foreground: #111827;
+    --background: #f3f4f6;
+    --foreground: #111827;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #f3f4f6;
-    --foreground: #111827;
-  }
+    :root {
+        --background: #f3f4f6;
+        --foreground: #111827;
+    }
 }
 
 html {
-  overflow-y: scroll;
+    overflow-y: scroll;
 }
 
 body {
-  font-family: var(--font-plus-jakarta-sans), 'Avenir Next Arabic', 'Avenir Next', 'Segoe UI',
-    Tahoma, Geneva, sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  overflow-x: hidden;
+    font-family: var(--font-plus-jakarta-sans), 'Avenir Next Arabic', 'Avenir Next', 'Segoe UI', Tahoma, Geneva, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-scroll {
-  animation: scroll 80s linear infinite;
-}
-
-/* Custom styles for components if needed */
-.scale-102:hover {
-  transform: scale(1.02);
-}
-
-/* Fluid Typography Utilities */
-.text-fluid-h1 {
-  font-size: clamp(2.5rem, 8vw, 5.5rem);
-  line-height: 0.95;
-}
-
-.text-fluid-h2 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  line-height: 1;
-}
-
-/* Smooth Scrolling and Snap */
 .no-scrollbar::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 .no-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
-/* Custom Scroll Snap */
-.snap-x {
-  scroll-snap-type: x mandatory;
-}
-
-.snap-center {
-  scroll-snap-align: center;
-}
-
-/* Layout Padding Fixes */
-@media (max-width: 640px) {
-  .section-padding {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
 }
