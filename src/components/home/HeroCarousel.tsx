@@ -91,23 +91,15 @@ const HeroCarousel = () => {
             {/* Dark overlay */}
             <div className="absolute inset-0 bg-black/50 z-10"></div>
 
-            {/* Progress Bar */}
-            <div className="absolute top-0 left-0 w-full h-[3px] bg-white/10 z-50">
-                <div
-                    key={current}
-                    className="h-full bg-orange-500 transition-all duration-[7000ms] ease-linear"
-                    style={{ width: '100%' }}
-                />
-            </div>
 
             {/* Hero Overlays */}
             <div className="relative h-full w-full max-w-screen-2xl mx-auto z-30 pointer-events-none">
                 {videoSources.map((_, index) => (
                     <div
                         key={index}
-                        className={`absolute inset-0 flex items-center px-6 sm:px-12 md:px-20 lg:px-32 transition-all duration-1000 ${index === current ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                        className={`absolute inset-0 flex flex-col justify-center px-6 sm:px-12 md:px-20 lg:px-32 transition-all duration-1000 ${index === current ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
                     >
-                        <div className="max-w-4xl pointer-events-auto">
+                        <div className="max-w-4xl pointer-events-auto mt-16 md:mt-0">
                             {index === 0 ? (
                                 <>
                                     <h1 className="text-[clamp(2.5rem,8vw,5.5rem)] font-black leading-[0.95] tracking-tighter mb-6 uppercase text-white drop-shadow-2xl">
@@ -139,23 +131,6 @@ const HeroCarousel = () => {
                     </div>
                 ))}
 
-                {/* Relocated Navigation Arrows - High contrast and fixed depth */}
-                <div className="absolute bottom-24 left-6 sm:left-12 lg:left-auto lg:right-12 lg:top-1/2 lg:bottom-auto lg:-translate-y-1/2 flex lg:flex-col gap-4 z-50 pointer-events-auto">
-                    <button
-                        onClick={prevSlide}
-                        className="w-14 h-14 flex items-center justify-center rounded-2xl border border-white/30 bg-black/40 backdrop-blur-2xl text-white hover:bg-orange-500 hover:border-orange-500 transition-all active:scale-90 group shadow-[0_0_20px_rgba(0,0,0,0.5)]"
-                        aria-label="Previous Slide"
-                    >
-                        <ChevronLeft className="w-6 h-6 group-hover:-translate-x-1 transition-transform" strokeWidth={3} />
-                    </button>
-                    <button
-                        onClick={nextSlide}
-                        className="w-14 h-14 flex items-center justify-center rounded-2xl border border-white/30 bg-black/40 backdrop-blur-2xl text-white hover:bg-orange-500 hover:border-orange-500 transition-all active:scale-90 group shadow-[0_0_20px_rgba(0,0,0,0.5)]"
-                        aria-label="Next Slide"
-                    >
-                        <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" strokeWidth={3} />
-                    </button>
-                </div>
 
                 {/* Indicator Dots - More visible */}
                 <div className="absolute bottom-24 left-1/2 -translate-x-1/2 flex gap-3 z-50 pointer-events-auto">

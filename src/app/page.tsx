@@ -46,24 +46,12 @@ export default async function Home() {
               <Link
                 key={service.id}
                 href={`/services#${service.name.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`}
-                className="group relative bg-white p-10 rounded-[2.5rem] border border-gray-100 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/10 hover:-translate-y-2 overflow-hidden"
+                className="group relative bg-white p-6 md:py-8 md:px-10 rounded-[1.5rem] border border-gray-100 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/10 hover:-translate-y-1 overflow-hidden"
               >
                 <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/5 rounded-bl-[5rem] -mr-10 -mt-10 transition-all duration-500 group-hover:w-40 group-hover:h-40" />
-                <div className="relative z-10">
-                  <div className="w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center mb-8 border border-gray-50 group-hover:bg-orange-500 group-hover:text-white transition-all duration-500">
-                    <Image
-                      src={getImageUrl(service.image || service.homepage_image || 'web_dev.png')}
-                      alt={service.name}
-                      width={32}
-                      height={32}
-                      className="group-hover:invert group-hover:brightness-0 transition-all duration-500"
-                    />
-                  </div>
-                  <h3 className="text-2xl font-black uppercase tracking-tight text-black mb-4">{service.name}</h3>
-                  <p className="text-gray-500 font-medium leading-relaxed line-clamp-3 group-hover:text-gray-700 transition-colors">
-                    {service.description}
-                  </p>
-                  <div className="mt-8 flex items-center gap-2 text-xs font-black uppercase tracking-widest text-orange-500 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <h3 className="text-xl md:text-2xl font-black uppercase tracking-tight text-black">{service.name}</h3>
+                  <div className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-orange-500 opacity-0 group-hover:opacity-100 transition-all duration-500 shrink-0">
                     Learn More <ChevronRight className="w-4 h-4" />
                   </div>
                 </div>
