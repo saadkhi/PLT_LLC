@@ -35,10 +35,11 @@ const Navbar = () => {
     const navLinks = [
         { name: "Home", href: "/" },
         { name: "Services", href: "/services" },
-        { name: "Industries", href: "/industries" },
         { name: "Insights", href: "/insights" },
+        { name: "Portfolio", href: "/portfolio" },
         { name: "About", href: "/about" },
         { name: "Careers", href: "/careers" },
+        { name: "Contact", href: "/contact" },
     ];
 
     return (
@@ -76,12 +77,12 @@ const Navbar = () => {
                                 </li>
                             ))}
                         </ul>
-                        <Link
-                            href="/contact"
-                            className="bg-black text-white px-6 py-3 rounded-full text-xs font-black uppercase tracking-widest hover:bg-orange-500 transition-all duration-300 transform hover:scale-105 active:scale-95"
+                        <button
+                            onClick={() => window.dispatchEvent(new CustomEvent('open-quote-drawer'))}
+                            className="bg-orange-500 text-white px-6 py-3 rounded-full text-xs font-black uppercase tracking-widest hover:bg-orange-600 transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg shadow-orange-500/20"
                         >
-                            Contact Us
-                        </Link>
+                            Get A Quote
+                        </button>
                     </div>
 
                     {/* Mobile Hamburger Button */}
@@ -159,13 +160,15 @@ const Navbar = () => {
                     </div>
 
                     <div className="p-6 mt-auto border-t border-gray-50">
-                        <Link
-                            href="/contact"
-                            className="flex items-center justify-center w-full bg-black text-white py-5 rounded-2xl font-black uppercase tracking-widest text-sm hover:bg-orange-500 transition-colors"
-                            onClick={() => setMobileMenuOpen(false)}
+                        <button
+                            onClick={() => {
+                                setMobileMenuOpen(false);
+                                window.dispatchEvent(new CustomEvent('open-quote-drawer'));
+                            }}
+                            className="flex items-center justify-center w-full bg-orange-500 text-white py-5 rounded-2xl font-black uppercase tracking-widest text-sm hover:bg-orange-600 transition-colors shadow-lg shadow-orange-500/20"
                         >
                             Get A Quote
-                        </Link>
+                        </button>
                     </div>
                 </div>
             </div>

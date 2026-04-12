@@ -55,7 +55,7 @@ export default async function ServicesPage() {
                                 </p>
                                 <div className="pt-4 flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
                                     <Link
-                                        href={`/projects/category/${service.id}`}
+                                        href={`/portfolio#category-${service.id}`}
                                         className="group w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 bg-black text-white font-bold rounded-2xl shadow-xl hover:bg-orange-500 transition-all duration-300 transform hover:scale-[1.02] active:scale-98"
                                     >
                                         <span>Explore Past Works</span>

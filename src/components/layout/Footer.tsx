@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import prisma from '@/lib/prisma';
 import { getImageUrl } from '@/lib/utils';
+import { Globe, Mail, Phone } from 'lucide-react';
 
 interface Office {
     id: number;
@@ -55,19 +56,30 @@ const Footer = async () => {
                     <div>
                         <h4 className="text-[9px] font-black text-white/30 uppercase tracking-widest mb-4">Navigation</h4>
                         <ul className="space-y-2 text-xs font-bold text-white/50">
-                            <li><Link href="/services" className="hover:text-white transition-colors">Portfolio</Link></li>
-                            <li><Link href="/industries" className="hover:text-white transition-colors">Industries</Link></li>
+                            <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
+                            <li><Link href="/services" className="hover:text-white transition-colors">Services</Link></li>
+                            <li><Link href="/portfolio" className="hover:text-white transition-colors">Portfolio</Link></li>
                             <li><Link href="/insights" className="hover:text-white transition-colors">Insights</Link></li>
-                            <li><Link href="/about" className="hover:text-white transition-colors">About Us</Link></li>
+                            <li><Link href="/about" className="hover:text-white transition-colors">About</Link></li>
                         </ul>
                     </div>
                     <div>
-                        <h4 className="text-[9px] font-black text-white/30 uppercase tracking-widest mb-4">Support</h4>
+                        <h4 className="text-[9px] font-black text-white/30 uppercase tracking-widest mb-4">Support & Contact</h4>
                         <ul className="space-y-2 text-xs font-bold text-white/50">
-                            <li><Link href="/contact" className="hover:text-white transition-colors">Contact</Link></li>
                             <li><Link href="/careers" className="hover:text-white transition-colors">Careers</Link></li>
-                            <li><Link href="#" className="hover:text-white transition-colors">Privacy</Link></li>
-                            <li><Link href="#" className="hover:text-white transition-colors">Terms</Link></li>
+                            <li><Link href="/contact" className="hover:text-white transition-colors">Contact Us</Link></li>
+                            {mainOffice && (
+                                <li className="pt-4 space-y-3">
+                                    <a href={`mailto:${mainOffice.email}`} className="flex items-center gap-2 hover:text-orange-500 transition-colors">
+                                        <Mail size={16} />
+                                        <span>{mainOffice.email}</span>
+                                    </a>
+                                    <a href={`tel:${mainOffice.phone}`} className="flex items-center gap-2 hover:text-orange-500 transition-colors">
+                                        <Phone size={16} />
+                                        <span>{mainOffice.phone}</span>
+                                    </a>
+                                </li>
+                            )}
                         </ul>
                     </div>
                 </div>
@@ -92,11 +104,21 @@ const Footer = async () => {
                     </div>
                 </div>
 
-                {/* Copyright */}
-                <div className="mt-12 pt-8 border-t border-white/5">
+                <div className="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6">
                     <p className="text-[9px] font-bold text-white/20 uppercase tracking-[0.2em]">
-                        &copy; {new Date().getFullYear()} Primeline IT Services LLC.
+                        &copy; {new Date().getFullYear()} Primeline IT Services LLC. All rights reserved.
                     </p>
+                    {/* Social Links */}
+                    <div className="flex gap-3">
+                        {socialLinks.map((link: any) => {
+                            const initial = link.platform_name ? link.platform_name.charAt(0).toUpperCase() : '';
+                            return (
+                                <a key={link.id} href={link.url} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 hover:bg-orange-500 transition-colors flex items-center justify-center text-white/50 hover:text-white aspect-square font-black text-[12px]">
+                                    {initial}
+                                </a>
+                            );
+                        })}
+                    </div>
                 </div>
             </div>
         </footer>
