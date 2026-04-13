@@ -61,7 +61,7 @@ const CategoryForm = ({ initialData }: CategoryFormProps) => {
                             type="text"
                             value={formData.name}
                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                            className="w-full p-4 rounded-xl border border-gray-100 focus:ring-2 focus:ring-black outline-none transition font-medium"
+                            className="w-full p-4 rounded-xl border border-gray-100 focus:ring-2 focus:ring-navy-900 outline-none transition font-medium"
                             placeholder="e.g. Web & App Development"
                             required
                         />
@@ -73,7 +73,7 @@ const CategoryForm = ({ initialData }: CategoryFormProps) => {
                             rows={4}
                             value={formData.description}
                             onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                            className="w-full p-4 rounded-xl border border-gray-100 focus:ring-2 focus:ring-black outline-none transition font-medium resize-none"
+                            className="w-full p-4 rounded-xl border border-gray-100 focus:ring-2 focus:ring-navy-900 outline-none transition font-medium resize-none"
                             placeholder="Describe this service to your clients..."
                         />
                     </div>
@@ -90,7 +90,7 @@ const CategoryForm = ({ initialData }: CategoryFormProps) => {
                                 )}
                             </div>
                             <div className="space-y-2 flex-1">
-                                <label className="inline-block bg-white text-black border border-gray-200 px-4 py-2 rounded-xl text-[10px] font-bold uppercase tracking-widest cursor-pointer hover:bg-gray-100 transition shadow-sm">
+                                <label className="inline-block bg-white text-[#0A2540] border border-gray-200 px-4 py-2 rounded-xl text-[10px] font-bold uppercase tracking-widest cursor-pointer hover:bg-gray-100 transition shadow-sm">
                                     Set Home Icon
                                     <input
                                         type="file"
@@ -127,7 +127,7 @@ const CategoryForm = ({ initialData }: CategoryFormProps) => {
                                 )}
                             </div>
                             <div className="space-y-2 flex-1">
-                                <label className="inline-block bg-black text-white px-6 py-2 rounded-xl text-xs font-bold uppercase tracking-widest cursor-pointer hover:bg-gray-800 transition shadow-lg shadow-gray-200">
+                                <label className="inline-block bg-navy-900 text-white px-6 py-2 rounded-xl text-xs font-bold uppercase tracking-widest cursor-pointer hover:bg-gray-800 transition shadow-lg shadow-gray-200">
                                     Choose Icon
                                     <input
                                         type="file"
@@ -165,7 +165,7 @@ const CategoryForm = ({ initialData }: CategoryFormProps) => {
                 <button
                     type="submit"
                     disabled={loading}
-                    className="bg-black text-white px-10 py-4 rounded-2xl font-bold hover:bg-gray-800 transition shadow-lg shadow-gray-200 disabled:opacity-50"
+                    className="bg-navy-900 text-white px-10 py-4 rounded-2xl font-bold hover:bg-gray-800 transition shadow-lg shadow-gray-200 disabled:opacity-50"
                 >
                     {loading ? 'Saving...' : initialData ? 'Update Service' : 'Create Service'}
                 </button>

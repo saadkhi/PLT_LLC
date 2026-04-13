@@ -21,7 +21,7 @@ export default async function ProjectCategoryPage({ params }: { params: { id: st
 
     return (
         <div className="px-4 sm:px-8 md:px-16 lg:px-40 pb-16">
-            <h1 className="text-4xl sm:text-5xl font-bold text-black mt-8 mb-4">{category.name}</h1>
+            <h1 className="text-4xl sm:text-5xl font-bold text-[#0A2540] mt-8 mb-4">{category.name}</h1>
             <p className="text-gray-600 mb-12">Discover our projects in {category.name}.</p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -42,17 +42,17 @@ export default async function ProjectCategoryPage({ params }: { params: { id: st
                             {project.images.length > 1 && (
                                 <div className="absolute inset-x-0 bottom-4 flex justify-center space-x-2">
                                     {project.images.map((_, i) => (
-                                        <div key={i} className={`w-2 h-2 rounded-full ${i === 0 ? 'bg-orange-500' : 'bg-gray-300'}`}></div>
+                                        <div key={i} className={`w-2 h-2 rounded-full ${i === 0 ? 'bg-cyan-500' : 'bg-gray-300'}`}></div>
                                     ))}
                                 </div>
                             )}
                         </div>
 
                         <div className="p-8 flex-1 flex flex-col">
-                            <h3 className="text-2xl font-bold text-black mb-4">{project.title}</h3>
+                            <h3 className="text-2xl font-bold text-[#0A2540] mb-4">{project.title}</h3>
                             <p className="text-gray-700 mb-6">{project.description}</p>
                             {project.link && (
-                                <a href={project.link} target="_blank" rel="noopener noreferrer" className="mt-auto text-orange-500 font-bold hover:underline">
+                                <a href={project.link} target="_blank" rel="noopener noreferrer" className="mt-auto text-cyan-500 font-bold hover:underline">
                                     Visit Project &rarr;
                                 </a>
                             )}

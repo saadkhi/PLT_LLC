@@ -80,7 +80,7 @@ const ProjectForm = ({ initialData, categories }: ProjectFormProps) => {
                             type="text"
                             value={formData.title}
                             onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                            className="w-full p-4 rounded-xl border border-gray-100 focus:ring-2 focus:ring-black outline-none transition font-medium"
+                            className="w-full p-4 rounded-xl border border-gray-100 focus:ring-2 focus:ring-navy-900 outline-none transition font-medium"
                             required
                         />
                     </div>
@@ -90,7 +90,7 @@ const ProjectForm = ({ initialData, categories }: ProjectFormProps) => {
                         <select
                             value={formData.categoryId}
                             onChange={(e) => setFormData({ ...formData, categoryId: parseInt(e.target.value) })}
-                            className="w-full p-4 rounded-xl border border-gray-100 focus:ring-2 focus:ring-black outline-none transition font-medium appearance-none bg-no-repeat bg-[right_1.5rem_center] bg-[length:1em]"
+                            className="w-full p-4 rounded-xl border border-gray-100 focus:ring-2 focus:ring-navy-900 outline-none transition font-medium appearance-none bg-no-repeat bg-[right_1.5rem_center] bg-[length:1em]"
                             required
                         >
                             {categories?.map(cat => (
@@ -105,7 +105,7 @@ const ProjectForm = ({ initialData, categories }: ProjectFormProps) => {
                             type="url"
                             value={formData.link}
                             onChange={(e) => setFormData({ ...formData, link: e.target.value })}
-                            className="w-full p-4 rounded-xl border border-gray-100 focus:ring-2 focus:ring-black outline-none transition font-medium"
+                            className="w-full p-4 rounded-xl border border-gray-100 focus:ring-2 focus:ring-navy-900 outline-none transition font-medium"
                         />
                     </div>
 
@@ -115,7 +115,7 @@ const ProjectForm = ({ initialData, categories }: ProjectFormProps) => {
                             rows={4}
                             value={formData.description}
                             onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                            className="w-full p-4 rounded-xl border border-gray-100 focus:ring-2 focus:ring-black outline-none transition font-medium resize-none"
+                            className="w-full p-4 rounded-xl border border-gray-100 focus:ring-2 focus:ring-navy-900 outline-none transition font-medium resize-none"
                             required
                         />
                     </div>
@@ -157,8 +157,8 @@ const ProjectForm = ({ initialData, categories }: ProjectFormProps) => {
                                 ) : (
                                     <LucideImage className="w-10 h-10 opacity-20" />
                                 )}
-                                <label className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 hover:opacity-100 transition cursor-pointer">
-                                    <span className="text-white text-[10px] font-black uppercase tracking-widest bg-black/20 px-3 py-1 rounded-full backdrop-blur-sm">Change</span>
+                                <label className="absolute inset-0 bg-navy-900/40 flex items-center justify-center opacity-0 hover:opacity-100 transition cursor-pointer">
+                                    <span className="text-white text-[10px] font-black uppercase tracking-widest bg-navy-900/20 px-3 py-1 rounded-full backdrop-blur-sm">Change</span>
                                     <input
                                         type="file"
                                         className="hidden"
@@ -230,7 +230,7 @@ const ProjectForm = ({ initialData, categories }: ProjectFormProps) => {
                 <button
                     type="submit"
                     disabled={loading}
-                    className="bg-black text-white px-10 py-4 rounded-2xl font-bold hover:bg-gray-800 transition shadow-lg shadow-gray-200 disabled:opacity-50"
+                    className="bg-navy-900 text-white px-10 py-4 rounded-2xl font-bold hover:bg-gray-800 transition shadow-lg shadow-gray-200 disabled:opacity-50"
                 >
                     {loading ? 'Saving...' : initialData ? 'Update Project' : 'Create Project'}
                 </button>

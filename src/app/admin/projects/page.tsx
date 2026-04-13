@@ -29,7 +29,7 @@ export default async function AdminProjectsPage({
                 <h2 className="text-2xl font-extrabold text-gray-900 tracking-tight">Projects</h2>
                 <Link
                     href="/admin/projects/new"
-                    className="bg-black text-white px-6 py-3 rounded-2xl text-sm font-bold hover:bg-gray-800 transition shadow-lg shadow-gray-200 inline-flex items-center"
+                    className="bg-navy-900 text-white px-6 py-3 rounded-2xl text-sm font-bold hover:bg-gray-800 transition shadow-lg shadow-gray-200 inline-flex items-center"
                 >
                     <span className="mr-2 text-lg">+</span> New Project
                 </Link>

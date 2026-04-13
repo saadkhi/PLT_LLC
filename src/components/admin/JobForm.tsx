@@ -62,7 +62,7 @@ const JobForm = ({ initialData }: JobFormProps) => {
                         name="title"
                         value={formData.title}
                         onChange={handleChange}
-                        className="w-full p-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-black outline-none transition"
+                        className="w-full p-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-navy-900 outline-none transition"
                         required
                     />
                 </div>
@@ -73,7 +73,7 @@ const JobForm = ({ initialData }: JobFormProps) => {
                         name="location"
                         value={formData.location}
                         onChange={handleChange}
-                        className="w-full p-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-black outline-none transition"
+                        className="w-full p-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-navy-900 outline-none transition"
                         required
                     />
                 </div>
@@ -86,7 +86,7 @@ const JobForm = ({ initialData }: JobFormProps) => {
                         name="job_mode"
                         value={formData.job_mode}
                         onChange={handleChange}
-                        className="w-full p-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-black outline-none transition"
+                        className="w-full p-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-navy-900 outline-none transition"
                     >
                         <option value="Remote">Remote</option>
                         <option value="On-site">On-site</option>
@@ -102,7 +102,7 @@ const JobForm = ({ initialData }: JobFormProps) => {
                     value={formData.about_role}
                     onChange={handleChange}
                     rows={4}
-                    className="w-full p-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-black outline-none transition"
+                    className="w-full p-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-navy-900 outline-none transition"
                     required
                 />
             </div>
@@ -114,7 +114,7 @@ const JobForm = ({ initialData }: JobFormProps) => {
                     value={formData.responsibilities}
                     onChange={handleChange}
                     rows={4}
-                    className="w-full p-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-black outline-none transition"
+                    className="w-full p-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-navy-900 outline-none transition"
                     placeholder="One per line..."
                     required
                 />
@@ -127,7 +127,7 @@ const JobForm = ({ initialData }: JobFormProps) => {
                     value={formData.requirements}
                     onChange={handleChange}
                     rows={4}
-                    className="w-full p-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-black outline-none transition"
+                    className="w-full p-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-navy-900 outline-none transition"
                     placeholder="One per line..."
                     required
                 />
@@ -140,7 +140,7 @@ const JobForm = ({ initialData }: JobFormProps) => {
                     value={formData.nice_to_have}
                     onChange={handleChange}
                     rows={4}
-                    className="w-full p-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-black outline-none transition"
+                    className="w-full p-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-navy-900 outline-none transition"
                 />
             </div>
 
@@ -155,7 +155,7 @@ const JobForm = ({ initialData }: JobFormProps) => {
                 <button
                     type="submit"
                     disabled={loading}
-                    className="px-8 py-3 rounded-xl bg-black text-white text-sm font-bold hover:bg-gray-800 transition shadow-lg disabled:opacity-50"
+                    className="px-8 py-3 rounded-xl bg-navy-900 text-white text-sm font-bold hover:bg-gray-800 transition shadow-lg disabled:opacity-50"
                 >
                     {loading ? 'Saving...' : initialData ? 'Update Job' : 'Create Job'}
                 </button>

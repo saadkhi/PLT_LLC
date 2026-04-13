@@ -58,7 +58,7 @@ const IndustryForm = ({ initialData }: IndustryFormProps) => {
           name="name"
           value={formData.name}
           onChange={handleChange}
-          className="w-full p-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-black outline-none transition"
+          className="w-full p-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-navy-900 outline-none transition"
           required
         />
       </div>
@@ -70,7 +70,7 @@ const IndustryForm = ({ initialData }: IndustryFormProps) => {
           value={formData.description}
           onChange={handleChange}
           rows={4}
-          className="w-full p-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-black outline-none transition"
+          className="w-full p-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-navy-900 outline-none transition"
           required
         />
       </div>
@@ -87,7 +87,7 @@ const IndustryForm = ({ initialData }: IndustryFormProps) => {
             )}
           </div>
           <div className="space-y-2 flex-1">
-            <label className="inline-block bg-black text-white px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-widest cursor-pointer hover:bg-gray-800 transition">
+            <label className="inline-block bg-navy-900 text-white px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-widest cursor-pointer hover:bg-gray-800 transition">
               Choose File
               <input
                 type="file"
@@ -125,7 +125,7 @@ const IndustryForm = ({ initialData }: IndustryFormProps) => {
         <button
           type="submit"
           disabled={loading}
-          className="px-8 py-3 rounded-xl bg-black text-white text-sm font-bold hover:bg-gray-800 transition shadow-lg disabled:opacity-50"
+          className="px-8 py-3 rounded-xl bg-navy-900 text-white text-sm font-bold hover:bg-gray-800 transition shadow-lg disabled:opacity-50"
         >
           {loading ? 'Saving...' : initialData ? 'Update Industry' : 'Create Industry'}
         </button>

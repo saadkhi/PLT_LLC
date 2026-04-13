@@ -61,7 +61,7 @@ export default function AdminLoginPage() {
                                 type="text"
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
-                                className="w-full p-5 rounded-[1.5rem] border border-gray-100 bg-gray-50/30 focus:bg-white focus:ring-2 focus:ring-black outline-none transition font-bold text-sm"
+                                className="w-full p-5 rounded-[1.5rem] border border-gray-100 bg-gray-50/30 focus:bg-white focus:ring-2 focus:ring-navy-900 outline-none transition font-bold text-sm"
                                 placeholder="Username"
                                 required
                             />
@@ -73,7 +73,7 @@ export default function AdminLoginPage() {
                                 type="password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                className="w-full p-5 rounded-[1.5rem] border border-gray-100 bg-gray-50/30 focus:bg-white focus:ring-2 focus:ring-black outline-none transition font-bold text-sm"
+                                className="w-full p-5 rounded-[1.5rem] border border-gray-100 bg-gray-50/30 focus:bg-white focus:ring-2 focus:ring-navy-900 outline-none transition font-bold text-sm"
                                 placeholder="••••••••"
                                 required
                             />
@@ -83,7 +83,7 @@ export default function AdminLoginPage() {
                     <button
                         type="submit"
                         disabled={loading}
-                        className="w-full py-6 bg-black text-white rounded-[1.5rem] font-black text-xs uppercase tracking-[0.2em] hover:bg-gray-800 transition-all hover:shadow-xl hover:shadow-gray-200 active:scale-[0.98] disabled:opacity-50"
+                        className="w-full py-6 bg-navy-900 text-white rounded-[1.5rem] font-black text-xs uppercase tracking-[0.2em] hover:bg-gray-800 transition-all hover:shadow-xl hover:shadow-gray-200 active:scale-[0.98] disabled:opacity-50"
                     >
                         {loading ? 'Verifying...' : 'Access Dashboard'}
                     </button>

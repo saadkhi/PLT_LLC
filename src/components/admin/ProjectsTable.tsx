@@ -49,7 +49,7 @@ const ProjectsTable = ({ initialProjects }: ProjectsTableProps) => {
                         {initialProjects.map((project) => (
                             <tr key={project.id} className="hover:bg-gray-50 transition group">
                                 <td className="px-8 py-5">
-                                    <p className="font-bold text-gray-900 group-hover:text-black transition">{project.title}</p>
+                                    <p className="font-bold text-gray-900 group-hover:text-[#0A2540] transition">{project.title}</p>
                                 </td>
                                 <td className="px-8 py-5">
                                     <span className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-[10px] font-bold uppercase tracking-wider">
@@ -64,7 +64,7 @@ const ProjectsTable = ({ initialProjects }: ProjectsTableProps) => {
                                 <td className="px-8 py-5 text-right space-x-2">
                                     <Link
                                         href={`/admin/projects/${project.id}`}
-                                        className="inline-flex items-center justify-center w-9 h-9 bg-gray-50 text-gray-400 rounded-xl hover:bg-black hover:text-white transition shadow-sm"
+                                        className="inline-flex items-center justify-center w-9 h-9 bg-gray-50 text-gray-400 rounded-xl hover:bg-navy-900 hover:text-white transition shadow-sm"
                                         title="Edit"
                                     >
                                         <span className="text-[10px] uppercase font-black">Edit</span>

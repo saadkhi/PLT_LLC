@@ -31,11 +31,11 @@ const CareersSection = () => {
             >
                 <source src="/videos/people_office.mp4" type="video/mp4" />
             </video>
-            <div className="absolute inset-0 bg-black bg-opacity-70 z-10"></div>
+            <div className="absolute inset-0 bg-[#000000] bg-opacity-70 z-10"></div>
             <div className="absolute top-1/2 left-2 sm:left-16 transform -translate-y-1/2 text-white z-20 px-4 max-w-[90%] sm:max-w-[60%]">
                 <h1 className="text-3xl sm:text-6xl font-black uppercase mb-4 leading-tight tracking-tighter">Careers at<br />Primeline Tech</h1>
                 <p className="text-sm sm:text-xl font-medium text-white/70">Join us to innovate, grow, and make an impact in a dynamic tech-driven environment.</p>
-                <Link href="/careers" className="mt-8 inline-block px-10 py-4 bg-orange-500 text-white font-black uppercase tracking-widest rounded-xl shadow-lg hover:bg-orange-600 transition-all duration-300">Join the Team</Link>
+                <Link href="/careers" className="mt-8 inline-block px-10 py-4 bg-cyan-500 text-white font-black uppercase tracking-widest rounded-xl shadow-lg hover:bg-cyan-600 transition-all duration-300">Join the Team</Link>
             </div>
         </section>
     );

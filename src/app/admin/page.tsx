@@ -13,7 +13,7 @@ export default async function AdminDashboard() {
     const stats = [
         { label: 'Total Jobs', val: counts.jobs, color: 'bg-blue-500', icon: <Briefcase className="w-6 h-6" /> },
         { label: 'Applications', val: counts.applications, color: 'bg-green-500', icon: <FileText className="w-6 h-6" /> },
-        { label: 'Messages', val: counts.messages, color: 'bg-orange-500', icon: <Mail className="w-6 h-6" /> },
+        { label: 'Messages', val: counts.messages, color: 'bg-cyan-500', icon: <Mail className="w-6 h-6" /> },
         { label: 'Insights', val: counts.insights, color: 'bg-purple-500', icon: <Lightbulb className="w-6 h-6" /> },
     ];
 

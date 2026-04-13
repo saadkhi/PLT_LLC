@@ -50,12 +50,12 @@ const JobsTable = ({ initialJobs }: JobsTableProps) => {
                         {initialJobs.map((job) => (
                             <tr key={job.id} className="hover:bg-gray-50 transition group">
                                 <td className="px-8 py-5">
-                                    <p className="font-bold text-gray-900 group-hover:text-black transition">{job.title}</p>
+                                    <p className="font-bold text-gray-900 group-hover:text-[#0A2540] transition">{job.title}</p>
                                 </td>
                                 <td className="px-8 py-5 text-sm text-gray-500 font-medium">{job.location}</td>
                                 <td className="px-8 py-5">
                                     <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${job.job_mode === 'Remote' ? 'bg-green-50 text-green-600' :
-                                        job.job_mode === 'On-site' ? 'bg-orange-50 text-orange-600' : 'bg-blue-50 text-blue-600'
+                                        job.job_mode === 'On-site' ? 'bg-cyan-50 text-cyan-600' : 'bg-blue-50 text-blue-600'
                                         }`}>
                                         {job.job_mode}
                                     </span>
@@ -66,7 +66,7 @@ const JobsTable = ({ initialJobs }: JobsTableProps) => {
                                 <td className="px-8 py-5 text-right space-x-2">
                                     <Link
                                         href={`/admin/jobs/${job.id}`}
-                                        className="inline-flex items-center justify-center w-9 h-9 bg-gray-50 text-gray-400 rounded-xl hover:bg-black hover:text-white transition shadow-sm"
+                                        className="inline-flex items-center justify-center w-9 h-9 bg-gray-50 text-gray-400 rounded-xl hover:bg-navy-900 hover:text-white transition shadow-sm"
                                         title="Edit"
                                     >
                                         <span className="text-[10px] uppercase font-black">Edit</span>

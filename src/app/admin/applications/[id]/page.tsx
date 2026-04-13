@@ -38,7 +38,7 @@ export default async function ApplicationDetailPage({ params }: { params: { id: 
                     href={application.resume}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center bg-black text-white px-8 py-4 rounded-2xl font-bold hover:bg-gray-800 transition shadow-lg shadow-gray-200"
+                    className="flex items-center bg-navy-900 text-white px-8 py-4 rounded-2xl font-bold hover:bg-gray-800 transition shadow-lg shadow-gray-200"
                 >
                     <FileText className="w-5 h-5 mr-3" /> View Resume
                 </a>
@@ -76,7 +76,7 @@ export default async function ApplicationDetailPage({ params }: { params: { id: 
                         </div>
                     </div>
 
-                    <div className="bg-black rounded-3xl p-8 text-white shadow-xl">
+                    <div className="bg-navy-900 rounded-3xl p-8 text-white shadow-xl">
                         <h3 className="text-xs font-black text-white/50 uppercase tracking-[0.2em] mb-4">Quick Actions</h3>
                         <div className="space-y-3">
                             <button className="w-full py-4 px-6 rounded-2xl bg-white/10 hover:bg-white/20 font-bold transition text-sm">

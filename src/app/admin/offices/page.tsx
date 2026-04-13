@@ -131,7 +131,7 @@ export default function AdminOfficesPage() {
                             type="text"
                             value={formData.name}
                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                            className="w-full p-4 rounded-xl border border-gray-100 focus:ring-2 focus:ring-black outline-none transition font-bold text-sm bg-gray-50/50"
+                            className="w-full p-4 rounded-xl border border-gray-100 focus:ring-2 focus:ring-navy-900 outline-none transition font-bold text-sm bg-gray-50/50"
                             placeholder="e.g. Headquarters"
                             required
                         />
@@ -143,7 +143,7 @@ export default function AdminOfficesPage() {
                             rows={3}
                             value={formData.address}
                             onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                            className="w-full p-4 rounded-xl border border-gray-100 focus:ring-2 focus:ring-black outline-none transition font-bold text-sm bg-gray-50/50 resize-none"
+                            className="w-full p-4 rounded-xl border border-gray-100 focus:ring-2 focus:ring-navy-900 outline-none transition font-bold text-sm bg-gray-50/50 resize-none"
                             placeholder="Full physical address..."
                             required
                         />
@@ -155,7 +155,7 @@ export default function AdminOfficesPage() {
                             type="text"
                             value={formData.phone}
                             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                            className="w-full p-4 rounded-xl border border-gray-100 focus:ring-2 focus:ring-black outline-none transition font-bold text-sm bg-gray-50/50"
+                            className="w-full p-4 rounded-xl border border-gray-100 focus:ring-2 focus:ring-navy-900 outline-none transition font-bold text-sm bg-gray-50/50"
                             placeholder="+1 234 567 890"
                             required
                         />
@@ -167,7 +167,7 @@ export default function AdminOfficesPage() {
                             type="email"
                             value={formData.email}
                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                            className="w-full p-4 rounded-xl border border-gray-100 focus:ring-2 focus:ring-black outline-none transition font-bold text-sm bg-gray-50/50"
+                            className="w-full p-4 rounded-xl border border-gray-100 focus:ring-2 focus:ring-navy-900 outline-none transition font-bold text-sm bg-gray-50/50"
                             placeholder="info@pltllc.com"
                             required
                         />
@@ -179,7 +179,7 @@ export default function AdminOfficesPage() {
                             type="text"
                             value={formData.office_hours}
                             onChange={(e) => setFormData({ ...formData, office_hours: e.target.value })}
-                            className="w-full p-4 rounded-xl border border-gray-100 focus:ring-2 focus:ring-black outline-none transition font-bold text-sm bg-gray-50/50"
+                            className="w-full p-4 rounded-xl border border-gray-100 focus:ring-2 focus:ring-navy-900 outline-none transition font-bold text-sm bg-gray-50/50"
                             placeholder="Mon - Fri: 9:00 AM - 5:00 PM"
                             required
                         />
@@ -191,7 +191,7 @@ export default function AdminOfficesPage() {
                             id="is_main"
                             checked={formData.is_main}
                             onChange={(e) => setFormData({ ...formData, is_main: e.target.checked })}
-                            className="w-5 h-5 rounded border-gray-300 text-black focus:ring-black"
+                            className="w-5 h-5 rounded border-gray-300 text-[#0A2540] focus:ring-navy-900"
                         />
                         <label htmlFor="is_main" className="text-sm font-bold text-gray-700 cursor-pointer">Set as Main Office</label>
                     </div>
@@ -220,7 +220,7 @@ export default function AdminOfficesPage() {
                     <button
                         type="submit"
                         disabled={loading}
-                        className="bg-black text-white px-8 py-4 rounded-xl font-bold hover:bg-gray-800 transition shadow-lg shadow-gray-200 disabled:opacity-50"
+                        className="bg-navy-900 text-white px-8 py-4 rounded-xl font-bold hover:bg-gray-800 transition shadow-lg shadow-gray-200 disabled:opacity-50"
                     >
                         {loading ? 'Saving...' : isEditing ? 'Update Office' : 'Add Office'}
                     </button>
@@ -241,7 +241,7 @@ export default function AdminOfficesPage() {
                             <tr key={office.id} className="hover:bg-gray-50 transition-colors group">
                                 <td className="px-8 py-5">
                                     <div className="flex items-center space-x-2">
-                                        <p className="font-bold text-gray-900 group-hover:text-black transition">{office.name}</p>
+                                        <p className="font-bold text-gray-900 group-hover:text-[#0A2540] transition">{office.name}</p>
                                         {office.is_main && (
                                             <span className="bg-green-100 text-green-700 text-[8px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full">Main</span>
                                         )}
@@ -255,7 +255,7 @@ export default function AdminOfficesPage() {
                                     <div className="flex justify-end space-x-2">
                                         <button
                                             onClick={() => handleEdit(office)}
-                                            className="w-8 h-8 flex items-center justify-center bg-gray-50 text-gray-400 rounded-lg hover:bg-black hover:text-white transition shadow-sm"
+                                            className="w-8 h-8 flex items-center justify-center bg-gray-50 text-gray-400 rounded-lg hover:bg-navy-900 hover:text-white transition shadow-sm"
                                             title="Edit"
                                         >
                                             <span className="text-[10px] uppercase font-black">Edit</span>

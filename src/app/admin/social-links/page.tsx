@@ -139,7 +139,7 @@ export default function AdminSocialLinksPage() {
                                     type="text"
                                     value={formData.platform_name}
                                     onChange={(e) => setFormData({ ...formData, platform_name: e.target.value })}
-                                    className="w-full p-4 rounded-xl border border-gray-100 focus:ring-2 focus:ring-black outline-none transition font-bold text-sm bg-gray-50/50"
+                                    className="w-full p-4 rounded-xl border border-gray-100 focus:ring-2 focus:ring-navy-900 outline-none transition font-bold text-sm bg-gray-50/50"
                                     placeholder="e.g. Facebook"
                                     required
                                 />
@@ -151,7 +151,7 @@ export default function AdminSocialLinksPage() {
                                     type="text"
                                     value={formData.icon}
                                     onChange={(e) => setFormData({ ...formData, icon: e.target.value })}
-                                    className="w-full p-4 rounded-xl border border-gray-100 focus:ring-2 focus:ring-black outline-none transition font-bold text-sm bg-gray-50/50"
+                                    className="w-full p-4 rounded-xl border border-gray-100 focus:ring-2 focus:ring-navy-900 outline-none transition font-bold text-sm bg-gray-50/50"
                                     placeholder="e.g. facebook, instagram, twitter"
                                 />
                             </div>
@@ -162,7 +162,7 @@ export default function AdminSocialLinksPage() {
                                     type="url"
                                     value={formData.url}
                                     onChange={(e) => setFormData({ ...formData, url: e.target.value })}
-                                    className="w-full p-4 rounded-xl border border-gray-100 focus:ring-2 focus:ring-black outline-none transition font-bold text-sm bg-gray-50/50"
+                                    className="w-full p-4 rounded-xl border border-gray-100 focus:ring-2 focus:ring-navy-900 outline-none transition font-bold text-sm bg-gray-50/50"
                                     placeholder="https://facebook.com/pltllc"
                                     required
                                 />
@@ -189,7 +189,7 @@ export default function AdminSocialLinksPage() {
                             <button
                                 type="submit"
                                 disabled={loading}
-                                className="bg-black text-white px-8 py-4 rounded-xl font-bold hover:bg-gray-800 transition shadow-lg shadow-gray-200 disabled:opacity-50"
+                                className="bg-navy-900 text-white px-8 py-4 rounded-xl font-bold hover:bg-gray-800 transition shadow-lg shadow-gray-200 disabled:opacity-50"
                             >
                                 {loading ? 'Saving...' : isEditing ? 'Update Link' : 'Add Link'}
                             </button>
@@ -209,7 +209,7 @@ export default function AdminSocialLinksPage() {
                                 {socialLinks.map((link) => (
                                     <tr key={link.id} className="hover:bg-gray-50 transition-colors group">
                                         <td className="px-8 py-5">
-                                            <p className="font-bold text-gray-900 group-hover:text-black transition">{link.platform_name}</p>
+                                            <p className="font-bold text-gray-900 group-hover:text-[#0A2540] transition">{link.platform_name}</p>
                                             <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">{link.icon || 'No Icon'}</p>
                                         </td>
                                         <td className="px-8 py-5">
@@ -226,7 +226,7 @@ export default function AdminSocialLinksPage() {
                                             <div className="flex justify-end space-x-2">
                                                 <button
                                                     onClick={() => handleEdit(link)}
-                                                    className="w-8 h-8 flex items-center justify-center bg-gray-50 text-gray-400 rounded-lg hover:bg-black hover:text-white transition shadow-sm"
+                                                    className="w-8 h-8 flex items-center justify-center bg-gray-50 text-gray-400 rounded-lg hover:bg-navy-900 hover:text-white transition shadow-sm"
                                                     title="Edit"
                                                 >
                                                     <span className="text-[10px] uppercase font-black">Edit</span>

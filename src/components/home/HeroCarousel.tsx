@@ -67,7 +67,7 @@ const HeroCarousel = () => {
 
     return (
         <section
-            className="relative h-screen w-full overflow-hidden bg-black"
+            className="relative h-screen w-full overflow-hidden bg-navy-900"
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
@@ -89,7 +89,7 @@ const HeroCarousel = () => {
             ))}
 
             {/* Dark overlay */}
-            <div className="absolute inset-0 bg-black/50 z-10"></div>
+            <div className="absolute inset-0 bg-[#000000]/50 z-10"></div>
 
 
             {/* Hero Overlays */}
@@ -102,8 +102,8 @@ const HeroCarousel = () => {
                         <div className="max-w-4xl pointer-events-auto mt-16 md:mt-0">
                             {index === 0 ? (
                                 <>
-                                    <h1 className="text-[clamp(2.5rem,8vw,5.5rem)] font-black leading-[0.95] tracking-tighter mb-6 uppercase text-white drop-shadow-2xl">
-                                        Designing<br /><span className="text-orange-500">tomorrow</span>,<br />differently.
+                                    <h1 className="text-[clamp(2rem,10vw,5.5rem)] font-black leading-[0.95] tracking-tighter mb-6 uppercase text-white drop-shadow-2xl">
+                                        Designing<br /><span className="text-cyan-500">tomorrow</span>,<br />differently.
                                     </h1>
                                     <p className="text-sm sm:text-lg md:text-xl font-medium text-white/90 max-w-xl mb-10 leading-relaxed">
                                         Advancing growth while crafting the future through meaningful transformation.
@@ -111,8 +111,8 @@ const HeroCarousel = () => {
                                 </>
                             ) : (
                                 <>
-                                    <h1 className="text-[clamp(2.5rem,8vw,5.5rem)] font-black leading-[0.95] tracking-tighter mb-6 uppercase text-white drop-shadow-2xl">
-                                        Smart <span className="text-orange-500">innovation</span><br />that transforms.
+                                    <h1 className="text-[clamp(2rem,10vw,5.5rem)] font-black leading-[0.95] tracking-tighter mb-6 uppercase text-white drop-shadow-2xl">
+                                        Smart <span className="text-cyan-500">innovation</span><br />that transforms.
                                     </h1>
                                     <p className="text-sm sm:text-lg md:text-xl font-medium text-white/90 max-w-xl mb-10 leading-relaxed">
                                         Your ideas, instantly transformed into personalized solutions.
@@ -122,7 +122,7 @@ const HeroCarousel = () => {
 
                             <Link
                                 href="/insights"
-                                className="inline-flex items-center px-8 py-4 bg-orange-500 text-white text-xs sm:text-sm font-black uppercase tracking-widest rounded-2xl shadow-2xl shadow-orange-500/40 transform transition-all duration-300 hover:scale-105 hover:bg-orange-600 active:scale-95"
+                                className="inline-flex items-center px-8 py-4 bg-cyan-500 text-white text-xs sm:text-sm font-black uppercase tracking-widest rounded-2xl shadow-2xl shadow-cyan-500/40 transform transition-all duration-300 hover:scale-105 hover:bg-cyan-600 active:scale-95"
                             >
                                 Explore Insights
                                 <ChevronRight className="w-5 h-5 ml-2" strokeWidth={3} />
@@ -138,7 +138,7 @@ const HeroCarousel = () => {
                         <button
                             key={index}
                             onClick={() => setCurrent(index)}
-                            className={`h-2 transition-all duration-500 rounded-full border border-black/20 ${index === current ? 'w-12 bg-orange-500 shadow-[0_0_10px_rgba(249,115,22,0.5)]' : 'w-4 bg-white/40 hover:bg-white/60'}`}
+                            className={`h-2 transition-all duration-500 rounded-full border border-navy-900/20 ${index === current ? 'w-12 bg-cyan-500 shadow-[0_0_10px_rgba(249,115,22,0.5)]' : 'w-4 bg-white/40 hover:bg-white/60'}`}
                             aria-label={`Go to slide ${index + 1}`}
                         />
                     ))}

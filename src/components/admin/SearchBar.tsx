@@ -36,7 +36,7 @@ const SearchBar = ({ placeholder = "Search..." }: SearchBarProps) => {
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                className="block w-full pl-11 pr-4 py-3 bg-gray-50 border-none rounded-2xl text-sm font-medium focus:ring-2 focus:ring-black outline-none transition placeholder:text-gray-400"
+                className="block w-full pl-11 pr-4 py-3 bg-gray-50 border-none rounded-2xl text-sm font-medium focus:ring-2 focus:ring-navy-900 outline-none transition placeholder:text-gray-400"
                 placeholder={placeholder}
             />
         </div>

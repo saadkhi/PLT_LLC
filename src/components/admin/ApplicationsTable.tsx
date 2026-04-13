@@ -50,7 +50,7 @@ const ApplicationsTable = ({ initialApplications }: ApplicationsTableProps) => {
                         {initialApplications.map((app) => (
                             <tr key={app.id} className="hover:bg-gray-50 transition group">
                                 <td className="px-8 py-5">
-                                    <p className="font-bold text-gray-900 group-hover:text-black transition">{app.name}</p>
+                                    <p className="font-bold text-gray-900 group-hover:text-[#0A2540] transition">{app.name}</p>
                                 </td>
                                 <td className="px-8 py-5 text-sm text-gray-500 font-medium">{app.job?.title || 'N/A'}</td>
                                 <td className="px-8 py-5 text-sm text-gray-500 font-medium">{app.email}</td>
@@ -60,7 +60,7 @@ const ApplicationsTable = ({ initialApplications }: ApplicationsTableProps) => {
                                 <td className="px-8 py-5 text-right space-x-2">
                                     <Link
                                         href={`/admin/applications/${app.id}`}
-                                        className="inline-flex items-center justify-center w-9 h-9 bg-gray-50 text-gray-400 rounded-xl hover:bg-black hover:text-white transition shadow-sm"
+                                        className="inline-flex items-center justify-center w-9 h-9 bg-gray-50 text-gray-400 rounded-xl hover:bg-navy-900 hover:text-white transition shadow-sm"
                                         title="View Details"
                                     >
                                         <span className="text-[10px] uppercase font-black">View</span>

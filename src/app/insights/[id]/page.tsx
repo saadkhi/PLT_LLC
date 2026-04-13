@@ -17,10 +17,10 @@ export default async function InsightDetailPage({ params }: { params: { id: stri
     return (
         <div className="px-4 sm:px-8 md:px-16 lg:px-40 pb-16">
             <div className="max-w-4xl mx-auto mt-8">
-                <Link href="/insights" className="text-orange-500 font-semibold mb-8 inline-block hover:underline">&larr; Back to Insights</Link>
+                <Link href="/insights" className="text-cyan-500 font-semibold mb-8 inline-block hover:underline">&larr; Back to Insights</Link>
 
-                <h1 className="text-3xl sm:text-5xl font-bold text-black mb-6 leading-tight">{insight.title}</h1>
-                <p className="text-orange-500 font-bold mb-8">{new Date(insight.created_at).toLocaleDateString()}</p>
+                <h1 className="text-3xl sm:text-5xl font-bold text-[#0A2540] mb-6 leading-tight">{insight.title}</h1>
+                <p className="text-cyan-500 font-bold mb-8">{new Date(insight.created_at).toLocaleDateString()}</p>
 
                 <div className="bg-white rounded-3xl shadow-xl overflow-hidden mb-12">
                     <div className="h-[400px] bg-gray-100 flex items-center justify-center p-8 relative">

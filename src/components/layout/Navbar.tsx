@@ -46,7 +46,7 @@ const Navbar = () => {
         <>
             <header
                 id="navbar"
-                className={`fixed top-0 left-0 w-full bg-white backdrop-blur-md text-black px-6 py-4 z-50 border-b border-gray-100 transition-all duration-500 ease-in-out ${visible ? 'translate-y-0' : '-translate-y-full'}`}
+                className={`fixed top-0 left-0 w-full bg-white backdrop-blur-md text-[#0A2540] px-6 py-4 z-50 border-b border-gray-100 transition-all duration-500 ease-in-out ${visible ? 'translate-y-0' : '-translate-y-full'}`}
             >
                 <nav className="max-w-7xl mx-auto flex justify-between items-center">
                     <div className="flex items-center flex-shrink-0">
@@ -70,7 +70,7 @@ const Navbar = () => {
                                 <li key={link.name}>
                                     <Link
                                         href={link.href}
-                                        className="text-sm font-bold uppercase tracking-widest hover:text-orange-500 transition-colors duration-300"
+                                        className="text-sm font-bold uppercase tracking-widest hover:text-cyan-500 transition-colors duration-300"
                                     >
                                         {link.name}
                                     </Link>
@@ -79,7 +79,7 @@ const Navbar = () => {
                         </ul>
                         <button
                             onClick={() => window.dispatchEvent(new CustomEvent('open-quote-drawer'))}
-                            className="bg-orange-500 text-white px-6 py-3 rounded-full text-xs font-black uppercase tracking-widest hover:bg-orange-600 transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg shadow-orange-500/20"
+                            className="bg-cyan-500 text-white px-6 py-3 rounded-full text-xs font-black uppercase tracking-widest hover:bg-cyan-600 transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg shadow-cyan-500/20"
                         >
                             Get A Quote
                         </button>
@@ -88,7 +88,7 @@ const Navbar = () => {
                     {/* Mobile Hamburger Button */}
                     <button
                         id="hamburger-btn"
-                        className="lg:hidden p-2 text-gray-900 transition-colors hover:text-orange-500"
+                        className="lg:hidden p-4 text-gray-900 transition-colors hover:text-cyan-500"
                         onClick={() => setMobileMenuOpen(true)}
                         aria-label="Open Menu"
                     >
@@ -103,7 +103,7 @@ const Navbar = () => {
             >
                 {/* Backdrop */}
                 <div
-                    className={`absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-500 ${mobileMenuOpen ? 'opacity-100' : 'opacity-0'}`}
+                    className={`absolute inset-0 bg-navy-900/60 backdrop-blur-sm transition-opacity duration-500 ${mobileMenuOpen ? 'opacity-100' : 'opacity-0'}`}
                     onClick={() => setMobileMenuOpen(false)}
                 />
 
@@ -122,7 +122,7 @@ const Navbar = () => {
                         />
                         <button
                             onClick={() => setMobileMenuOpen(false)}
-                            className="p-2 text-gray-500 hover:text-black transition-colors"
+                            className="p-2 text-gray-500 hover:text-[#0A2540] transition-colors"
                         >
                             <X size={24} />
                         </button>
@@ -138,21 +138,21 @@ const Navbar = () => {
                                         onClick={() => setMobileMenuOpen(false)}
                                     >
                                         <span>{link.name}</span>
-                                        <ChevronRight size={20} className="text-gray-300 group-hover:text-orange-500 transform group-hover:translate-x-1 transition-all" />
+                                        <ChevronRight size={20} className="text-gray-300 group-hover:text-cyan-500 transform group-hover:translate-x-1 transition-all" />
                                     </Link>
                                 </li>
                             ))}
                         </ul>
 
                         <div className="mt-12 pt-12 border-t border-gray-100">
-                            <p className="text-[10px] font-black uppercase tracking-[0.2em] text-orange-500 mb-6">Connect with us</p>
+                            <p className="text-[10px] font-black uppercase tracking-[0.2em] text-cyan-500 mb-6">Connect with us</p>
                             <div className="space-y-4">
                                 <a href="mailto:primelinetech@gmail.com" className="flex items-center space-x-3 text-gray-600 font-bold text-sm">
-                                    <Mail size={18} className="text-orange-500" />
+                                    <Mail size={18} className="text-cyan-500" />
                                     <span>primelinetech@gmail.com</span>
                                 </a>
                                 <a href="tel:+923353948753" className="flex items-center space-x-3 text-gray-600 font-bold text-sm">
-                                    <Phone size={18} className="text-orange-500" />
+                                    <Phone size={18} className="text-cyan-500" />
                                     <span>+92 335 3948753</span>
                                 </a>
                             </div>
@@ -165,7 +165,7 @@ const Navbar = () => {
                                 setMobileMenuOpen(false);
                                 window.dispatchEvent(new CustomEvent('open-quote-drawer'));
                             }}
-                            className="flex items-center justify-center w-full bg-orange-500 text-white py-5 rounded-2xl font-black uppercase tracking-widest text-sm hover:bg-orange-600 transition-colors shadow-lg shadow-orange-500/20"
+                            className="flex items-center justify-center w-full bg-cyan-500 text-white py-5 rounded-2xl font-black uppercase tracking-widest text-sm hover:bg-cyan-600 transition-colors shadow-lg shadow-cyan-500/20"
                         >
                             Get A Quote
                         </button>

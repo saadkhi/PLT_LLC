@@ -14,7 +14,7 @@ const DeleteModal = ({ isOpen, onClose, onConfirm, itemName }: DeleteModalProps)
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] flex items-center justify-center p-6 animate-in fade-in duration-300">
+        <div className="fixed inset-0 bg-navy-900/60 backdrop-blur-sm z-[100] flex items-center justify-center p-6 animate-in fade-in duration-300">
             <div className="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl space-y-6 transform scale-100 animate-in zoom-in-95 duration-200">
                 <div className="text-center">
                     <div className="w-16 h-16 bg-red-50 text-red-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">

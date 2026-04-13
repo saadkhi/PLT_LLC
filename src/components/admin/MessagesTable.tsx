@@ -50,7 +50,7 @@ const MessagesTable = ({ initialMessages }: MessagesTableProps) => {
                         {initialMessages.map((msg) => (
                             <tr key={msg.id} className="hover:bg-gray-50 transition group">
                                 <td className="px-8 py-5">
-                                    <p className="font-bold text-gray-900 group-hover:text-black transition">{msg.name}</p>
+                                    <p className="font-bold text-gray-900 group-hover:text-[#0A2540] transition">{msg.name}</p>
                                 </td>
                                 <td className="px-8 py-5 text-sm text-gray-500 font-medium">{msg.email}</td>
                                 <td className="px-8 py-5 text-sm text-gray-500 font-medium line-clamp-1 max-w-[200px]">{msg.subject}</td>
@@ -59,7 +59,7 @@ const MessagesTable = ({ initialMessages }: MessagesTableProps) => {
                                 </td>
                                 <td className="px-8 py-5 text-right space-x-2">
                                     <button
-                                        className="inline-flex items-center justify-center w-9 h-9 bg-gray-50 text-gray-400 rounded-xl hover:bg-black hover:text-white transition shadow-sm"
+                                        className="inline-flex items-center justify-center w-9 h-9 bg-gray-50 text-gray-400 rounded-xl hover:bg-navy-900 hover:text-white transition shadow-sm"
                                         title="View Message"
                                     >
                                         <span className="text-[10px] uppercase font-black">View</span>

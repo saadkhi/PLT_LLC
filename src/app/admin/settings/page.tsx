@@ -77,7 +77,7 @@ export default function AdminSettingsPage() {
                             type="text"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
-                            className="w-full p-4 rounded-2xl border border-gray-100 focus:ring-2 focus:ring-black outline-none transition font-bold text-sm bg-gray-50/50"
+                            className="w-full p-4 rounded-2xl border border-gray-100 focus:ring-2 focus:ring-navy-900 outline-none transition font-bold text-sm bg-gray-50/50"
                             required
                         />
                     </div>
@@ -88,7 +88,7 @@ export default function AdminSettingsPage() {
                             type="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            className="w-full p-4 rounded-2xl border border-gray-100 focus:ring-2 focus:ring-black outline-none transition font-bold text-sm bg-gray-50/50"
+                            className="w-full p-4 rounded-2xl border border-gray-100 focus:ring-2 focus:ring-navy-900 outline-none transition font-bold text-sm bg-gray-50/50"
                             placeholder="••••••••"
                             required
                         />
@@ -100,7 +100,7 @@ export default function AdminSettingsPage() {
                             type="password"
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
-                            className="w-full p-4 rounded-2xl border border-gray-100 focus:ring-2 focus:ring-black outline-none transition font-bold text-sm bg-gray-50/50"
+                            className="w-full p-4 rounded-2xl border border-gray-100 focus:ring-2 focus:ring-navy-900 outline-none transition font-bold text-sm bg-gray-50/50"
                             placeholder="••••••••"
                             required
                         />
@@ -111,7 +111,7 @@ export default function AdminSettingsPage() {
                     <button
                         type="submit"
                         disabled={loading}
-                        className="bg-black text-white px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-gray-800 transition shadow-xl shadow-gray-200 disabled:opacity-50"
+                        className="bg-navy-900 text-white px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-gray-800 transition shadow-xl shadow-gray-200 disabled:opacity-50"
                     >
                         {loading ? 'Saving Changes...' : 'Update Records'}
                     </button>

@@ -60,7 +60,7 @@ const Sidebar = () => {
                             href={item.href}
                             onClick={() => setIsOpen(false)}
                             className={`flex items-center space-x-3 px-4 py-3 rounded-2xl transition-all duration-200 group ${isActive
-                                ? 'bg-black text-white shadow-lg shadow-gray-200 translate-x-1'
+                                ? 'bg-navy-900 text-white shadow-lg shadow-gray-200 translate-x-1'
                                 : 'text-gray-500 hover:bg-gray-50 hover:text-gray-900'
                                 }`}
                         >
@@ -99,7 +99,7 @@ const Sidebar = () => {
             {/* Mobile Sidebar Overlay */}
             {isOpen && (
                 <div
-                    className="lg:hidden fixed inset-0 bg-black/20 backdrop-blur-sm z-[60]"
+                    className="lg:hidden fixed inset-0 bg-navy-900/20 backdrop-blur-sm z-[60]"
                     onClick={() => setIsOpen(false)}
                 />
             )}
