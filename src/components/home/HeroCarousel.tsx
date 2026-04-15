@@ -46,24 +46,28 @@ const HeroCarousel = () => {
         return () => clearInterval(interval);
     }, [nextSlide]);
 
-    // Robust video playback
+    // Robust conditional playback driven by state
     useEffect(() => {
         const playVideos = () => {
-            videoRefs.current.forEach(video => {
+            videoRefs.current.forEach((video, index) => {
                 if (video) {
-                    video.muted = true;
-                    video.play().catch(() => {
-                        // Retry playback on user interaction if needed
-                    });
+                    if (index === current) {
+                        video.muted = true;
+                        // Forcibly start only the visible active slide
+                        video.play().catch(() => { });
+                    } else {
+                        // Forcibly pause hidden slides tracking memory safely
+                        video.pause();
+                    }
                 }
             });
         };
 
         playVideos();
-        // Fallback for some browsers
+        // Fallback for some browsers specifically blocking non-touch unmuted playback
         window.addEventListener('touchstart', playVideos, { once: true });
         return () => window.removeEventListener('touchstart', playVideos);
-    }, []);
+    }, [current]);
 
     return (
         <section
@@ -78,11 +82,10 @@ const HeroCarousel = () => {
                     key={src}
                     ref={el => { videoRefs.current[index] = el; }}
                     className={`video-slide absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 ${index === current ? 'opacity-100' : 'opacity-0'}`}
-                    autoPlay
                     muted
                     loop
                     playsInline
-                    preload="auto"
+                    preload={index === 0 ? "auto" : "none"}
                 >
                     <source src={src} type="video/mp4" />
                 </video>

@@ -7,15 +7,27 @@ const CareersSection = () => {
     const videoRef = useRef<HTMLVideoElement>(null);
 
     useEffect(() => {
-        if (videoRef.current) {
-            videoRef.current.muted = true;
-            const playPromise = videoRef.current.play();
-            if (playPromise !== undefined) {
-                playPromise.catch(() => {
-                    // Auto-play was prevented, handles gracefully
+        if (!videoRef.current) return;
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting && videoRef.current) {
+                        videoRef.current.muted = true;
+                        videoRef.current.play().catch(() => { });
+                        // Optional: Disconnect after hitting play safely so it loops uninterrupted without re-triggering observer callbacks
+                        observer.disconnect();
+                    }
                 });
-            }
-        }
+            },
+            { threshold: 0.1 }
+        );
+
+        observer.observe(videoRef.current);
+
+        return () => {
+            observer.disconnect();
+        };
     }, []);
 
     return (
@@ -23,7 +35,6 @@ const CareersSection = () => {
             <video
                 ref={videoRef}
                 className="absolute top-0 left-0 w-full h-full object-cover"
-                autoPlay
                 muted
                 loop
                 playsInline
