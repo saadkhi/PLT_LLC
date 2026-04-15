@@ -3,7 +3,6 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import LayoutWrapper from "@/components/layout/LayoutWrapper";
 import Footer from "@/components/layout/Footer";
-import { headers } from 'next/headers';
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -37,24 +36,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const headersList = headers();
-  const referer = headersList.get('referer') || '';
-  const pathname = headersList.get('x-invoke-path') || '';
-  const isAdmin = pathname.startsWith('/admin') || referer.includes('/admin');
-
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${plusJakartaSans.variable} font-sans bg-white font-thin antialiased overflow-x-hidden`} suppressHydrationWarning>
-        {!isAdmin ? (
-          <>
-            <LayoutWrapper>
-              {children}
-            </LayoutWrapper>
-            <Footer />
-          </>
-        ) : (
-          <main>{children}</main>
-        )}
+        <LayoutWrapper footer={<Footer />}>
+          {children}
+        </LayoutWrapper>
       </body>
     </html>
   );

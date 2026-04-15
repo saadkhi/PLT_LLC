@@ -27,7 +27,7 @@ const CareersSection = () => {
                 muted
                 loop
                 playsInline
-                preload="auto"
+                preload="none"
             >
                 <source src="/videos/people_office.mp4" type="video/mp4" />
             </video>
