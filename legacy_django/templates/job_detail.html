@@ -23,10 +23,10 @@
   form textarea:focus,
   form select:focus {
     outline: none;
-    border-color: #f97316;
-    /* Tailwind blue-500 */
-    box-shadow: 0 0 0 1px #f97316;
-    /* Equivalent to Tailwind ring-2 ring-blue-500 */
+    border-color: #00D4FF;
+    /* Tailwind cyan-500 */
+    box-shadow: 0 0 0 1px #00D4FF;
+    /* Equivalent to Tailwind ring-2 ring-cyan-500 */
   }
 </style>
 
@@ -62,7 +62,7 @@
           {% csrf_token %}
           {{ form.as_p }}
           <button type="submit"
-            class="bg-black text-white font-semibold px-4 sm:px-6 py-2 sm:py-3 rounded-xl shadow-md hover:bg-orange-500 transition">
+            class="bg-black text-white font-semibold px-4 sm:px-6 py-2 sm:py-3 rounded-xl shadow-md hover:bg-cyan-500 transition">
             Submit Application
           </button>
         </form>

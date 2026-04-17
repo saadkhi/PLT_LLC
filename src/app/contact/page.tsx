@@ -60,7 +60,7 @@ export default async function ContactPage() {
                                         </div>
                                         <div>
                                             <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-300 block mb-1">Email</label>
-                                            <a href={`mailto:${mainOffice.email}`} className="text-[#0A2540] font-bold text-lg leading-tight hover:text-cyan-500 transition-colors uppercase decoration-orange-500/30 decoration-2">{mainOffice.email}</a>
+                                            <a href={`mailto:${mainOffice.email}`} className="text-[#0A2540] font-bold text-lg leading-tight hover:text-cyan-500 transition-colors uppercase decoration-cyan-500/30 decoration-2">{mainOffice.email}</a>
                                         </div>
                                     </div>
 
