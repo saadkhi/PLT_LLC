@@ -1,7 +1,8 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
 import { Job } from '@prisma/client';
-import prisma from '@/lib/prisma'; // Using Prisma directly since it's a Server Component
+import prisma from '@/lib/prisma';
+export const dynamic = 'force-dynamic';
 
 export default async function JobDetailPage({ params }: { params: { id: string } }) {
     const job = await prisma.job.findUnique({

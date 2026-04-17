@@ -1,6 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 import prisma from '@/lib/prisma';
+
+export const dynamic = 'force-dynamic';
 import { getImageUrl } from '@/lib/utils';
 import Image from 'next/image';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';

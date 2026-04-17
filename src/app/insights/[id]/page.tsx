@@ -2,6 +2,7 @@ import React from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import prisma from '@/lib/prisma';
+export const dynamic = 'force-dynamic';
 import Image from 'next/image';
 import { getImageUrl } from '@/lib/utils';
 

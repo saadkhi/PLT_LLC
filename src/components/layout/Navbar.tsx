@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { getImageUrl } from '@/lib/utils';
 import { Menu, X, ChevronRight, Phone, Mail } from 'lucide-react';
 
-const Navbar = () => {
+const Navbar = ({ contactInfo }: { contactInfo?: { email?: string; phone?: string } }) => {
     const [prevScrollPos, setPrevScrollPos] = useState(0);
     const [visible, setVisible] = useState(true);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -147,13 +147,13 @@ const Navbar = () => {
                         <div className="mt-12 pt-12 border-t border-gray-100">
                             <p className="text-[10px] font-black uppercase tracking-[0.2em] text-cyan-500 mb-6">Connect with us</p>
                             <div className="space-y-4">
-                                <a href="mailto:primelinetech@gmail.com" className="flex items-center space-x-3 text-gray-600 font-bold text-sm">
+                                <a href={`mailto:${contactInfo?.email || 'primelinetech@gmail.com'}`} className="flex items-center space-x-3 text-gray-600 font-bold text-sm">
                                     <Mail size={18} className="text-cyan-500" />
-                                    <span>primelinetech@gmail.com</span>
+                                    <span>{contactInfo?.email || 'primelinetech@gmail.com'}</span>
                                 </a>
-                                <a href="tel:+923353948753" className="flex items-center space-x-3 text-gray-600 font-bold text-sm">
+                                <a href={`tel:${contactInfo?.phone || '+923353948753'}`} className="flex items-center space-x-3 text-gray-600 font-bold text-sm">
                                     <Phone size={18} className="text-cyan-500" />
-                                    <span>+92 335 3948753</span>
+                                    <span>{contactInfo?.phone || '+92 335 3948753'}</span>
                                 </a>
                             </div>
                         </div>

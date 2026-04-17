@@ -6,6 +6,9 @@ import HeroCarousel from '@/components/home/HeroCarousel';
 import CareersSection from '@/components/home/CareersSection';
 import { getImageUrl } from '@/lib/utils';
 import { ChevronRight } from 'lucide-react';
+import { getGlobalData } from '@/lib/globalData';
+
+export const dynamic = 'force-dynamic';
 
 export default async function Home() {
   const categories = await prisma.category.findMany({
@@ -17,6 +20,9 @@ export default async function Home() {
     { name: "Sara Ahmed", role: "MD, HealthCare Plus", content: "Excellent communication and top-notch delivery." },
     { name: "David Smith", role: "Founder, E-Shop", content: "Our website is now faster and more scalable thanks to them." },
   ];
+
+  const globalData = await getGlobalData();
+  const mainOffice = globalData.mainOffice;
 
   return (
     <div>
@@ -144,7 +150,7 @@ export default async function Home() {
                 </div>
                 <div className="text-left">
                   <span className="block text-cyan-400 font-black uppercase text-[10px] tracking-[0.2em] mb-1">Mail Now</span>
-                  <span className="text-white font-bold text-sm md:text-lg break-all selection:bg-cyan-500">primelinetech@gmail.com</span>
+                  <span className="text-white font-bold text-sm md:text-lg break-all selection:bg-cyan-500">{mainOffice?.email || 'primelinetech@gmail.com'}</span>
                 </div>
               </div>
 
@@ -154,7 +160,7 @@ export default async function Home() {
                 </div>
                 <div className="text-left">
                   <span className="block text-cyan-400 font-black uppercase text-[10px] tracking-[0.2em] mb-1">Call Now</span>
-                  <span className="text-white font-bold text-sm md:text-lg selection:bg-cyan-500">+92 335 3948753</span>
+                  <span className="text-white font-bold text-sm md:text-lg selection:bg-cyan-500">{mainOffice?.phone || '+92 335 3948753'}</span>
                 </div>
               </div>
             </div>

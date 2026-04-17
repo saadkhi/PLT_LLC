@@ -1,6 +1,8 @@
 import React from 'react';
 import prisma from '@/lib/prisma';
 import { getImageUrl } from '@/lib/utils';
+
+export const dynamic = 'force-dynamic';
 import Image from 'next/image';
 
 export default async function PortfolioPage() {

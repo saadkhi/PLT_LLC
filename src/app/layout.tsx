@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import LayoutWrapper from "@/components/layout/LayoutWrapper";
 import Footer from "@/components/layout/Footer";
+import { getGlobalData } from "@/lib/globalData";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -31,15 +32,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const globalData = await getGlobalData();
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${plusJakartaSans.variable} font-sans bg-white font-thin antialiased overflow-x-hidden`} suppressHydrationWarning>
-        <LayoutWrapper footer={<Footer />}>
+        <LayoutWrapper
+          footer={<Footer initialData={globalData} />}
+          contactInfo={{ email: globalData.mainOffice?.email, phone: globalData.mainOffice?.phone }}
+        >
           {children}
         </LayoutWrapper>
       </body>

@@ -21,10 +21,10 @@ interface SocialLink {
     icon: string | null;
 }
 
-const Footer = async () => {
-    // Attempting access via lowercase properties first
-    const offices = (await (prisma as any).office.findMany({ orderBy: { id: 'asc' } })) as any[];
-    const socialLinks = (await (prisma as any).socialLink.findMany({ orderBy: { id: 'asc' } })) as any[];
+const Footer = async ({ initialData }: { initialData?: { offices: any[], socialLinks: any[], mainOffice: any } }) => {
+    // If initialData is provided (from RootLayout), use it; otherwise fetch (for direct usage)
+    const offices = initialData?.offices || (await (prisma as any).office.findMany({ orderBy: { id: 'asc' } })) as any[];
+    const socialLinks = initialData?.socialLinks || (await (prisma as any).socialLink.findMany({ orderBy: { id: 'asc' } })) as any[];
 
     const mainOffice = offices.find((o: any) => o.is_main);
 

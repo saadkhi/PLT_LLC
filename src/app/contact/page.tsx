@@ -1,13 +1,12 @@
 import prisma from '@/lib/prisma';
 import ContactForm from '@/components/common/ContactForm';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { getGlobalData } from '@/lib/globalData';
+
+export const dynamic = 'force-dynamic';
 
 export default async function ContactPage() {
-    const offices = (await (prisma as any).office.findMany({
-        orderBy: { is_main: 'desc' }
-    })) as any[];
-
-    const mainOffice = offices.find(o => o.is_main);
+    const { offices, mainOffice } = await getGlobalData();
 
     return (
         <div className="bg-white min-h-screen">
