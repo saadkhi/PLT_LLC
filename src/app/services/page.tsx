@@ -33,7 +33,7 @@ export default async function ServicesPage() {
                         >
                             {/* Image Container */}
                             <div className="w-full lg:w-1/2 group relative">
-                                <div className="absolute -inset-4 bg-cyan-500/5 rounded-[3rem] blur-2xl group-hover:bg-cyan-500/10 transition-colors duration-500" />
+                                <div className="absolute -inset-4 bg-black/5 rounded-[3rem] blur-2xl group-hover:bg-black/10 transition-colors duration-500" />
                                 <Image
                                     src={getImageUrl(service.image || service.homepage_image || 'web_dev.png')}
                                     alt={service.name}
@@ -91,7 +91,7 @@ export default async function ServicesPage() {
                             { title: "Pre-Launch Marketing", text: "We ensure you already have a strong market presence before your product even exists in the market." },
                             { title: "Post-Launch Marketing", text: "Our services help you connect with your targeted audience and mark your success effectively." },
                         ].map((feature, i) => (
-                            <div key={i} className="group p-10 rounded-[2rem] bg-gray-50/50 border border-transparent hover:border-cyan-100 hover:bg-white hover:shadow-2xl hover:shadow-cyan-500/5 transition-all duration-500">
+                            <div key={i} className="group p-10 rounded-[2rem] bg-gray-50/50 border border-transparent hover:border-cyan-100 hover:bg-white hover:shadow-2xl hover:shadow-black/5 transition-all duration-500">
                                 <div className="w-12 h-12 bg-white rounded-2xl shadow-lg flex items-center justify-center mb-6 group-hover:bg-cyan-500 group-hover:text-white transition-colors duration-500">
                                     <CheckCircle2 size={24} />
                                 </div>

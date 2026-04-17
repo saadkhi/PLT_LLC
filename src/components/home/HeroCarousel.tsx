@@ -71,7 +71,7 @@ const HeroCarousel = () => {
 
     return (
         <section
-            className="relative h-screen w-full overflow-hidden bg-navy-900"
+            className="relative h-screen w-full overflow-hidden bg-black"
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
@@ -141,7 +141,7 @@ const HeroCarousel = () => {
                         <button
                             key={index}
                             onClick={() => setCurrent(index)}
-                            className={`h-2 transition-all duration-500 rounded-full border border-navy-900/20 ${index === current ? 'w-12 bg-cyan-500 shadow-[0_0_10px_rgba(249,115,22,0.5)]' : 'w-4 bg-white/40 hover:bg-white/60'}`}
+                            className={`h-2 transition-all duration-500 rounded-full border border-black/20 ${index === current ? 'w-12 bg-cyan-500 shadow-[0_0_10px_rgba(0,212,255,0.5)]' : 'w-4 bg-white/40 hover:bg-white/60'}`}
                             aria-label={`Go to slide ${index + 1}`}
                         />
                     ))}

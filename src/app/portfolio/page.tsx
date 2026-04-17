@@ -43,7 +43,7 @@ export default async function PortfolioPage() {
                         {category.projects.length > 0 ? (
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-12">
                                 {category.projects.map((project) => (
-                                    <div key={project.id} className="bg-white rounded-[2rem] shadow-xl overflow-hidden border border-gray-100 flex flex-col group hover:shadow-2xl hover:border-cyan-500/20 transition-all duration-500">
+                                    <div key={project.id} className="bg-white rounded-[2rem] shadow-xl overflow-hidden border border-gray-100 flex flex-col group hover:shadow-2xl hover:border-black/20 transition-all duration-500">
                                         <div className="h-72 bg-gray-50 relative overflow-hidden">
                                             {project.images.length > 0 ? (
                                                 <Image

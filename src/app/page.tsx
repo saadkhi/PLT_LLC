@@ -48,7 +48,7 @@ export default async function Home() {
                 href={`/services#${service.name.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`}
                 className="group relative bg-white p-6 md:py-8 md:px-10 rounded-[1.5rem] border border-gray-100 transition-all duration-500 hover:shadow-2xl hover:shadow-cyan-500/10 hover:-translate-y-1 overflow-hidden"
               >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/5 rounded-bl-[5rem] -mr-10 -mt-10 transition-all duration-500 group-hover:w-40 group-hover:h-40" />
+                <div className="absolute top-0 right-0 w-32 h-32 bg-black/5 rounded-bl-[5rem] -mr-10 -mt-10 transition-all duration-500 group-hover:w-40 group-hover:h-40" />
                 <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <h3 className="text-xl md:text-2xl font-black uppercase tracking-tight text-[#0A2540]">{service.name}</h3>
                   <div className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-cyan-500 opacity-0 group-hover:opacity-100 transition-all duration-500 shrink-0">
@@ -130,7 +130,7 @@ export default async function Home() {
           className="object-cover object-center grayscale-[50%] scale-105"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-navy-900/80 flex flex-col items-center justify-center p-6 text-center">
+        <div className="absolute inset-0 bg-black/80 flex flex-col items-center justify-center p-6 text-center">
           <div className="max-w-4xl w-full">
             <div className="space-y-4 mb-12">
               <p className="text-[clamp(1.2rem,5vw,2.5rem)] text-white font-black uppercase tracking-tighter leading-none">We’re Here Whenever You Need</p>
