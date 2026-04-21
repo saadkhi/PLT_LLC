@@ -3,12 +3,31 @@ import prisma from '@/lib/prisma';
 import { Briefcase, FileText, Mail, Lightbulb } from 'lucide-react';
 
 export default async function AdminDashboard() {
-    const counts = {
-        jobs: await prisma.job.count(),
-        applications: await prisma.application.count(),
-        messages: await prisma.contactMessage.count(),
-        insights: await prisma.insight.count(),
-    };
+    let counts = { jobs: 0, applications: 0, messages: 0, insights: 0 };
+    let recentApplications: any[] = [];
+    let recentMessages: any[] = [];
+
+    try {
+        counts = {
+            jobs: await prisma.job.count(),
+            applications: await prisma.application.count(),
+            messages: await prisma.contactMessage.count(),
+            insights: await prisma.insight.count(),
+        };
+
+        recentApplications = await prisma.application.findMany({
+            take: 5,
+            orderBy: { applied_at: 'desc' },
+            include: { job: true },
+        });
+
+        recentMessages = await prisma.contactMessage.findMany({
+            take: 5,
+            orderBy: { created_at: 'desc' },
+        });
+    } catch (error) {
+        console.error('Error fetching dashboard stats:', error);
+    }
 
     const stats = [
         { label: 'Total Jobs', val: counts.jobs, color: 'bg-blue-500', icon: <Briefcase className="w-6 h-6" /> },
@@ -16,17 +35,6 @@ export default async function AdminDashboard() {
         { label: 'Messages', val: counts.messages, color: 'bg-cyan-500', icon: <Mail className="w-6 h-6" /> },
         { label: 'Insights', val: counts.insights, color: 'bg-purple-500', icon: <Lightbulb className="w-6 h-6" /> },
     ];
-
-    const recentApplications = await prisma.application.findMany({
-        take: 5,
-        orderBy: { applied_at: 'desc' },
-        include: { job: true },
-    });
-
-    const recentMessages = await prisma.contactMessage.findMany({
-        take: 5,
-        orderBy: { created_at: 'desc' },
-    });
 
     return (
         <div className="space-y-8 md:space-y-12 pb-12">
