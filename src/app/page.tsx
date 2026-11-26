@@ -4,6 +4,7 @@ import Image from "next/image";
 import prisma from "@/lib/prisma";
 import HeroCarousel from "@/components/home/HeroCarousel";
 import CareersSection from "@/components/home/CareersSection";
+import QuoteTrigger from "@/components/layout/QuoteTrigger";
 import { getImageUrl } from "@/lib/utils";
 import { getGlobalData } from "@/lib/globalData";
 import {
@@ -113,14 +114,13 @@ export default async function Home() {
                             <p className="text-xl font-800 text-white mb-1">Ready to 10x your business with AI?</p>
                             <p className="text-sm text-white/45 font-400">Get a free AI opportunity audit — no commitment required.</p>
                         </div>
-                        <button
-                            onClick={() => {}}
+                        <QuoteTrigger
                             className="btn-cyan shrink-0 rounded-full py-3.5 px-8 text-sm shadow-cyan-lg"
                             id="hero-audit-cta"
                         >
                             Book Free Audit
                             <ArrowRight size={15} />
-                        </button>
+                        </QuoteTrigger>
                     </div>
                 </div>
             </section>
@@ -297,12 +297,11 @@ export default async function Home() {
                             Start a Conversation
                             <ArrowRight size={16} />
                         </Link>
-                        <button
-                            onClick={() => window.dispatchEvent(new CustomEvent("open-quote-drawer"))}
+                        <QuoteTrigger
                             className="btn-outline border-white/20 text-white hover:border-cyan-500 hover:text-cyan-400 rounded-full py-4 px-9 text-sm"
                         >
                             Get a Quote
-                        </button>
+                        </QuoteTrigger>
                     </div>
 
                     {/* Contact chips */}
