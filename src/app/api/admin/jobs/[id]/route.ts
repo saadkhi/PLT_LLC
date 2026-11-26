@@ -1,10 +1,13 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
+import { validateAdminSession } from '@/lib/adminAuth';
 
 export async function PUT(
     request: Request,
     { params }: { params: { id: string } }
 ) {
+    const unauthorized = await validateAdminSession(request);
+    if (unauthorized) return unauthorized;
     try {
         const body = await request.json();
         const job = await prisma.job.update({
@@ -22,6 +25,8 @@ export async function DELETE(
     request: Request,
     { params }: { params: { id: string } }
 ) {
+    const unauthorized = await validateAdminSession(request);
+    if (unauthorized) return unauthorized;
     try {
         await prisma.job.delete({
             where: { id: parseInt(params.id) },

@@ -1,7 +1,10 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
+import { validateAdminSession } from '@/lib/adminAuth';
 
-export async function GET() {
+export async function GET(request: Request) {
+    const unauthorized = await validateAdminSession(request);
+    if (unauthorized) return unauthorized;
     try {
         const offices = await prisma.office.findMany({
             orderBy: { created_at: 'desc' },
@@ -14,6 +17,8 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
+    const unauthorized = await validateAdminSession(request);
+    if (unauthorized) return unauthorized;
     try {
         const data = await request.json();
         const office = await prisma.office.create({

@@ -1,10 +1,13 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
+import { validateAdminSession } from '@/lib/adminAuth';
 
 export async function PUT(
     request: Request,
     { params }: { params: { id: string } }
 ) {
+    const unauthorized = await validateAdminSession(request);
+    if (unauthorized) return unauthorized;
     try {
         const { title, categoryId, description, link, images } = await request.json();
         const projectId = parseInt(params.id);
@@ -47,6 +50,8 @@ export async function DELETE(
     request: Request,
     { params }: { params: { id: string } }
 ) {
+    const unauthorized = await validateAdminSession(request);
+    if (unauthorized) return unauthorized;
     try {
         const projectId = parseInt(params.id);
 

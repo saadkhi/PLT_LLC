@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
-import prisma from '@/lib/prisma';
+import { ensureLoginConfigured, enforceLoginRateLimit, verifyAdminCredentials, createAdminSession, ADMIN_SESSION_COOKIE_NAME, ADMIN_SESSION_MAX_AGE_SECONDS } from '@/lib/adminAuth';
 
 export async function POST(request: Request) {
     try {
@@ -11,48 +11,33 @@ export async function POST(request: Request) {
         const logEntry = `[${new Date().toISOString()}] Login attempt: user="${cleanUsername}"\n`;
         console.log(logEntry);
 
-        const adminUsername = process.env.ADMIN_USERNAME || 'admin';
-        const adminPassword = process.env.ADMIN_PASSWORD || 'password123';
+        await ensureLoginConfigured();
+        enforceLoginRateLimit(request);
 
-        if (cleanUsername === adminUsername && cleanPassword === adminPassword) {
-            console.log(`Result: Success (Env Match)`);
-            const response = NextResponse.json({ success: true });
-
-            cookies().set('admin_session', 'true', {
-                httpOnly: true,
-                secure: process.env.NODE_ENV === 'production',
-                sameSite: 'lax',
-                maxAge: 60 * 60 * 24, // 24 hours
-                path: '/',
-            });
-
-            return response;
+        const user = await verifyAdminCredentials(cleanUsername, cleanPassword);
+        if (!user) {
+            console.log(`Result: Invalid credentials`);
+            return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
         }
 
-        const user = await prisma.adminUser.findUnique({
-            where: { username: cleanUsername },
+        const token = await createAdminSession(user.id);
+        const response = NextResponse.json({ success: true });
+        cookies().set(ADMIN_SESSION_COOKIE_NAME, token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'lax',
+            maxAge: ADMIN_SESSION_MAX_AGE_SECONDS,
+            path: '/',
         });
 
-        if (user && user.password === cleanPassword) {
-            console.log(`Result: Success (DB Match)`);
-            const response = NextResponse.json({ success: true });
-
-            cookies().set('admin_session', 'true', {
-                httpOnly: true,
-                secure: process.env.NODE_ENV === 'production',
-                sameSite: 'lax',
-                maxAge: 60 * 60 * 24, // 24 hours
-                path: '/',
-            });
-
-            return response;
-        }
-
-        console.log(`Result: Invalid credentials`);
-        return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
-    } catch (error) {
+        console.log(`Result: Success (Authenticated)`);
+        return response;
+    } catch (error: any) {
         const errLog = `[${new Date().toISOString()}] Login error: ${error}\n`;
         console.error(errLog);
+        if (error?.status === 429) {
+            return NextResponse.json({ error: 'Too many login attempts' }, { status: 429, headers: { 'Retry-After': `${error.retryAfter || 900}` } });
+        }
         return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
     }
 }

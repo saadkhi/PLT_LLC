@@ -113,7 +113,16 @@ model SocialLink {
 }
 
 model AdminUser {
-  id       Int    @id @default(autoincrement())
-  username String @unique
+  id       Int            @id @default(autoincrement())
+  username String         @unique
   password String
+  sessions AdminSession[]
+}
+
+model AdminSession {
+  id          Int       @id @default(autoincrement())
+  token       String    @unique
+  adminUserId Int
+  expiresAt   DateTime
+  adminUser   AdminUser @relation(fields: [adminUserId], references: [id])
 }

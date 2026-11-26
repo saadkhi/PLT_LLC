@@ -1,10 +1,13 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
+import { validateAdminSession } from '@/lib/adminAuth';
 
 export async function PUT(
     request: Request,
     { params }: { params: { id: string } }
 ) {
+    const unauthorized = await validateAdminSession(request);
+    if (unauthorized) return unauthorized;
     try {
         const data = await request.json();
         // @ts-ignore - Prisma types may be stale in IDE but DB is synced
@@ -28,6 +31,8 @@ export async function DELETE(
     request: Request,
     { params }: { params: { id: string } }
 ) {
+    const unauthorized = await validateAdminSession(request);
+    if (unauthorized) return unauthorized;
     try {
         await prisma.category.delete({
             where: { id: parseInt(params.id) },

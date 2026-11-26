@@ -7,7 +7,7 @@ import { getGlobalData } from "@/lib/globalData";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "700"],
+  weight: ["300", "400", "500", "600", "700", "800"],
   variable: "--font-plus-jakarta-sans",
   display: 'swap',
 });
@@ -15,20 +15,37 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
-  themeColor: 'white',
+  maximumScale: 5,
+  themeColor: '#0A2540',
 };
 
 export const metadata: Metadata = {
-  title: "Primeline IT Services LLC | Designing Tomorrow, Differently",
-  description: "USA-based software development agency providing cutting-edge AI, web development, and digital transformation solutions.",
-  keywords: ["Software Development", "AI Solutions", "Web Development", "IT Services", "Digital Transformation", "Primeline IT"],
+  title: "Primeline IT Services LLC | AI-Powered Business Growth",
+  description: "We integrate Artificial Intelligence into your business to deliver 10x growth. Custom AI solutions, web development, digital marketing & cybersecurity — USA-based, globally delivered.",
+  keywords: [
+    "AI Integration", "Artificial Intelligence Business", "Software Development",
+    "Digital Transformation", "Web Development", "Cybersecurity", "Data Analytics",
+    "Digital Marketing", "IT Services", "Primeline IT", "AI Solutions USA",
+    "Business Growth Technology",
+  ],
+  authors: [{ name: "Primeline IT Services LLC" }],
+  creator: "Primeline IT Services LLC",
   openGraph: {
-    title: "Primeline IT Services LLC",
-    description: "Designing tomorrow, differently. Scalable, high-impact software solutions.",
+    title: "Primeline IT Services LLC | AI-Powered Business Growth",
+    description: "We plug AI into your business and watch it grow 10x. Custom solutions, marketing strategies, and intelligent automation.",
     url: "https://primeline-it.com",
     siteName: "Primeline IT Services",
     type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Primeline IT Services LLC | AI-Powered Business Growth",
+    description: "We plug AI into your business and watch it grow 10x.",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
@@ -41,10 +58,16 @@ export default async function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${plusJakartaSans.variable} font-sans bg-white font-thin antialiased overflow-x-hidden`} suppressHydrationWarning>
+      <body
+        className={`${plusJakartaSans.variable} font-sans bg-white antialiased overflow-x-hidden`}
+        suppressHydrationWarning
+      >
         <LayoutWrapper
           footer={<Footer initialData={globalData} />}
-          contactInfo={{ email: globalData.mainOffice?.email, phone: globalData.mainOffice?.phone }}
+          contactInfo={{
+            email: globalData.mainOffice?.email,
+            phone: globalData.mainOffice?.phone,
+          }}
         >
           {children}
         </LayoutWrapper>
@@ -52,4 +75,3 @@ export default async function RootLayout({
     </html>
   );
 }
-

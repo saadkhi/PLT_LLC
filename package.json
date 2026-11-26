@@ -6,7 +6,7 @@
     "dev": "next dev",
     "server": "next dev",
     "build": "next build",
-    "vercel-build": "sed -i 's/provider = \"sqlite\"/provider = \"postgresql\"/g' prisma/schema.prisma && sed -i '/url      = env(\"DATABASE_URL\")/a \\  directUrl = env(\"DIRECT_URL\")' prisma/schema.prisma && prisma generate && next build",
+    "vercel-build": "tmp_schema=prisma/schema.vercel.tmp.prisma; trap 'rm -f \"$tmp_schema\"' EXIT; cp prisma/schema.prisma \"$tmp_schema\" && sed -i 's/provider = \"sqlite\"/provider = \"postgresql\"/g' \"$tmp_schema\" && sed -i '/url      = env(\"DATABASE_URL\")/a \\  directUrl = env(\"DIRECT_URL\")' \"$tmp_schema\" && prisma generate --schema \"$tmp_schema\" && next build",
     "start": "next start",
     "lint": "next lint",
     "postinstall": "prisma generate"
@@ -14,6 +14,7 @@
   "dependencies": {
     "@prisma/client": "^6.19.2",
     "@vercel/blob": "^1.1.1",
+    "bcryptjs": "^2.4.3",
     "lucide-react": "^1.7.0",
     "next": "14.2.14",
     "next-themes": "^0.4.6",
@@ -22,6 +23,7 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

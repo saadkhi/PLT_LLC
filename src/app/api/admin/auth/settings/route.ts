@@ -1,8 +1,11 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
-import { cookies } from 'next/headers';
+import { validateAdminSession, hashPassword } from '@/lib/adminAuth';
 
-export async function GET() {
+export async function GET(request: Request) {
+    const unauthorized = await validateAdminSession(request);
+    if (unauthorized) return unauthorized;
+
     try {
         const user = await prisma.adminUser.findFirst();
         if (!user) {
@@ -17,22 +20,26 @@ export async function GET() {
 }
 
 export async function PUT(request: Request) {
+    const unauthorized = await validateAdminSession(request);
+    if (unauthorized) return unauthorized;
+
     try {
         const { username, password } = await request.json();
         console.log(`Attempting to update admin credentials to: ${username}`);
 
+        const hashedPassword = await hashPassword(password.trim());
         let user = await prisma.adminUser.findFirst();
 
         if (!user) {
             console.log('No user found, creating new admin record');
             user = await prisma.adminUser.create({
-                data: { username: username.trim(), password: password.trim() },
+                data: { username: username.trim(), password: hashedPassword },
             });
         } else {
             console.log(`Updating existing admin record with ID: ${user.id}`);
             user = await prisma.adminUser.update({
                 where: { id: user.id },
-                data: { username: username.trim(), password: password.trim() },
+                data: { username: username.trim(), password: hashedPassword },
             });
         }
 
