@@ -65,6 +65,13 @@ export function isBcryptHash(value: string) {
   return typeof value === 'string' && /\$2[aby]\$\d{2}\$.{53}/.test(value);
 }
 
+export const MIN_ADMIN_PASSWORD_LENGTH = 10;
+
+/** Checks a candidate password against a stored bcrypt hash (or a legacy plain-text value). */
+export async function passwordMatches(stored: string, candidate: string) {
+  return isBcryptHash(stored) ? bcrypt.compare(candidate, stored) : candidate === stored;
+}
+
 export async function verifyAdminCredentials(username: string, password: string) {
   const cleanUsername = username.trim();
   const cleanPassword = password.trim();
@@ -145,6 +152,11 @@ async function findValidAdminSession(token: string | undefined) {
   }
 
   return session;
+}
+
+/** The valid admin session (with its user) for an API request, or null. */
+export async function getAdminSession(request: Request) {
+  return findValidAdminSession(getCookieValue(request, ADMIN_SESSION_COOKIE_NAME));
 }
 
 export async function validateAdminSession(request: Request) {

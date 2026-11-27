@@ -4,7 +4,14 @@ import { Job } from '@prisma/client';
 import prisma from '@/lib/prisma';
 export const dynamic = 'force-dynamic';
 
-export default async function JobDetailPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function JobDetailPage({
+    params,
+    searchParams,
+}: {
+    params: Promise<{ id: string }>;
+    searchParams: Promise<{ applied?: string; error?: string }>;
+}) {
+    const { applied, error } = await searchParams;
     const job = await prisma.job.findUnique({
         where: { id: parseInt((await params).id) },
     });
@@ -45,6 +52,16 @@ export default async function JobDetailPage({ params }: { params: Promise<{ id: 
                     {/* Application Form */}
                     <div className="bg-white p-6 rounded-2xl shadow-xl border border-gray-100 h-fit">
                         <h2 className="text-2xl font-bold text-[#0A2540] mb-6">Apply Now</h2>
+                        {applied === '1' && (
+                            <p role="status" className="mb-4 p-3 rounded-lg bg-green-50 text-green-700 font-semibold border border-green-100">
+                                Thanks, your application was submitted.
+                            </p>
+                        )}
+                        {error && (
+                            <p role="alert" className="mb-4 p-3 rounded-lg bg-red-50 text-red-700 font-semibold border border-red-100">
+                                {error.slice(0, 200)}
+                            </p>
+                        )}
                         <form action="/api/apply" method="POST" className="space-y-4">
                             <input type="hidden" name="jobId" value={job.id} />
                             <div>
@@ -81,7 +98,7 @@ export default async function JobDetailPage({ params }: { params: Promise<{ id: 
                             </div>
                             <div>
                                 <label className="block text-sm font-semibold text-gray-700 mb-1">Resume (URL for now)</label>
-                                <input type="text" name="resume" placeholder="e.g., Google Drive link" className="w-full p-2 rounded-lg border focus:ring-2 focus:ring-cyan-500 outline-none" required />
+                                <input type="url" name="resume" placeholder="https://drive.google.com/..." pattern="https?://.+" maxLength={500} className="w-full p-2 rounded-lg border focus:ring-2 focus:ring-cyan-500 outline-none" required />
                             </div>
                             <div>
                                 <label className="block text-sm font-semibold text-gray-700 mb-1">Referral Source</label>

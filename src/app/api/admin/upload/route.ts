@@ -43,7 +43,11 @@ export async function POST(request: Request) {
         if (!mimeType) {
             return NextResponse.json({ error: 'Unsupported file type' }, { status: 400 });
         }
-        const cleanName = fileObject.name.replace(/[^a-zA-Z0-9.-]/g, '_');
+        // Name the file from its detected type, never the uploaded extension, so a file
+        // named `.html` (or anything else) can't be served back as a different content type.
+        const extension = ({ 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp' } as Record<string, string>)[mimeType];
+        const baseName = fileObject.name.replace(/\.[^.]*$/, '').replace(/[^a-zA-Z0-9-]/g, '_').slice(0, 60) || 'image';
+        const cleanName = `${baseName}.${extension}`;
 
         // If Vercel Blob token is missing, use local storage as fallback
         if (!process.env.BLOB_READ_WRITE_TOKEN) {
@@ -82,7 +86,7 @@ export async function POST(request: Request) {
                     }, { status: 500 });
                 }
 
-                return NextResponse.json({ error: `Upload failed: ${err.message}` }, { status: 500 });
+                return NextResponse.json({ error: 'Upload failed. Check the server logs for details.' }, { status: 500 });
             }
 
         }
@@ -102,10 +106,10 @@ export async function POST(request: Request) {
             });
         } catch (err: any) {
             console.error('[UPLOAD ERROR] Vercel Blob upload failed:', err);
-            return NextResponse.json({ error: `Blob error: ${err.message}` }, { status: 500 });
+            return NextResponse.json({ error: 'Upload to Vercel Blob failed. Check the server logs for details.' }, { status: 500 });
         }
     } catch (error: any) {
         console.error('General upload error:', error);
-        return NextResponse.json({ error: error.message || 'Internal Server Error' }, { status: 500 });
+        return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
     }
 }

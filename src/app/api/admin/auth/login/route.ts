@@ -8,9 +8,6 @@ export async function POST(request: Request) {
         const cleanUsername = username.trim();
         const cleanPassword = password.trim();
 
-        const logEntry = `[${new Date().toISOString()}] Login attempt: user="${cleanUsername}"\n`;
-        console.log(logEntry);
-
         await ensureLoginConfigured();
         enforceLoginRateLimit(request);
 

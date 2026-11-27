@@ -3,6 +3,9 @@ import prisma from '@/lib/prisma';
 import { getImageUrl } from '@/lib/utils';
 import Image from 'next/image';
 
+// Read industries on each request so admin edits show up without a redeploy.
+export const dynamic = 'force-dynamic';
+
 export default async function IndustriesPage() {
     const industries = await prisma.industry.findMany({
         orderBy: { created_at: 'asc' },

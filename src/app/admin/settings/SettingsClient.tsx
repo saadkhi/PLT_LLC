@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 export default function AdminSettingsPage() {
     const router = useRouter();
     const [username, setUsername] = useState('');
+    const [currentPassword, setCurrentPassword] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [loading, setLoading] = useState(false);
@@ -36,13 +37,13 @@ export default function AdminSettingsPage() {
             const res = await fetch('/api/admin/auth/settings', {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ username: username.trim(), password: password.trim() }),
+                body: JSON.stringify({ username: username.trim(), currentPassword, password: password.trim() }),
             });
 
             if (res.ok) {
-                setSuccess('Credentials updated. You will be logged out in 3 seconds.');
-                setTimeout(async () => {
-                    await fetch('/api/admin/auth/logout', { method: 'POST' });
+                // The server has already ended all sessions for this admin.
+                setSuccess('Credentials updated. Redirecting to login in 3 seconds.');
+                setTimeout(() => {
                     router.push('/admin/login');
                     router.refresh();
                 }, 3000);
@@ -83,10 +84,25 @@ export default function AdminSettingsPage() {
                     </div>
 
                     <div className="space-y-2">
+                        <label className="block text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">Current Password</label>
+                        <input
+                            type="password"
+                            value={currentPassword}
+                            onChange={(e) => setCurrentPassword(e.target.value)}
+                            autoComplete="current-password"
+                            className="w-full p-4 rounded-2xl border border-gray-100 focus:ring-2 focus:ring-navy-900 outline-none transition font-bold text-sm bg-gray-50/50"
+                            placeholder="••••••••"
+                            required
+                        />
+                    </div>
+
+                    <div className="space-y-2">
                         <label className="block text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">New Secure Password</label>
                         <input
                             type="password"
                             value={password}
+                            minLength={10}
+                            autoComplete="new-password"
                             onChange={(e) => setPassword(e.target.value)}
                             className="w-full p-4 rounded-2xl border border-gray-100 focus:ring-2 focus:ring-navy-900 outline-none transition font-bold text-sm bg-gray-50/50"
                             placeholder="••••••••"
