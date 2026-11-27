@@ -3,13 +3,16 @@ import Link from 'next/link';
 import prisma from '@/lib/prisma';
 import SearchBar from '@/components/admin/SearchBar';
 import JobsTable from '@/components/admin/JobsTable';
+import { requireAdminPage } from '@/lib/adminAuth';
 
 export default async function AdminJobsPage({
     searchParams,
 }: {
-    searchParams: { q?: string };
+    searchParams: Promise<{ q?: string }>;
 }) {
-    const query = searchParams.q || '';
+    await requireAdminPage();
+
+    const query = (await searchParams).q || '';
 
     const jobs = await prisma.job.findMany({
         where: {

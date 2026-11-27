@@ -1,6 +1,8 @@
 import bcrypt from 'bcryptjs';
 import crypto from 'crypto';
 import { NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 import prisma from '@/lib/prisma';
 
 export const ADMIN_SESSION_COOKIE_NAME = 'admin_session';
@@ -126,27 +128,46 @@ export async function invalidateAdminSession(token?: string) {
   await prisma.adminSession.deleteMany({ where: { token } });
 }
 
-export async function validateAdminSession(request: Request) {
-  const token = getCookieValue(request, ADMIN_SESSION_COOKIE_NAME);
-  if (!token) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  }
+/** Returns the session for a token if it exists and has not expired; deletes it if expired. */
+async function findValidAdminSession(token: string | undefined) {
+  if (!token) return null;
 
   const session = await prisma.adminSession.findUnique({
     where: { token },
     include: { adminUser: true },
   });
 
+  if (!session) return null;
+
+  if (session.expiresAt <= new Date()) {
+    await prisma.adminSession.deleteMany({ where: { token } });
+    return null;
+  }
+
+  return session;
+}
+
+export async function validateAdminSession(request: Request) {
+  const session = await findValidAdminSession(getCookieValue(request, ADMIN_SESSION_COOKIE_NAME));
   if (!session) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  if (session.expiresAt <= new Date()) {
-    await prisma.adminSession.deleteMany({ where: { token } });
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  return null;
+}
+
+/**
+ * Guards an admin page (server component). Redirects to the login page unless the
+ * request carries a valid, unexpired admin session. The middleware only checks that
+ * the cookie exists, so every admin page must call this before reading any data.
+ */
+export async function requireAdminPage() {
+  const session = await findValidAdminSession((await cookies()).get(ADMIN_SESSION_COOKIE_NAME)?.value);
+  if (!session) {
+    redirect('/admin/login');
   }
 
-  return null;
+  return session;
 }
 
 export function disableAdminLoginIfNeeded() {

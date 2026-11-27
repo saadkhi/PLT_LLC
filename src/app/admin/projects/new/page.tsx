@@ -1,7 +1,10 @@
 import prisma from '@/lib/prisma';
 import ProjectForm from '@/components/admin/ProjectForm';
+import { requireAdminPage } from '@/lib/adminAuth';
 
 export default async function NewProjectPage() {
+    await requireAdminPage();
+
     const categories = await prisma.category.findMany({
         orderBy: { name: 'asc' },
     });

@@ -3,13 +3,16 @@ import Link from 'next/link';
 import prisma from '@/lib/prisma';
 import SearchBar from '@/components/admin/SearchBar';
 import CategoriesTable from '@/components/admin/CategoriesTable';
+import { requireAdminPage } from '@/lib/adminAuth';
 
 export default async function AdminCategoriesPage({
     searchParams,
 }: {
-    searchParams: { q?: string };
+    searchParams: Promise<{ q?: string }>;
 }) {
-    const query = searchParams.q || '';
+    await requireAdminPage();
+
+    const query = (await searchParams).q || '';
 
     const categories = await prisma.category.findMany({
         where: {

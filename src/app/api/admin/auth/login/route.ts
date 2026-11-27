@@ -22,7 +22,7 @@ export async function POST(request: Request) {
 
         const token = await createAdminSession(user.id);
         const response = NextResponse.json({ success: true });
-        cookies().set(ADMIN_SESSION_COOKIE_NAME, token, {
+        (await cookies()).set(ADMIN_SESSION_COOKIE_NAME, token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
             sameSite: 'lax',

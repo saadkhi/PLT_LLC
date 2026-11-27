@@ -2,14 +2,17 @@ import React from 'react';
 import { notFound } from 'next/navigation';
 import prisma from '@/lib/prisma';
 import ProjectForm from '@/components/admin/ProjectForm';
+import { requireAdminPage } from '@/lib/adminAuth';
 
 interface PageProps {
-    params: { id: string };
+    params: Promise<{ id: string }>;
 }
 
 export default async function EditProjectPage({ params }: PageProps) {
+    await requireAdminPage();
+
     const project = await prisma.project.findUnique({
-        where: { id: parseInt(params.id) },
+        where: { id: parseInt((await params).id) },
         include: { images: true }
     });
 

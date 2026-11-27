@@ -1,8 +1,11 @@
 import React from 'react';
 import prisma from '@/lib/prisma';
 import { Briefcase, FileText, Mail, Lightbulb } from 'lucide-react';
+import { requireAdminPage } from '@/lib/adminAuth';
 
 export default async function AdminDashboard() {
+    await requireAdminPage();
+
     const counts = {
         jobs: await prisma.job.count(),
         applications: await prisma.application.count(),

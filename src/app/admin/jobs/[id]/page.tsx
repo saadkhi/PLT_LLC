@@ -2,14 +2,17 @@ import React from 'react';
 import { notFound } from 'next/navigation';
 import prisma from '@/lib/prisma';
 import JobForm from '@/components/admin/JobForm';
+import { requireAdminPage } from '@/lib/adminAuth';
 
 interface PageProps {
-    params: { id: string };
+    params: Promise<{ id: string }>;
 }
 
 export default async function EditJobPage({ params }: PageProps) {
+    await requireAdminPage();
+
     const job = await prisma.job.findUnique({
-        where: { id: parseInt(params.id) },
+        where: { id: parseInt((await params).id) },
     });
 
     if (!job) {

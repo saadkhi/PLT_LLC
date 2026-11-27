@@ -2,14 +2,17 @@ import React from 'react';
 import { notFound } from 'next/navigation';
 import prisma from '@/lib/prisma';
 import InsightForm from '@/components/admin/InsightForm';
+import { requireAdminPage } from '@/lib/adminAuth';
 
 interface PageProps {
-    params: { id: string };
+    params: Promise<{ id: string }>;
 }
 
 export default async function EditInsightPage({ params }: PageProps) {
+    await requireAdminPage();
+
     const insight = await prisma.insight.findUnique({
-        where: { id: parseInt(params.id) },
+        where: { id: parseInt((await params).id) },
     });
 
     if (!insight) {

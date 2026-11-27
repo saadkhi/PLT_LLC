@@ -3,13 +3,16 @@ import Link from 'next/link';
 import prisma from '@/lib/prisma';
 import SearchBar from '@/components/admin/SearchBar';
 import ProjectsTable from '@/components/admin/ProjectsTable';
+import { requireAdminPage } from '@/lib/adminAuth';
 
 export default async function AdminProjectsPage({
     searchParams,
 }: {
-    searchParams: { q?: string };
+    searchParams: Promise<{ q?: string }>;
 }) {
-    const query = searchParams.q || '';
+    await requireAdminPage();
+
+    const query = (await searchParams).q || '';
 
     const projects = await prisma.project.findMany({
         where: {

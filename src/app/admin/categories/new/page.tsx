@@ -1,7 +1,10 @@
 import React from 'react';
 import CategoryForm from '@/components/admin/CategoryForm';
+import { requireAdminPage } from '@/lib/adminAuth';
 
-export default function NewCategoryPage() {
+export default async function NewCategoryPage() {
+    await requireAdminPage();
+
     return (
         <div className="space-y-6">
             <h2 className="text-2xl font-extrabold text-gray-900 tracking-tight">Add New Service</h2>

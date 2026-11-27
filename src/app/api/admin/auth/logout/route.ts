@@ -6,11 +6,11 @@ export async function POST(request: Request) {
     const unauthorized = await validateAdminSession(request);
     if (unauthorized) return unauthorized;
 
-    const cookieValue = cookies().get(ADMIN_SESSION_COOKIE_NAME)?.value;
+    const cookieValue = (await cookies()).get(ADMIN_SESSION_COOKIE_NAME)?.value;
     if (cookieValue) {
         await invalidateAdminSession(cookieValue);
     }
 
-    cookies().delete(ADMIN_SESSION_COOKIE_NAME);
+    (await cookies()).delete(ADMIN_SESSION_COOKIE_NAME);
     return NextResponse.json({ success: true });
 }

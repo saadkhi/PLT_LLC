@@ -2,13 +2,16 @@ import React from 'react';
 import prisma from '@/lib/prisma';
 import SearchBar from '@/components/admin/SearchBar';
 import MessagesTable from '@/components/admin/MessagesTable';
+import { requireAdminPage } from '@/lib/adminAuth';
 
 export default async function AdminMessagesPage({
     searchParams,
 }: {
-    searchParams: { q?: string };
+    searchParams: Promise<{ q?: string }>;
 }) {
-    const query = searchParams.q || '';
+    await requireAdminPage();
+
+    const query = (await searchParams).q || '';
 
     const messages = await prisma.contactMessage.findMany({
         where: {

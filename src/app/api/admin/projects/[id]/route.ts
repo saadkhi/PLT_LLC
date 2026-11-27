@@ -4,13 +4,13 @@ import { validateAdminSession } from '@/lib/adminAuth';
 
 export async function PUT(
     request: Request,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     const unauthorized = await validateAdminSession(request);
     if (unauthorized) return unauthorized;
     try {
         const { title, categoryId, description, link, images } = await request.json();
-        const projectId = parseInt(params.id);
+        const projectId = parseInt((await params).id);
 
         // Update project basic info
         const project = await prisma.project.update({
@@ -48,12 +48,12 @@ export async function PUT(
 
 export async function DELETE(
     request: Request,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     const unauthorized = await validateAdminSession(request);
     if (unauthorized) return unauthorized;
     try {
-        const projectId = parseInt(params.id);
+        const projectId = parseInt((await params).id);
 
         // Cascading delete for images
         await prisma.projectImage.deleteMany({

@@ -4,14 +4,14 @@ import { validateAdminSession } from '@/lib/adminAuth';
 
 export async function PUT(
     request: Request,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     const unauthorized = await validateAdminSession(request);
     if (unauthorized) return unauthorized;
     try {
         const data = await request.json();
         const socialLink = await prisma.socialLink.update({
-            where: { id: parseInt(params.id) },
+            where: { id: parseInt((await params).id) },
             data: {
                 platform_name: data.platform_name,
                 url: data.url,
@@ -27,13 +27,13 @@ export async function PUT(
 
 export async function DELETE(
     request: Request,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     const unauthorized = await validateAdminSession(request);
     if (unauthorized) return unauthorized;
     try {
         await prisma.socialLink.delete({
-            where: { id: parseInt(params.id) },
+            where: { id: parseInt((await params).id) },
         });
         return NextResponse.json({ success: true });
     } catch (error) {

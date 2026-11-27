@@ -6,9 +6,9 @@ export const dynamic = 'force-dynamic';
 import Image from 'next/image';
 import { getImageUrl } from '@/lib/utils';
 
-export default async function InsightDetailPage({ params }: { params: { id: string } }) {
+export default async function InsightDetailPage({ params }: { params: Promise<{ id: string }> }) {
     const insight = await prisma.insight.findUnique({
-        where: { id: parseInt(params.id) },
+        where: { id: parseInt((await params).id) },
     });
 
     if (!insight) {

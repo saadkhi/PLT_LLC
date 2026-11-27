@@ -4,8 +4,8 @@ import prisma from '@/lib/prisma';
 import { getImageUrl } from '@/lib/utils';
 import Image from 'next/image';
 
-export default async function ProjectCategoryPage({ params }: { params: { id: string } }) {
-    const categoryId = parseInt(params.id);
+export default async function ProjectCategoryPage({ params }: { params: Promise<{ id: string }> }) {
+    const categoryId = parseInt((await params).id);
     const category = await prisma.category.findUnique({
         where: { id: categoryId },
     });

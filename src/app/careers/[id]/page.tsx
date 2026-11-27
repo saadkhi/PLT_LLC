@@ -4,9 +4,9 @@ import { Job } from '@prisma/client';
 import prisma from '@/lib/prisma';
 export const dynamic = 'force-dynamic';
 
-export default async function JobDetailPage({ params }: { params: { id: string } }) {
+export default async function JobDetailPage({ params }: { params: Promise<{ id: string }> }) {
     const job = await prisma.job.findUnique({
-        where: { id: parseInt(params.id) },
+        where: { id: parseInt((await params).id) },
     });
 
     if (!job) {

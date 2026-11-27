@@ -2,13 +2,16 @@ import React from 'react';
 import prisma from '@/lib/prisma';
 import SearchBar from '@/components/admin/SearchBar';
 import ApplicationsTable from '@/components/admin/ApplicationsTable';
+import { requireAdminPage } from '@/lib/adminAuth';
 
 export default async function AdminApplicationsPage({
     searchParams,
 }: {
-    searchParams: { q?: string };
+    searchParams: Promise<{ q?: string }>;
 }) {
-    const query = searchParams.q || '';
+    await requireAdminPage();
+
+    const query = (await searchParams).q || '';
 
     const applications = await prisma.application.findMany({
         where: {

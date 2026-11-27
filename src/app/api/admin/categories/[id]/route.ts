@@ -4,7 +4,7 @@ import { validateAdminSession } from '@/lib/adminAuth';
 
 export async function PUT(
     request: Request,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     const unauthorized = await validateAdminSession(request);
     if (unauthorized) return unauthorized;
@@ -12,7 +12,7 @@ export async function PUT(
         const data = await request.json();
         // @ts-ignore - Prisma types may be stale in IDE but DB is synced
         const category = await prisma.category.update({
-            where: { id: parseInt(params.id) },
+            where: { id: parseInt((await params).id) },
             data: {
                 name: data.name,
                 description: data.description || '',
@@ -29,13 +29,13 @@ export async function PUT(
 
 export async function DELETE(
     request: Request,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     const unauthorized = await validateAdminSession(request);
     if (unauthorized) return unauthorized;
     try {
         await prisma.category.delete({
-            where: { id: parseInt(params.id) },
+            where: { id: parseInt((await params).id) },
         });
         return NextResponse.json({ success: true });
     } catch (error) {

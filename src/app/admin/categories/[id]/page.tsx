@@ -2,10 +2,13 @@ import React from 'react';
 import CategoryForm from '@/components/admin/CategoryForm';
 import prisma from '@/lib/prisma';
 import { notFound } from 'next/navigation';
+import { requireAdminPage } from '@/lib/adminAuth';
 
-export default async function EditCategoryPage({ params }: { params: { id: string } }) {
+export default async function EditCategoryPage({ params }: { params: Promise<{ id: string }> }) {
+    await requireAdminPage();
+
     const category = await prisma.category.findUnique({
-        where: { id: parseInt(params.id) },
+        where: { id: parseInt((await params).id) },
     });
 
     if (!category) notFound();

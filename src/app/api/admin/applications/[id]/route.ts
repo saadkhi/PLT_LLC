@@ -4,13 +4,13 @@ import { validateAdminSession } from '@/lib/adminAuth';
 
 export async function DELETE(
     request: Request,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     const unauthorized = await validateAdminSession(request);
     if (unauthorized) return unauthorized;
     try {
         await prisma.application.delete({
-            where: { id: parseInt(params.id) },
+            where: { id: parseInt((await params).id) },
         });
         return NextResponse.json({ success: true });
     } catch (error) {

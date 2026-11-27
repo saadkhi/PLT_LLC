@@ -3,10 +3,10 @@ import prisma from '@/lib/prisma';
 
 export async function GET(
     request: Request,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
-        const categoryId = parseInt(params.id);
+        const categoryId = parseInt((await params).id);
         const projects = await prisma.project.findMany({
             where: { categoryId },
             include: { images: true },

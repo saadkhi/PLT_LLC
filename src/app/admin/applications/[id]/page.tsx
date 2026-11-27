@@ -3,10 +3,13 @@ import prisma from '@/lib/prisma';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { FileText } from 'lucide-react';
+import { requireAdminPage } from '@/lib/adminAuth';
 
-export default async function ApplicationDetailPage({ params }: { params: { id: string } }) {
+export default async function ApplicationDetailPage({ params }: { params: Promise<{ id: string }> }) {
+    await requireAdminPage();
+
     const application = await prisma.application.findUnique({
-        where: { id: parseInt(params.id) },
+        where: { id: parseInt((await params).id) },
         include: { job: true },
     });
 

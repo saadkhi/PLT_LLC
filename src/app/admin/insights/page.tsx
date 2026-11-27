@@ -3,13 +3,16 @@ import Link from 'next/link';
 import prisma from '@/lib/prisma';
 import SearchBar from '@/components/admin/SearchBar';
 import InsightsTable from '@/components/admin/InsightsTable';
+import { requireAdminPage } from '@/lib/adminAuth';
 
 export default async function AdminInsightsPage({
     searchParams,
 }: {
-    searchParams: { q?: string };
+    searchParams: Promise<{ q?: string }>;
 }) {
-    const query = searchParams.q || '';
+    await requireAdminPage();
+
+    const query = (await searchParams).q || '';
 
     const insights = await prisma.insight.findMany({
         where: {
